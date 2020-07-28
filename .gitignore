@@ -5,3 +5,4 @@ package.json
 style.css.map
 style-rtl.css
 phpcs.xml.dist
+composer.json
