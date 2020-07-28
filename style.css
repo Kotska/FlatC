@@ -609,9 +609,12 @@ body .site-main .col-container {
 
 body .site-main .col1, body .site-main .col2, body .site-main .col3 {
   padding: 0 20px 0 20px;
+  -webkit-transition: 1s all;
+  transition: 1s all;
 }
 
 body .site-main .col1 {
+  z-index: 4;
   background-color: #212221;
   color: #ffffff;
   padding-top: 80px;
@@ -689,6 +692,22 @@ body .site-main #nav-overlay .nav-list {
 }
 
 @media only screen and (min-width: 768px) {
+  body .site-main #nav-overlay {
+    z-index: 3;
+    width: 50vw;
+    top: 0;
+    right: 100%;
+    left: 0;
+    bottom: 0;
+  }
+  body .site-main #nav-overlay.open {
+    left: 50vw;
+  }
+  body .site-main #nav-overlay .nav-list {
+    text-align: left;
+    right: auto;
+    margin: 0;
+  }
   body .site-main .col1 {
     position: relative;
     height: 100vh;
@@ -727,7 +746,8 @@ body .site-main #nav-overlay .nav-list {
     font-size: 40px;
   }
   body .site-main .col2 h3, body .site-main .col3 h3 {
-    margin-top: 80px;
+    padding-top: 70px;
+    margin: 0;
     font-size: 16px;
   }
   body .site-main .col1, body .site-main .col2, body .site-main .col3 {
@@ -743,6 +763,22 @@ body .site-main #nav-overlay .nav-list {
 }
 
 @media screen and (min-width: 1200px) {
+  body .site-main #nav-overlay {
+    z-index: 3;
+    width: 66.66vw;
+    top: 0;
+    right: 0;
+    left: -33.33vw;
+    bottom: 0;
+  }
+  body .site-main #nav-overlay.open {
+    left: 33.33vw;
+  }
+  body .site-main #nav-overlay .nav-list {
+    text-align: left;
+    right: auto;
+    margin: 0;
+  }
   body .site-main .col2 {
     float: left;
     background-color: #1181b2;
@@ -757,6 +793,26 @@ body .site-main #nav-overlay .nav-list {
   body .site-main .col2, body .site-main .col3 {
     height: 100vh;
     padding: 0 0 0 20px;
+  }
+  body .site-main .col2 h3, body .site-main .col3 h3 {
+    border-left: 1px solid transparent;
+    -webkit-transition: all 500ms;
+    transition: all 500ms;
+    -webkit-transition-property: padding, border;
+    transition-property: padding, border;
+    padding-bottom: 10px;
+  }
+  body .site-main .col2 h2, body .site-main .col2 h3, body .site-main .col3 h2, body .site-main .col3 h3 {
+    padding-left: 15px;
+  }
+  body .site-main .col2:hover, body .site-main .col3:hover {
+    background-color: #26ace2;
+    color: white;
+    cursor: pointer;
+  }
+  body .site-main .col2:hover h3, body .site-main .col3:hover h3 {
+    padding-top: 100px;
+    border-left: 1px solid white;
   }
   body .site-main .col-container {
     width: 66.66vw;

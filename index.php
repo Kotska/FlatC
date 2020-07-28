@@ -38,12 +38,16 @@ get_header();
 		</div>
 		<div class="col-container">
 			<div class="col2 col">
-				<h3>Kiemelt Munkáim</h3>
-				<h2>Portfolio</h2>
+				<div class="col-text">
+					<h3>Kiemelt Munkáim</h3>
+					<h2 class="col2-title">Portfolio</h2>
+				</div>
 			</div>
 			<div class="col3 col">
-				<h3>Amikkel szolgálok</h3>
-				<h2>Szolgáltatások</h2>
+				<div class="col-text">
+					<h3>Amikkel szolgálok</h3>
+					<h2 class="col3-title">Szolgáltatások</h2>
+				</div>
 			</div>
 		</div>
 	</main><!-- #main -->
