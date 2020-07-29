@@ -599,7 +599,7 @@ body .site-main p {
 
 body .site-main .col-container {
   position: absolute;
-  height: 148px;
+  height: 158px;
   top: auto;
   left: 0;
   bottom: 0px;
@@ -637,7 +637,6 @@ body .site-main .col2, body .site-main .col3 {
   background-color: #ffffff;
   color: #26ace2;
   border-bottom: 4px solid #26ace2;
-  padding-top: 20px;
   vertical-align: bottom;
 }
 
@@ -646,15 +645,39 @@ body .site-main .col2 h2, body .site-main .col2 h3, body .site-main .col3 h2, bo
   line-height: 0.7;
   text-transform: uppercase;
   margin-top: 10px;
+  padding-left: 15px;
 }
 
 body .site-main .col2 h3, body .site-main .col3 h3 {
   font-size: 14px;
   font-weight: 400;
+  border-left: 1px solid transparent;
+  -webkit-transition: all 500ms;
+  transition: all 500ms;
+  -webkit-transition-property: padding, border;
+  transition-property: padding, border;
+  padding-bottom: 5px;
+  margin: 0;
+  padding-top: 30px;
+  height: 100%;
 }
 
 body .site-main .col2 h2, body .site-main .col3 h2 {
   font-size: 30px;
+}
+
+body .site-main .col2:hover, body .site-main .col3:hover {
+  background-color: #1181b2;
+  color: white;
+  cursor: pointer;
+}
+
+body .site-main .col2:hover h2, body .site-main .col3:hover h2 {
+  color: #26ace2;
+}
+
+body .site-main .col2:hover h3, body .site-main .col3:hover h3 {
+  border-left: 1px solid #26ace2;
 }
 
 body .site-main #nav-overlay {
@@ -794,21 +817,14 @@ body .site-main #nav-overlay .nav-list {
     height: 100vh;
     padding: 0 0 0 20px;
   }
-  body .site-main .col2 h3, body .site-main .col3 h3 {
-    border-left: 1px solid transparent;
-    -webkit-transition: all 500ms;
-    transition: all 500ms;
-    -webkit-transition-property: padding, border;
-    transition-property: padding, border;
-    padding-bottom: 10px;
-  }
   body .site-main .col2 h2, body .site-main .col2 h3, body .site-main .col3 h2, body .site-main .col3 h3 {
     padding-left: 15px;
   }
   body .site-main .col2:hover, body .site-main .col3:hover {
     background-color: #26ace2;
+  }
+  body .site-main .col2:hover h2, body .site-main .col2:hover h3, body .site-main .col3:hover h2, body .site-main .col3:hover h3 {
     color: white;
-    cursor: pointer;
   }
   body .site-main .col2:hover h3, body .site-main .col3:hover h3 {
     padding-top: 100px;
