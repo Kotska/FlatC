@@ -21,16 +21,14 @@ get_header();
 
 	<main id="primary" class="site-main page-portfolio">
 
-		<div class="col1 col">
-			<div class="col1-inner">
-			</div>
+		<div class="col1">
 			<?php
 				$args = array(  
 					'post_type' => 'portfolio',
 					'post_status' => 'publish',
 					'posts_per_page' => -1, 
 					'orderby' => 'date', 
-					'order' => 'ASC',
+					'order' => 'DESC',
 				);
 			
 				$loop = new WP_Query( $args ); 
@@ -39,11 +37,17 @@ get_header();
 				$active = 0;
 
 					while ( $loop->have_posts() ) : $loop->the_post();
+						$link = get_post_meta( $post->ID, '_portfolio_link_value_key', true );
+						if (strlen($link) < 2){
+							$url = 'data-item-url="#"';
+						} else {
+							$url = 'data-item-url="' . $link . '"';
+						}
 						if ($active == 0){
-							echo '<li class="active portfolio-item" data-item-name="'. get_the_title() .'">' . '' . '</li>';
+							echo '<li class="active portfolio-item" data-item-name="'. get_the_title() . '"' . $url .'>' . '' . '</li>';
 							$active = 1;
 						} else {
-							echo '<li class="portfolio-item" data-item-name="'. get_the_title() .'">' . '' . '</li>';
+							echo '<li class="portfolio-item" data-item-name="'. get_the_title() . '"' .$url . '>' . '' . '</li>';
 						}
 					endwhile;
 
@@ -66,10 +70,8 @@ get_header();
 		</div>
 		<div class="col-container">
 			<div class="col23 col">
-				<div class="col-text">
-					<h2 id="portfolio-title"></h2>
-					<h3 id="portfolio-link"></h3>
-				</div>
+				<a href="" id="portfolio-title-text"><h2 id="portfolio-title"></h2></a>
+				<a href="" id="portfolio-link-text"><h3 id="portfolio-link"></h3></a>
 			</div>
 		</div>
 	</main><!-- #main -->

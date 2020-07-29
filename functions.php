@@ -223,3 +223,48 @@ function portfolio_post_type() {
 	register_post_type( 'portfolio', $args );
 }
 add_action( 'init', 'portfolio_post_type' );
+
+/**
+ * Meta Boxes
+ */
+
+function portfolio_add_meta_box() {
+	add_meta_box( 'portfolio_link', 'Website Link', 'portfolio_link_callback', 'portfolio', 'side' );
+}
+add_action( 'add_meta_boxes', 'portfolio_add_meta_box' );
+
+function portfolio_link_callback( $post ) {
+	wp_nonce_field( 'portfolio_save_link', 'portfolio_link_meta_box_nonce' );
+
+	$value = get_post_meta( $post->ID, '_portfolio_link_value_key', true );
+
+	echo '<label for="portfolio_link_field" >Website URL: </label>';
+	echo '<input type="text" id="portfolio_link_field" name="portfolio_link_field" value="' . esc_attr($value) . '" size="25" />';
+}
+
+function portfolio_save_link( $post_id ) {
+	if ( !isset( $_POST['portfolio_link_meta_box_nonce'] ) ){
+		return;
+	}
+	if( !wp_verify_nonce( $_POST['portfolio_link_meta_box_nonce'], 'portfolio_save_link' ) ){
+		return;
+	}
+
+	if( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE) {
+		return;
+	}
+
+	if ( !current_user_can( 'edit_post', $post_id ) ) {
+		return;
+	}
+
+	if ( !isset( $_POST['portfolio_link_field'] ) ){
+		return;
+	}
+
+	$field_data = sanitize_text_field($_POST['portfolio_link_field']);
+
+	update_post_meta( $post_id, '_portfolio_link_value_key', $field_data );
+
+}
+add_action( 'save_post', 'portfolio_save_link' );

@@ -44,11 +44,24 @@ jQuery(document).ready(function($){
 	});
 
 	//Portfolio
-	var portfolioTitle = $('.portfolio-item.active').data('item-name');
-	$('#portfolio-title').text(portfolioTitle);
 
-	var isScroll = true;
+	function portfolioRender() {
+		var portfolioURL = $('.portfolio-item.active').data('item-url');
+		var portfolioTitle = $('.portfolio-item.active').data('item-name');
+		$('#portfolio-title').text(portfolioTitle);
+		if (portfolioURL != '#'){
+			$('#portfolio-title-text').attr('href', portfolioURL);
+			$('#portfolio-link-text').attr('href', portfolioURL);
+			$('#portfolio-link').text(portfolioURL);
+		} else {
+			$('#portfolio-title-text').removeAttr('href');
+			$('#portfolio-link-text').removeAttr('href');
+			$('#portfolio-link').text('');
+		}
+		console.log(portfolioURL);
+	}
 
+	portfolioRender();
 	$(window).bind('wheel', function(e){
 		if (isScroll == true) {
 			var direction = e.originalEvent.wheelDelta;
@@ -63,6 +76,7 @@ jQuery(document).ready(function($){
 
 	});
 
+	var isScroll = true;
 	function portfolioScroll (direction) {
 		var itemArray = $('.portfolio-item');
 		var itemCount = $('.portfolio-item').size();
@@ -83,6 +97,7 @@ jQuery(document).ready(function($){
 			}
 			$(itemArray[prevItem]).addClass('active');
 		}
+		portfolioRender();
 		setTimeout(
 			function() 
 			{

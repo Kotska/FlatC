@@ -803,6 +803,23 @@ body .site-main #nav-overlay .nav-list .nav-list-li:after {
   transition: all 500ms;
 }
 
+body .page-portfolio #portfolio-title, body .page-portfolio #portfolio-link {
+  margin-bottom: 5px;
+  padding-left: 25px;
+  color: black;
+  opacity: .5;
+  -webkit-transition: all 320ms;
+  transition: all 320ms;
+}
+
+body .page-portfolio #portfolio-title:hover, body .page-portfolio #portfolio-link:hover {
+  opacity: .7;
+}
+
+body .page-portfolio #portfolio-link {
+  margin: 0;
+}
+
 body .page-portfolio .col1 {
   height: 100vh;
   width: 33.33vw;
@@ -868,7 +885,7 @@ body .page-portfolio .border {
     margin: 0;
   }
   body .site-main .col1 {
-    position: relative;
+    position: absolute;
     height: 100vh;
   }
   body .site-main .col1 .col1-inner {
@@ -922,6 +939,9 @@ body .page-portfolio .border {
 }
 
 @media screen and (min-width: 1200px) {
+  body .site-header {
+    width: 33.33vw;
+  }
   body .site-main #nav-overlay {
     z-index: 3;
     width: 66.66vw;
@@ -1040,6 +1060,7 @@ table {
 --------------------------------------------- */
 a {
   color: #4169e1;
+  text-decoration: none;
 }
 
 a:visited {
