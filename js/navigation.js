@@ -42,4 +42,52 @@ jQuery(document).ready(function($){
 	.mouseleave(function(){
 		$('.blog').removeClass('hovered');
 	});
+
+	//Portfolio
+	var portfolioTitle = $('.portfolio-item.active').data('item-name');
+	$('#portfolio-title').text(portfolioTitle);
+
+	var isScroll = true;
+
+	$(window).bind('wheel', function(e){
+		if (isScroll == true) {
+			var direction = e.originalEvent.wheelDelta;
+			if (direction > 0) {
+				direction = 'prev';
+			} else {
+				direction = 'next';
+			}
+			isScroll = false;
+			portfolioScroll(direction);
+		}
+
+	});
+
+	function portfolioScroll (direction) {
+		var itemArray = $('.portfolio-item');
+		var itemCount = $('.portfolio-item').size();
+		var currentItem = itemArray.index($('.active'));
+		$('.portfolio-item.active').removeClass('active');
+		if (direction == 'next') {
+			var nextItem = currentItem + 1;
+			if (nextItem >= itemCount){
+				nextItem = 0;
+			}
+			$(itemArray[nextItem]).addClass('active');
+
+		} else if (direction == 'prev') {
+			var prevItem = currentItem - 1;
+			
+			if (prevItem < 0){
+				prevItem = itemCount - 1;
+			}
+			$(itemArray[prevItem]).addClass('active');
+		}
+		setTimeout(
+			function() 
+			{
+				isScroll = true;
+			}, 500);;
+		
+	}
 });

@@ -184,3 +184,42 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+/**
+ * Custom Post Type
+ */
+function portfolio_post_type() {
+	$labels = array(
+		'name'				 => 'Portfolio',
+		'singular_name'		 => 'Portfolio',
+		'add_new' 			 => 'Add Item',
+		'all_items' 		 => 'All Items',
+		'add_new_item' 		 => 'Add Item',
+		'edit_item' 		 => 'Edit Item',
+		'new_item' 			 => 'New Item',
+		'view_item' 		 => 'View Item',
+		'search_item' 		 => 'Search Portfolio',
+		'not_found' 		 => 'No items found',
+		'not_found_in_trash' => 'No items found in trash',
+		'parent_item_colon'  => 'Parent Item'
+	);
+	$args = array(
+		'labels' 	  		  => $labels,
+		'public' 	  		  => true,
+		'has_archive' 		  => false,
+		'publicly_queryable'  => false,
+		'query_var' 		  => false,
+		'rewrite' 			  => true,
+		'capability_type'	  => 'post',
+		'hierarchichal'		  => false,
+		'support'			  => array(
+								'title',
+								'editor',
+								'thumbnail',
+								'revisions',
+		),
+		'menu_position'		  => 4,
+		'exclude_from_search' => true,
+	);
+	register_post_type( 'portfolio', $args );
+}
+add_action( 'init', 'portfolio_post_type' );

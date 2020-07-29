@@ -803,6 +803,53 @@ body .site-main #nav-overlay .nav-list .nav-list-li:after {
   transition: all 500ms;
 }
 
+body .page-portfolio .col1 {
+  height: 100vh;
+  width: 33.33vw;
+}
+
+body .page-portfolio .col-container {
+  width: 66.66vw;
+  height: 100vh;
+  background-color: #cf1744;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 33.33vw;
+}
+
+body .page-portfolio .portfolio-list {
+  position: fixed;
+  left: 0;
+  top: 40%;
+  margin: 0;
+  padding: 0;
+}
+
+body .page-portfolio .portfolio-list li {
+  content: "";
+  width: 25px;
+  height: 15px;
+  background-color: #696a69;
+  margin-top: 7px;
+  list-style: none;
+}
+
+body .page-portfolio .portfolio-list li.active {
+  background-color: #cf1744;
+  width: 40px;
+}
+
+body .page-portfolio .border {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 28vw;
+  height: 100px;
+  width: 1px;
+  background-color: #ae2b24;
+}
+
 @media only screen and (min-width: 768px) {
   body .site-main #nav-overlay {
     z-index: 3;
@@ -1249,7 +1296,7 @@ textarea {
 --------------------------------------------- */
 .page-content .wp-smiley,
 .entry-content .wp-smiley,
-.comment-content .wp-smiley {
+.comment-content .wp-smiley, .post, .page {
   border: none;
   margin-bottom: 0;
   margin-top: 0;
