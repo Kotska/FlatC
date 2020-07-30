@@ -176,26 +176,42 @@ jQuery(document).ready(function ($) {
 	});
 
 	// Ajax loading
-	$('.col2').on('click', function ajaxLoadPage(destination) {
-		console.log('clicked');
+	$('.col2').on('click', function (e) {
+		link = $(e.target).data('link');
+		ajaxLoading(link);
+	});
+
+	$('.col3').on('click', function (e) {
+		link = $(e.target).data('link');
+		ajaxLoading(link);
+	});
+
+	$('.site-title').on('click', function (e) {
+		e.preventDefault();
+		link = $(e.target).attr('href');
+		ajaxLoading(link);
+	});
+
+
+	function ajaxLoading (link) {
 		showLoader();
-		var theUrl = 'http://localhost:8001/?page_id=8';
+		var link = link;
 		$.ajax({
-			async: true,   // this will solve the problem
+			async: true,
 			type: "POST",
-			url: theUrl,
+			url: link,
 			contentType: "application/json",
 			success: function(response){
 				var newDoc = document.open("text/html", "replace");
 				newDoc.write(response);
 				newDoc.close();
-				window.history.pushState({}, '', theUrl);
+				window.history.pushState({}, '', link);
 			},
 			error: function(response){
 				console.log(response);
 			}
 		 });
-	});
+	}
 
 	window.addEventListener("popstate", function(e) {
 		window.location.href = location.href;

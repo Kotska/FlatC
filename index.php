@@ -37,10 +37,10 @@ get_header();
 			</nav>
 		</div>
 		<div class="col-container">
-			<div class="col2 col">
+			<div data-link="<?php echo esc_attr(get_option( 'col1_menu_link' )); ?>" class="col2 col">
 				<div class="col-text">
-					<h3>Kiemelt Munkáim</h3>
-					<h2 class="col2-title">Portfolio</h2>
+					<h3><?php echo esc_attr(get_option( 'col1_menu_desc' )); ?></h3>
+					<h2 class="col2-title"><?php echo esc_attr(get_option( 'col1_menu' )); ?></h2>
 				</div>
 			</div>
 			<div class="col3 col">
