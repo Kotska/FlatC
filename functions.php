@@ -146,10 +146,10 @@ function flatc_scripts() {
 	wp_enqueue_style( 'flatc-style', get_stylesheet_uri(), array(), _S_VERSION );
 	wp_style_add_data( 'flatc-style', 'rtl', 'replace' );
 
-
-	wp_enqueue_script( 'gsap', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.4.2/gsap.min.js', array(), _S_VERSION, true );
-	wp_enqueue_script( 'gsap-textplugin', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.4.2/TextPlugin.min.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'gsap', get_template_directory_uri() . '/js/gsap.min.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'gsap-textplugin', get_template_directory_uri() . '/js/TextPlugin.min.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'flatc-navigation', get_template_directory_uri() . '/js/navigation.js', array('jquery'), _S_VERSION, true );
+	wp_localize_script( 'flatc-navigation', 'ajaxpagination', array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -268,3 +268,46 @@ function portfolio_save_link( $post_id ) {
 
 }
 add_action( 'save_post', 'portfolio_save_link' );
+
+function get_web_page( $url )
+{
+	$user_agent='Mozilla/5.0 (Windows NT 6.1; rv:8.0) Gecko/20100101 Firefox/8.0';
+
+	$options = array(
+
+		CURLOPT_CUSTOMREQUEST  =>"GET",        //set request type post or get
+		CURLOPT_POST           =>false,        //set to GET
+		CURLOPT_USERAGENT      => $user_agent, //set user agent
+		CURLOPT_COOKIEFILE     =>"cookie.txt", //set cookie file
+		CURLOPT_COOKIEJAR      =>"cookie.txt", //set cookie jar
+		CURLOPT_RETURNTRANSFER => true,     // return web page
+		CURLOPT_HEADER         => false,    // don't return headers
+		CURLOPT_FOLLOWLOCATION => true,     // follow redirects
+		CURLOPT_ENCODING       => "",       // handle all encodings
+		CURLOPT_AUTOREFERER    => true,     // set referer on redirect
+		CURLOPT_CONNECTTIMEOUT => 120,      // timeout on connect
+		CURLOPT_TIMEOUT        => 120,      // timeout on response
+		CURLOPT_MAXREDIRS      => 10,       // stop after 10 redirects
+	);
+
+	$ch      = curl_init( $url );
+	curl_setopt_array( $ch, $options );
+	$content = curl_exec( $ch );
+	$err     = curl_errno( $ch );
+	$errmsg  = curl_error( $ch );
+	$header  = curl_getinfo( $ch );
+	curl_close( $ch );
+
+	$header['errno']   = $err;
+	$header['errmsg']  = $errmsg;
+	$header['content'] = $content;
+	return $header;
+}
+
+function ajax_pagination () {
+
+	die();
+}
+
+add_action( 'wp_ajax_nopriv_ajax_pagination', 'ajax_pagination' );
+add_action( 'wp_ajax_ajax_pagination', 'ajax_pagination' );

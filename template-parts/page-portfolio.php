@@ -16,6 +16,11 @@
  * @package FlatC
  */
 
+ $post = get_post(8);
+ if ($post) {
+	 setup_postdata( $post );
+ }
+
 get_header();
 ?>
 
