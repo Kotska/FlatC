@@ -639,6 +639,43 @@ big {
   }
 }
 
+/*===================
+    LOADER
+===================== */
+.loader {
+  background-color: white;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 99;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: all 320ms;
+  transition: all 320ms;
+}
+
+.loader.hide {
+  right: 50vw;
+  left: 50vw;
+}
+
+.loader .loader-gif.hidden {
+  display: none;
+}
+
+body {
+  overflow-x: hidden;
+}
+
 body .site-main p {
   font-size: 15px;
   font-weight: 400;
@@ -656,12 +693,10 @@ body .site-main .col-container {
 
 body .site-main .col1, body .site-main .col2, body .site-main .col3 {
   padding: 0 20px 0 20px;
-  -webkit-transition: 1s all;
-  transition: 1s all;
 }
 
 body .site-main .col1 {
-  z-index: 4;
+  z-index: 5;
   background-color: #212221;
   color: #ffffff;
   padding-top: 80px;
@@ -762,7 +797,7 @@ body .site-main #nav-overlay {
   right: 0;
   bottom: 0;
   background-color: white;
-  z-index: 5;
+  z-index: 7;
   /* Specify a stack order in case you're using a different order for other elements */
 }
 
@@ -826,6 +861,7 @@ body .page-portfolio .col1 {
 }
 
 body .page-portfolio .col-container {
+  z-index: 6;
   width: 66.66vw;
   height: 100vh;
   background-color: #cf1744;
@@ -844,6 +880,8 @@ body .page-portfolio .portfolio-list {
 }
 
 body .page-portfolio .portfolio-list li {
+  -webkit-transition: all 320ms;
+  transition: all 320ms;
   content: "";
   width: 25px;
   height: 15px;
@@ -857,6 +895,14 @@ body .page-portfolio .portfolio-list li.active {
   width: 40px;
 }
 
+body .page-portfolio .portfolio-list li.cursor {
+  cursor: pointer;
+}
+
+body .page-portfolio .portfolio-list li.cursor:hover:not(.active) {
+  width: 30px;
+}
+
 body .page-portfolio .border {
   content: "";
   position: absolute;
@@ -864,20 +910,21 @@ body .page-portfolio .border {
   left: 28vw;
   height: 100px;
   width: 1px;
-  background-color: #ae2b24;
+  background-color: #cf1744;
 }
 
 @media only screen and (min-width: 768px) {
   body .site-main #nav-overlay {
-    z-index: 3;
-    width: 50vw;
+    width: 0;
     top: 0;
     right: 100%;
-    left: 0;
+    left: 33.33vw;
     bottom: 0;
+    overflow: hidden;
   }
   body .site-main #nav-overlay.open {
-    left: 50vw;
+    width: 66.66vw;
+    left: 33.33vw;
   }
   body .site-main #nav-overlay .nav-list {
     text-align: left;
@@ -943,15 +990,15 @@ body .page-portfolio .border {
     width: 33.33vw;
   }
   body .site-main #nav-overlay {
-    z-index: 3;
-    width: 66.66vw;
+    width: 0;
     top: 0;
     right: 0;
-    left: -33.33vw;
+    left: 33.33vw;
     bottom: 0;
   }
   body .site-main #nav-overlay.open {
     left: 33.33vw;
+    width: 66.66vw;
   }
   body .site-main #nav-overlay .nav-list {
     text-align: left;

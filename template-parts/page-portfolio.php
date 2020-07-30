@@ -49,10 +49,10 @@ get_header();
 							$url = 'data-item-url="' . $link . '"';
 						}
 						if ($active == 0){
-							echo '<li class="active portfolio-item" data-item-name="'. get_the_title() . '"' . $url .'>' . '' . '</li>';
+							echo '<li class="active portfolio-item cursor" data-item-name="'. get_the_title() . '"' . $url .'>' . '' . '</li>';
 							$active = 1;
 						} else {
-							echo '<li class="portfolio-item" data-item-name="'. get_the_title() . '"' .$url . '>' . '' . '</li>';
+							echo '<li class="portfolio-item cursor" data-item-name="'. get_the_title() . '"' .$url . '>' . '' . '</li>';
 						}
 					endwhile;
 
