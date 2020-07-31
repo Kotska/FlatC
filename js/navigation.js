@@ -218,13 +218,15 @@ jQuery(document).ready(function ($) {
 			url: link,
 			contentType: "application/json",
 			success: function(response){
+				alert('works');
 				console.log('works');
-				// var newDoc = document.open("text/html", "replace");
-				document.write(response);
-				document.close();
+				var newDoc = document.open("text/html", "replace");
+				newDoc.write(response);
+				newDoc.close();
 				window.history.pushState({}, '', link);
 			},
 			error: function(response){
+				alert('nope');
 				console.log(nope);
 				console.log(response);
 			}
