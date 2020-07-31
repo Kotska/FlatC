@@ -68,6 +68,9 @@ jQuery(document).ready(function ($) {
 		var col1 = $('.col1');
 		var portfolioURL = $('.portfolio-item.active').data('item-url');
 		var portfolioTitle = $('.portfolio-item.active').data('item-name');
+		var mobileImageURL = $('.portfolio-item.active').data('mobile-image');
+		var mobileHeight = ($('#mobile-image').height()) + $(window).height();
+		var mobileImage = $('#mobile-image');
 		var colors = $('.col-container, .border, li.active');
 		var colorArray = ['#ae2b24', '#ff007c', '#5877e8', '#a78169', '#1a1919', '#2f3b37', '#e5e5e5'];
 		$('.portfolio-item').css({'background-color': '#696a69'})
@@ -81,28 +84,41 @@ jQuery(document).ready(function ($) {
 		tl.to(col1, {width: '33.33vw', duration: duration, ease: 'linear'});
 		tl.to(border, {height: '100', duration: duration, ease: 'linear'});
 
-		tl2.delay(duration);
-		tl2.to(container, {width: '0', duration: duration, ease: 'linear'});
+		tl2.to(mobileImage, {top: '-' + mobileHeight + 'px', duration: duration, ease: 'linear', onComplete: setImage})
+		tl2.to(container, {width: '0', duration: duration, ease: 'linear', onComplete: setText});
 		tl2.to(container, {width: '100vw', duration: 0, ease: 'linear'});
 		tl2.to(container, {right: '100vw', duration: 0, ease: 'linear'});
 		tl2.to(container, {right: '0', duration: duration, ease: 'linear'});
 		tl2.to(container, {width: '66.66vw', duration: duration, ease: 'linear'});
+		tl2.to(mobileImage, {top: 'auto', duration: duration, ease: 'linear'})
 
 		colors.css({'background-color': color});
 		
 
-
-		$('#portfolio-title').text(portfolioTitle);
-		if (portfolioURL != '#') {
-			$('#portfolio-title-text').attr('href', 'http://' + portfolioURL);
-			$('#portfolio-link-text').attr('href', 'http://' + portfolioURL);
-			$('#portfolio-link').text(portfolioURL);
-		} else {
-			$('#portfolio-title-text').removeAttr('href');
-			$('#portfolio-link-text').removeAttr('href');
-			$('#portfolio-link').text('');
+		// Setting text
+		function setText() {
+			$('#portfolio-title').text(portfolioTitle);
+			if (portfolioURL != '#') {
+				$('#portfolio-title-text').attr('href', 'http://' + portfolioURL);
+				$('#portfolio-link-text').attr('href', 'http://' + portfolioURL);
+				$('#portfolio-link').text(portfolioURL);
+			} else {
+				$('#portfolio-title-text').removeAttr('href');
+				$('#portfolio-link-text').removeAttr('href');
+				$('#portfolio-link').text('');
+			}
 		}
 
+		// Setting image
+		function setImage() {
+			if (mobileImageURL == '#') {
+				$('#mobile-image').css({'display': 'none'});
+			} else {
+				$('#mobile-image').css({'display': 'block'});
+				$('#mobile-image').attr('src', mobileImageURL);
+			}
+		}
+	
 		if (colorCount >= colorArray.length - 1) {
 			colorCount = 0;
 		} else {

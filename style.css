@@ -664,8 +664,8 @@ big {
 }
 
 .loader.hide {
-  right: 50vw;
-  left: 50vw;
+  right: 55vw;
+  left: 55vw;
 }
 
 .loader .loader-gif.hidden {
@@ -784,6 +784,7 @@ body .site-main .col2:hover h3, body .site-main .col3:hover h3 {
 }
 
 body .site-main #nav-overlay {
+  overflow: hidden;
   -webkit-transition: .5s all;
   transition: .5s all;
   position: fixed;
@@ -838,6 +839,17 @@ body .site-main #nav-overlay .nav-list .nav-list-li:after {
   transition: all 500ms;
 }
 
+body .page-portfolio .site-header {
+  width: 33.33vw;
+}
+
+body .page-portfolio #mobile-image {
+  padding: 0 8vw 0 8vw;
+  position: absolute;
+  width: 100%;
+  height: auto;
+}
+
 body .page-portfolio #portfolio-title, body .page-portfolio #portfolio-link {
   margin-bottom: 5px;
   padding-left: 25px;
@@ -858,6 +870,13 @@ body .page-portfolio #portfolio-link {
 body .page-portfolio .col1 {
   height: 100vh;
   width: 33.33vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 20px;
 }
 
 body .page-portfolio .col-container {
@@ -868,15 +887,17 @@ body .page-portfolio .col-container {
   position: absolute;
   top: 0;
   bottom: 0;
-  left: 33.33vw;
+  left: auto;
 }
 
 body .page-portfolio .portfolio-list {
   position: fixed;
   left: 0;
-  top: 40%;
   margin: 0;
   padding: 0;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
 }
 
 body .page-portfolio .portfolio-list li {

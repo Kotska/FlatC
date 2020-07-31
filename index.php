@@ -43,7 +43,7 @@ get_header();
 					<h2 class="col2-title"><?php echo esc_attr(get_option( 'col1_menu' )); ?></h2>
 				</div>
 			</div>
-			<div class="col3 col">
+			<div data-link="<?php echo esc_attr(get_option( 'col1_menu_link' )); ?>" class="col3 col">
 				<div class="col-text">
 					<h3>Amikkel szolgálok</h3>
 					<h2 class="col3-title">Szolgáltatások</h2>

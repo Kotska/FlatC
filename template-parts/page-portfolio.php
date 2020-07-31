@@ -27,6 +27,7 @@ get_header();
 	<main id="primary" class="site-main page-portfolio">
 
 		<div class="col1">
+		<img  id="mobile-image" src="" alt="Mobile view of website">
 			<?php
 				$args = array(  
 					'post_type' => 'portfolio',
@@ -48,11 +49,20 @@ get_header();
 						} else {
 							$url = 'data-item-url="' . $link . '"';
 						}
+
+						$mobileImage = get_post_meta( $post->ID, '_mobile_image_id', true );
+						if (strlen($mobileImage) < 2){
+							$mobileImage = 'data-mobile-image="#"';
+						} else {
+							$mobileImage = wp_get_attachment_url( $mobileImage );
+							$mobileImage = 'data-mobile-image="' . $mobileImage . '"';
+						}
+
 						if ($active == 0){
-							echo '<li class="active portfolio-item cursor" data-item-name="'. get_the_title() . '"' . $url .'>' . '' . '</li>';
+							echo '<li class="active portfolio-item cursor" ' .$mobileImage.' data-item-name="'. get_the_title() . '"' . $url .'>' . '' . '</li>';
 							$active = 1;
 						} else {
-							echo '<li class="portfolio-item cursor" data-item-name="'. get_the_title() . '"' .$url . '>' . '' . '</li>';
+							echo '<li class="portfolio-item cursor" '.$mobileImage.' data-item-name="'. get_the_title() . '"' .$url . '>' . '' . '</li>';
 						}
 					endwhile;
 

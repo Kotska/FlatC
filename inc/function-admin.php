@@ -75,3 +75,210 @@ function flatc_menu_settings () {
  function flatc_theme_menu_page() {
     require_once get_template_directory() . '/inc/templates/flatc-admin-menu.php';
  }
+
+ 
+/**
+ * =====================
+ *      META BOXES
+ * =====================
+ */
+
+ // ================
+ //  Portfolio Link
+ // ================
+
+function portfolio_add_meta_box() {
+	add_meta_box( 'portfolio_link', 'Website Link', 'portfolio_link_callback', 'portfolio', 'side' );
+}
+add_action( 'add_meta_boxes', 'portfolio_add_meta_box' );
+
+function portfolio_link_callback( $post ) {
+	wp_nonce_field( 'portfolio_save_link', 'portfolio_link_meta_box_nonce' );
+
+	$value = get_post_meta( $post->ID, '_portfolio_link_value_key', true );
+
+	echo '<label for="portfolio_link_field" >Website URL: </label>';
+	echo '<input type="text" id="portfolio_link_field" name="portfolio_link_field" value="' . esc_attr($value) . '" size="25" />';
+}
+
+function portfolio_save_link( $post_id ) {
+	if ( !isset( $_POST['portfolio_link_meta_box_nonce'] ) ){
+		return;
+	}
+	if( !wp_verify_nonce( $_POST['portfolio_link_meta_box_nonce'], 'portfolio_save_link' ) ){
+		return;
+	}
+
+	if( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE) {
+		return;
+	}
+
+	if ( !current_user_can( 'edit_post', $post_id ) ) {
+		return;
+	}
+
+	if ( !isset( $_POST['portfolio_link_field'] ) ){
+		return;
+	}
+
+	$field_data = sanitize_text_field($_POST['portfolio_link_field']);
+
+	update_post_meta( $post_id, '_portfolio_link_value_key', $field_data );
+
+}
+add_action( 'save_post', 'portfolio_save_link' );
+
+// ===============
+//  Desktop Imgage
+// ===============
+
+function desktop_image_add_metabox()
+{
+    add_meta_box('desktopimagediv', __('Desktop Image', 'text-domain'), 'desktop_image_metabox', 'portfolio', 'side', 'low');
+}
+add_action( 'add_meta_boxes', 'desktop_image_add_metabox' );
+
+function desktop_image_metabox ( $post ) {
+	global $content_width, $_wp_additional_image_sizes;
+
+	$image_id = get_post_meta( $post->ID, '_desktop_image_id', true );
+
+	$old_content_width = $content_width;
+	$content_width = 254;
+
+	if ( $image_id && get_post( $image_id ) ) {
+
+		if ( ! isset( $_wp_additional_image_sizes['post-thumbnail'] ) ) {
+			$thumbnail_html = wp_get_attachment_image( $image_id, array( $content_width, $content_width ) );
+		} else {
+			$thumbnail_html = wp_get_attachment_image( $image_id, 'post-thumbnail' );
+		}
+
+		if ( ! empty( $thumbnail_html ) ) {
+			$content = $thumbnail_html;
+			$content .= '<p class="hide-if-no-js"><a href="javascript:;" id="remove_desktop_image_button" >' . esc_html__( 'Remove desktop image', 'text-domain' ) . '</a></p>';
+			$content .= '<input type="hidden" id="upload_desktop_image" name="_desktop_cover_image" value="' . esc_attr( $image_id ) . '" />';
+		}
+
+		$content_width = $old_content_width;
+	} else {
+
+		$content = '<img src="" style="width:' . esc_attr( $content_width ) . 'px;height:auto;border:0;display:none;" />';
+		$content .= '<p class="hide-if-no-js"><a title="' . esc_attr__( 'Set desktop image', 'text-domain' ) . '" href="javascript:;" id="upload_desktop_image_button" id="set-desktop-image" data-uploader_title="' . esc_attr__( 'Choose an image', 'text-domain' ) . '" data-uploader_button_text="' . esc_attr__( 'Set desktop image', 'text-domain' ) . '">' . esc_html__( 'Set desktop image', 'text-domain' ) . '</a></p>';
+		$content .= '<input type="hidden" id="upload_desktop_image" name="_desktop_cover_image" value="" />';
+
+	}
+
+	echo $content;
+}
+
+add_action( 'save_post', 'desktop_image_save', 10, 1 );
+function desktop_image_save ( $post_id ) {
+	if( isset( $_POST['_desktop_cover_image'] ) ) {
+		$image_id = (int) $_POST['_desktop_cover_image'];
+		update_post_meta( $post_id, '_desktop_image_id', $image_id );
+	}
+}
+
+// ===============
+//  Tablet Imgage
+// ===============
+
+function tablet_image_add_metabox()
+{
+    add_meta_box('tabletimagediv', __('Tablet Image', 'text-domain'), 'tablet_image_metabox', 'portfolio', 'side', 'low');
+}
+add_action( 'add_meta_boxes', 'tablet_image_add_metabox' );
+
+function tablet_image_metabox ( $post ) {
+	global $content_width, $_wp_additional_image_sizes;
+
+	$image_id = get_post_meta( $post->ID, '_tablet_image_id', true );
+
+	$old_content_width = $content_width;
+	$content_width = 254;
+
+	if ( $image_id && get_post( $image_id ) ) {
+
+		if ( ! isset( $_wp_additional_image_sizes['post-thumbnail'] ) ) {
+			$thumbnail_html = wp_get_attachment_image( $image_id, array( $content_width, $content_width ) );
+		} else {
+			$thumbnail_html = wp_get_attachment_image( $image_id, 'post-thumbnail' );
+		}
+
+		if ( ! empty( $thumbnail_html ) ) {
+			$content = $thumbnail_html;
+			$content .= '<p class="hide-if-no-js"><a href="javascript:;" id="remove_tablet_image_button" >' . esc_html__( 'Remove tablet image', 'text-domain' ) . '</a></p>';
+			$content .= '<input type="hidden" id="upload_tablet_image" name="_tablet_cover_image" value="' . esc_attr( $image_id ) . '" />';
+		}
+
+		$content_width = $old_content_width;
+	} else {
+
+		$content = '<img src="" style="width:' . esc_attr( $content_width ) . 'px;height:auto;border:0;display:none;" />';
+		$content .= '<p class="hide-if-no-js"><a title="' . esc_attr__( 'Set tablet image', 'text-domain' ) . '" href="javascript:;" id="upload_tablet_image_button" id="set-tablet-image" data-uploader_title="' . esc_attr__( 'Choose an image', 'text-domain' ) . '" data-uploader_button_text="' . esc_attr__( 'Set tablet image', 'text-domain' ) . '">' . esc_html__( 'Set tablet image', 'text-domain' ) . '</a></p>';
+		$content .= '<input type="hidden" id="upload_tablet_image" name="_tablet_cover_image" value="" />';
+
+	}
+
+	echo $content;
+}
+
+add_action( 'save_post', 'tablet_image_save', 10, 1 );
+function tablet_image_save ( $post_id ) {
+	if( isset( $_POST['_tablet_cover_image'] ) ) {
+		$image_id = (int) $_POST['_tablet_cover_image'];
+		update_post_meta( $post_id, '_tablet_image_id', $image_id );
+	}
+}
+
+ // ===============
+ //  Mobile Imgage
+ // ===============
+
+function mobile_image_add_metabox () {
+	add_meta_box( 'mobileimagediv', __( 'Mobile Image', 'text-domain' ), 'mobile_image_metabox', 'portfolio', 'side', 'low');
+}
+add_action( 'add_meta_boxes', 'mobile_image_add_metabox' );
+
+function mobile_image_metabox ( $post ) {
+	global $content_width, $_wp_additional_image_sizes;
+
+	$image_id = get_post_meta( $post->ID, '_mobile_image_id', true );
+
+	$old_content_width = $content_width;
+	$content_width = 254;
+
+	if ( $image_id && get_post( $image_id ) ) {
+
+		if ( ! isset( $_wp_additional_image_sizes['post-thumbnail'] ) ) {
+			$thumbnail_html = wp_get_attachment_image( $image_id, array( $content_width, $content_width ) );
+		} else {
+			$thumbnail_html = wp_get_attachment_image( $image_id, 'post-thumbnail' );
+		}
+
+		if ( ! empty( $thumbnail_html ) ) {
+			$content = $thumbnail_html;
+			$content .= '<p class="hide-if-no-js"><a href="javascript:;" id="remove_mobile_image_button" >' . esc_html__( 'Remove mobile image', 'text-domain' ) . '</a></p>';
+			$content .= '<input type="hidden" id="upload_mobile_image" name="_mobile_cover_image" value="' . esc_attr( $image_id ) . '" />';
+		}
+
+		$content_width = $old_content_width;
+	} else {
+
+		$content = '<img src="" style="width:' . esc_attr( $content_width ) . 'px;height:auto;border:0;display:none;" />';
+		$content .= '<p class="hide-if-no-js"><a title="' . esc_attr__( 'Set mobile image', 'text-domain' ) . '" href="javascript:;" id="upload_mobile_image_button" id="set-mobile-image" data-uploader_title="' . esc_attr__( 'Choose an image', 'text-domain' ) . '" data-uploader_button_text="' . esc_attr__( 'Set mobile image', 'text-domain' ) . '">' . esc_html__( 'Set mobile image', 'text-domain' ) . '</a></p>';
+		$content .= '<input type="hidden" id="upload_mobile_image" name="_mobile_cover_image" value="" />';
+
+	}
+
+	echo $content;
+}
+
+add_action( 'save_post', 'mobile_image_save', 10, 1 );
+function mobile_image_save ( $post_id ) {
+	if( isset( $_POST['_mobile_cover_image'] ) ) {
+		$image_id = (int) $_POST['_mobile_cover_image'];
+		update_post_meta( $post_id, '_mobile_image_id', $image_id );
+	}
+}
