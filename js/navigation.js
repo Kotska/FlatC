@@ -193,18 +193,18 @@ jQuery(document).ready(function ($) {
 
 	// Ajax loading
 	$('.col2').on('click', function (e) {
-		link = $(e.target).data('link');
+		link = $('.col2').data('link');
 		ajaxLoading(link);
 	});
 
 	$('.col3').on('click', function (e) {
-		link = $(e.target).data('link');
+		link = $('.col3').data('link');
 		ajaxLoading(link);
 	});
 
 	$('.site-title').on('click', function (e) {
 		e.preventDefault();
-		link = $(e.target).attr('href');
+		link = $('.site-title').attr('href');
 		ajaxLoading(link);
 	});
 
@@ -218,15 +218,12 @@ jQuery(document).ready(function ($) {
 			url: link,
 			contentType: "application/json",
 			success: function(response){
-				alert('works');
-				console.log('works');
 				var newDoc = document.open("text/html", "replace");
 				newDoc.write(response);
 				newDoc.close();
 				window.history.pushState({}, '', link);
 			},
 			error: function(response){
-				alert('nope');
 				console.log(nope);
 				console.log(response);
 			}
