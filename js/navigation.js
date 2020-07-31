@@ -192,17 +192,17 @@ jQuery(document).ready(function ($) {
 	});
 
 	// Ajax loading
-	$('.col2').on('change', function (e) {
+	$('.col2').on('click', function (e) {
 		link = $(e.target).data('link');
 		ajaxLoading(link);
 	});
 
-	$('.col3').on('change', function (e) {
+	$('.col3').on('click', function (e) {
 		link = $(e.target).data('link');
 		ajaxLoading(link);
 	});
 
-	$('.site-title').on('change', function (e) {
+	$('.site-title').on('click', function (e) {
 		e.preventDefault();
 		link = $(e.target).attr('href');
 		ajaxLoading(link);
