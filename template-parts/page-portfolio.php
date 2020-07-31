@@ -50,6 +50,20 @@ get_header();
 							$url = 'data-item-url="' . $link . '"';
 						}
 
+						$desktopImage = get_post_meta( $post->ID, '_desktop_image_id', true );
+						if (strlen($desktopImage) < 2){
+							$desktopImage = 'data-desktop-image="#"';
+						} else {
+							$desktopImage = wp_get_attachment_url( $desktopImage );
+							$desktopImage = 'data-desktop-image="' . $desktopImage . '"';
+						}
+						$tabletImage = get_post_meta( $post->ID, '_tablet_image_id', true );
+						if (strlen($tabletImage) < 2){
+							$tabletImage = 'data-tablet-image="#"';
+						} else {
+							$tabletImage = wp_get_attachment_url( $tabletImage );
+							$tabletImage = 'data-tablet-image="' . $tabletImage . '"';
+						}
 						$mobileImage = get_post_meta( $post->ID, '_mobile_image_id', true );
 						if (strlen($mobileImage) < 2){
 							$mobileImage = 'data-mobile-image="#"';
@@ -59,10 +73,10 @@ get_header();
 						}
 
 						if ($active == 0){
-							echo '<li class="active portfolio-item cursor" ' .$mobileImage.' data-item-name="'. get_the_title() . '"' . $url .'>' . '' . '</li>';
+							echo '<li class="active portfolio-item cursor" ' .$mobileImage.$tabletImage.$desktopImage.' data-item-name="'. get_the_title() . '"' . $url .'>' . '' . '</li>';
 							$active = 1;
 						} else {
-							echo '<li class="portfolio-item cursor" '.$mobileImage.' data-item-name="'. get_the_title() . '"' .$url . '>' . '' . '</li>';
+							echo '<li class="portfolio-item cursor" '.$mobileImage.$tabletImage.$desktopImage.' data-item-name="'. get_the_title() . '"' .$url . '>' . '' . '</li>';
 						}
 					endwhile;
 
@@ -87,6 +101,10 @@ get_header();
 			<div class="col23 col">
 				<a href="" id="portfolio-title-text"><h2 id="portfolio-title"></h2></a>
 				<a href="" id="portfolio-link-text"><h3 id="portfolio-link"></h3></a>
+				<div class="res-images">
+					<img  id="desktop-image" src="" alt="Desktop view of website">
+					<img  id="tablet-image" src="" alt="Tablet view of website">
+				</div>
 			</div>
 		</div>
 	</main><!-- #main -->
