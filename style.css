@@ -876,6 +876,7 @@ body .page-portfolio .col1 {
       -ms-flex-align: center;
           align-items: center;
   padding: 20px;
+  position: absolute;
 }
 
 body .page-portfolio .col-container {
