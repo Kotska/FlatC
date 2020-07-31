@@ -219,9 +219,9 @@ jQuery(document).ready(function ($) {
 			contentType: "application/json",
 			success: function(response){
 				console.log('works');
-				var newDoc = document.open("text/html", "replace");
-				newDoc.write(response);
-				newDoc.close();
+				// var newDoc = document.open("text/html", "replace");
+				document.write(response);
+				document.close();
 				window.history.pushState({}, '', link);
 			},
 			error: function(response){
