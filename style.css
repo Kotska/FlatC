@@ -846,7 +846,6 @@ body .page-portfolio .site-header {
 body .page-portfolio #mobile-image {
   padding: 0 8vw 0 8vw;
   position: absolute;
-  width: 100%;
   height: auto;
 }
 
