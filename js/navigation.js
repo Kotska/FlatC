@@ -2,14 +2,24 @@ jQuery(document).ready(function ($) {
 
 	// Loading animation
 	function hideLoader() {
+		setTimeout(function(){
 		$('.loader').addClass('hide');
 		$('.loader-gif').addClass('hidden');
+		setTimeout(function(){ 
+			$('.loader').css({'display': 'none'});
+		}, 500);
+	}, 500);
 	}
+	
 	hideLoader();
+	
 
 	function showLoader() {
-		$('.loader').removeClass('hide');
-		$('.loader-gif').removeClass('hidden');
+		$('.loader').css({'display': 'flex'});
+		setTimeout(function(){ 
+			$('.loader').removeClass('hide');
+			$('.loader-gif').removeClass('hidden');
+		}, 50);
 	}
 
 	// define constants
@@ -175,14 +185,16 @@ jQuery(document).ready(function ($) {
 		});
 
 		$(document).bind('touchend', function (e) {
-			var te = e.originalEvent.changedTouches[0].clientY;
-			if (ts > te + 5) {
-				direction = 'next';
-			} else if (ts < te - 5) {
-				direction = 'prev';
+			if (isScroll == true) {
+				var te = e.originalEvent.changedTouches[0].clientY;
+				if (ts > te + 5) {
+					direction = 'next';
+				} else if (ts < te - 5) {
+					direction = 'prev';
+				}
+				isScroll = false;
+				portfolioScroll(direction);
 			}
-			isScroll = false;
-			portfolioScroll(direction);
 		});
 	}
 
