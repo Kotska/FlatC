@@ -883,6 +883,7 @@ body .page-portfolio #portfolio-link {
 
 body .page-portfolio .col1 {
   height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
   width: 33.33vw;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -898,6 +899,7 @@ body .page-portfolio .col-container {
   z-index: 6;
   width: 66.66vw;
   height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
   background-color: #cf1744;
   position: absolute;
   top: 0;
@@ -907,6 +909,7 @@ body .page-portfolio .col-container {
 
 body .page-portfolio .col-container .col23 {
   height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
   overflow: hidden;
 }
 
@@ -1005,6 +1008,7 @@ body .page-portfolio .border {
   body .site-main .col1 {
     position: absolute;
     height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
   }
   body .site-main .col1 .col1-inner {
     position: absolute;
@@ -1034,6 +1038,7 @@ body .page-portfolio .border {
   }
   body .site-main .col2, body .site-main .col3 {
     height: 50vh;
+    height: calc(var(--vh, 1vh) * 50);
   }
   body .site-main .col2 h2, body .site-main .col3 h2 {
     margin-top: 30px;
@@ -1089,6 +1094,7 @@ body .page-portfolio .border {
   }
   body .site-main .col2, body .site-main .col3 {
     height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
     padding: 0 0 0 20px;
   }
   body .site-main .col2 h2, body .site-main .col2 h3, body .site-main .col3 h2, body .site-main .col3 h3 {
@@ -1107,6 +1113,7 @@ body .page-portfolio .border {
   body .site-main .col-container {
     width: 66.66vw;
     height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
   }
 }
 
