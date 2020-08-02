@@ -532,7 +532,7 @@ big {
   z-index: 10;
   height: 3em;
   width: 3em;
-  position: absolute;
+  position: fixed;
   top: 25px;
   right: 30px;
   font-size: 12px;
@@ -672,7 +672,7 @@ big {
 }
 
 body {
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 body .site-main p {
@@ -847,9 +847,21 @@ body .page-portfolio .site-header {
 }
 
 body .page-portfolio #mobile-image {
-  padding: 0 6vw;
-  position: absolute;
+  position: fixed;
   height: auto;
+  max-width: 40vw;
+  padding-left: 5vw;
+}
+
+@media only screen and (min-width: 768px) {
+  body .page-portfolio #mobile-image {
+    position: absolute;
+    max-width: 100%;
+    padding-left: 7vw;
+    padding-right: 7vw;
+    max-width: 35vw;
+    max-height: 70vh;
+  }
 }
 
 body .page-portfolio #portfolio-title, body .page-portfolio #portfolio-link {
@@ -899,14 +911,22 @@ body .page-portfolio .col-container .col23 {
 }
 
 body .page-portfolio .col-container .col23 #desktop-image {
-  display: block;
-  left: 50%;
+  left: 70%;
   top: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   position: absolute;
   width: 100%;
-  max-width: 45vw;
+  max-width: 75vw;
+  width: auto;
+}
+
+@media only screen and (min-width: 768px) {
+  body .page-portfolio .col-container .col23 #desktop-image {
+    left: 50%;
+    max-width: 40vw;
+    max-height: 70vh;
+  }
 }
 
 body .page-portfolio .col-container .col23 #tablet-image {
@@ -917,7 +937,7 @@ body .page-portfolio .col-container .col23 #tablet-image {
           transform: translate(-50%, -50%);
   position: absolute;
   width: 100%;
-  max-width: 20vw;
+  max-width: 15vw;
 }
 
 body .page-portfolio .portfolio-list {

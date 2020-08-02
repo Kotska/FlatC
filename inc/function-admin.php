@@ -282,3 +282,47 @@ function mobile_image_save ( $post_id ) {
 		update_post_meta( $post_id, '_mobile_image_id', $image_id );
 	}
 }
+
+// ===============
+//  Color Picker
+// ===============
+function color_add_metabox () {
+	add_meta_box( 'colordiv', __( 'Background Color', 'text-domain' ), 'color_meta_box', 'portfolio', 'side', 'low');
+}
+add_action( 'add_meta_boxes', 'color_add_metabox' );
+
+function color_meta_box( $post ){
+	$background_color = get_post_meta( $post->ID, '_background_color', true );
+	wp_nonce_field( 'save_color_meta_box', 'color_meta_box_nonce' );
+	?>
+	<style type="text/css">
+		.hidden{display: none;}
+	</style>
+	<script>
+		jQuery(document).ready(function ($) {
+			$('.color-field').each(function(){
+				$(this).wpColorPicker();
+			});
+		});
+	</script>
+	<div class="pagebox">
+		<h4>Color</h4>
+		<input class="color-field" type="text" name="background_color" value="<?php esc_attr_e($background_color); ?>"/>
+	</div>
+	<?php
+}
+
+function save_color_meta_box( $post_id ){
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+		return;
+	}
+	if( !current_user_can( 'edit_pages' ) ) {
+		return;
+	}
+	if ( !isset( $_POST['color_meta_box_nonce'] ) || !wp_verify_nonce( $_POST['color_meta_box_nonce'], 'save_color_meta_box' ) ) {
+		return;
+	}
+	$background_color = (isset($_POST["background_color"]) && $_POST["background_color"]!='') ? $_POST["background_color"] : '';
+	update_post_meta($post_id, "_background_color", $background_color);
+}
+add_action( 'save_post', 'save_color_meta_box' );

@@ -58,28 +58,28 @@ jQuery(document).ready(function ($) {
 
 	//Portfolio
 
-	var colorCount = 0;
 	function portfolioRender() {
 		var tl = gsap.timeline();
 		var tl2 = gsap.timeline();
-		var duration = 0.3;
+		var tl3 = gsap.timeline();
+		var duration = 0.2;
 		var container = $('.col-container');
 		var border = $('.border');
 		var col1 = $('.col1');
 		var portfolioURL = $('.portfolio-item.active').data('item-url');
 		var portfolioTitle = $('.portfolio-item.active').data('item-name');
-		var desktopImage = $('#desktop-image');
+		var backgroundColor = $('.portfolio-item.active').data('background-color');
+		var desktopImage = $('#desktop-image, #tablet-image');
 		var desktopImageURL = $('.portfolio-item.active').data('desktop-image');
-		var tabletImage = $('#tablet-image');
 		var tabletImageURL = $('.portfolio-item.active').data('tablet-image');
 		var mobileImage = $('#mobile-image');
 		var mobileImageURL = $('.portfolio-item.active').data('mobile-image');
 		var mobileHeight = ($('#mobile-image').height()) + $(window).height();
 		var colors = $('.col-container, .border, li.active');
-		var colorArray = ['#ae2b24', '#ff007c', '#5877e8', '#a78169', '#1a1919', '#2f3b37', '#e5e5e5'];
 		$('.portfolio-item').css({'background-color': '#696a69'})
-		var color = colorArray[colorCount];
 
+
+		tl.delay(duration);
 		tl.to(border, {height: '0', duration: duration, ease: 'linear'});
 		tl.to(col1, {width: '100vw', duration: duration, ease: 'linear'});
 		tl.to(col1, {left: '100vw', duration: duration, ease: 'linear'});
@@ -88,19 +88,31 @@ jQuery(document).ready(function ($) {
 		tl.to(col1, {width: '33.33vw', duration: duration, ease: 'linear'});
 		tl.to(border, {height: '100', duration: duration, ease: 'linear'});
 
+		tl2.to(desktopImage, {x: '+=200%', duration: duration, ease: 'linear'});
+		tl2.to(desktopImage, {opacity: 0, duration: 0, ease: 'linear'});
 		tl2.to(mobileImage, {top: '-' + mobileHeight + 'px', duration: duration, ease: 'linear', onComplete: setImage})
 		tl2.to(container, {width: '0', duration: duration, ease: 'linear', onComplete: setText});
 		tl2.to(container, {width: '100vw', duration: 0, ease: 'linear'});
 		tl2.to(container, {right: '100vw', duration: 0, ease: 'linear'});
-		tl2.to(container, {right: '0', duration: duration, ease: 'linear'});
+		tl2.to(container, {right: '0', duration: duration, ease: 'linear', onComplete: showDesk});
 		tl2.to(container, {width: '66.66vw', duration: duration, ease: 'linear'});
+		tl2.to(desktopImage, {x: '-=200%', duration: duration, ease: 'linear'});
 		tl2.to(mobileImage, {top: 'auto', duration: 0, ease: 'linear'});
 		tl2.to(mobileImage, {bottom: '-' + mobileHeight + 'px', duration: 0, ease: 'linear'});
 		tl2.to(mobileImage, {bottom: 'auto', duration: duration, ease: 'linear'});
 		tl2.to(mobileImage, {top: 'auto', duration: duration, ease: 'linear'})
 
-		colors.css({'background-color': color});
+
+		if (backgroundColor != '#') {
+			colors.css({'background-color': backgroundColor});
+		} else {
+			colors.css({'background-color': '#1181b2'});
+		}
 		
+		
+		function showDesk () {
+			gsap.to(desktopImage, {opacity: 1, duration: 0, ease: 'linear'});
+		}
 
 		// Setting text
 		function setText() {
@@ -137,12 +149,7 @@ jQuery(document).ready(function ($) {
 				$('#mobile-image').attr('src', mobileImageURL);
 			}
 		}
-	
-		if (colorCount >= colorArray.length - 1) {
-			colorCount = 0;
-		} else {
-			colorCount += 1;
-		}
+
 
 	}
 
@@ -160,7 +167,22 @@ jQuery(document).ready(function ($) {
 				isScroll = false;
 				portfolioScroll(direction);
 			}
-	
+		});
+
+		var ts;
+		$(document).bind('touchstart', function (e) {
+			ts = e.originalEvent.touches[0].clientY;
+		});
+
+		$(document).bind('touchend', function (e) {
+			var te = e.originalEvent.changedTouches[0].clientY;
+			if (ts > te + 5) {
+				direction = 'next';
+			} else if (ts < te - 5) {
+				direction = 'prev';
+			}
+			isScroll = false;
+			portfolioScroll(direction);
 		});
 	}
 
@@ -190,7 +212,7 @@ jQuery(document).ready(function ($) {
 		setTimeout(
 			function () {
 				isScroll = true;
-			}, 500);
+			}, 1500);
 
 	}
 
@@ -206,7 +228,7 @@ jQuery(document).ready(function ($) {
 			setTimeout(
 				function () {
 					isScroll = true;
-				}, 500);
+				}, 1500);
 		}
 	});
 

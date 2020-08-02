@@ -162,6 +162,9 @@ add_action( 'wp_enqueue_scripts', 'flatc_scripts' );
  */
 function flatc_admin_scripts() {
 	wp_enqueue_script( 'mediaupload', get_template_directory_uri() . '/js/mediaupload.js', array('jquery'), _S_VERSION, true );
+	wp_enqueue_media();
+	wp_enqueue_style( 'wp-color-picker');
+	wp_enqueue_script( 'wp-color-picker');
 }
 add_action( 'admin_enqueue_scripts', 'flatc_admin_scripts' );
 

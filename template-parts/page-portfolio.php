@@ -50,6 +50,15 @@ get_header();
 							$url = 'data-item-url="' . $link . '"';
 						}
 
+
+						$background_color = get_post_meta( $post->ID, '_background_color', true );
+						if (strlen($background_color) < 2){
+							$background_color = 'data-background-color="#"';
+						} else {
+							$background_color = 'data-background-color="' . $background_color . '"';
+						}
+						
+
 						$desktopImage = get_post_meta( $post->ID, '_desktop_image_id', true );
 						if (strlen($desktopImage) < 2){
 							$desktopImage = 'data-desktop-image="#"';
@@ -73,10 +82,10 @@ get_header();
 						}
 
 						if ($active == 0){
-							echo '<li class="active portfolio-item cursor" ' .$mobileImage.$tabletImage.$desktopImage.' data-item-name="'. get_the_title() . '"' . $url .'>' . '' . '</li>';
+							echo '<li class="active portfolio-item cursor" ' .$mobileImage.$tabletImage.$desktopImage.$background_color.' data-item-name="'. get_the_title() . '"' . $url .'>' . '' . '</li>';
 							$active = 1;
 						} else {
-							echo '<li class="portfolio-item cursor" '.$mobileImage.$tabletImage.$desktopImage.' data-item-name="'. get_the_title() . '"' .$url . '>' . '' . '</li>';
+							echo '<li class="portfolio-item cursor" '.$mobileImage.$tabletImage.$desktopImage.$background_color.' data-item-name="'. get_the_title() . '"' .$url . '>' . '' . '</li>';
 						}
 					endwhile;
 
