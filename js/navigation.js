@@ -1,4 +1,31 @@
+var pageLoaded = false;
+var timeoutElapsed = false;
+
+// Loading animation
+function hideLoader() {
+	setTimeout(function(){
+		jQuery('.loader').addClass('hide');
+		jQuery('.loader-gif').addClass('hidden');
+	setTimeout(function(){ 
+		jQuery('.loader').css({'display': 'none'});
+	}, 500);
+}, 500);
+	}
+
+setTimeout(function() {
+	timeoutElapsed = true;
+	if (pageLoaded) {
+		hideLoader();
+	}
+}, 1000);
+
+
 jQuery(document).ready(function ($) {
+
+	pageLoaded = true;
+    if (timeoutElapsed) {
+        hideLoader();
+    }
 
 	// First we get the viewport height and we multiple it by 1% to get a value for a vh unit
 	let vh = window.innerHeight * 0.01;
@@ -13,18 +40,6 @@ jQuery(document).ready(function ($) {
   });
 
 
-	// Loading animation
-	function hideLoader() {
-		setTimeout(function(){
-		$('.loader').addClass('hide');
-		$('.loader-gif').addClass('hidden');
-		setTimeout(function(){ 
-			$('.loader').css({'display': 'none'});
-		}, 500);
-	}, 500);
-	}
-	
-	hideLoader();
 	
 
 	function showLoader() {
