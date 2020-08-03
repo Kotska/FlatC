@@ -143,6 +143,15 @@ add_action( 'widgets_init', 'flatc_widgets_init' );
  * Enqueue front-end scripts and styles.
  */
 function flatc_scripts() {
+
+	if (is_page_template('template-parts/page-portfolio.php')){
+		wp_enqueue_script( 'flatc-portfolio', get_template_directory_uri() . '/js/portfolio.js', array('jquery'), _S_VERSION, true );
+	}
+
+	if (is_page_template('template-parts/page-services.php')){
+		wp_enqueue_script( 'flatc-portfolio', get_template_directory_uri() . '/js/services.js', array('jquery'), _S_VERSION, true );
+	}
+
 	wp_enqueue_style( 'flatc-style', get_stylesheet_uri(), array(), _S_VERSION );
 	wp_style_add_data( 'flatc-style', 'rtl', 'replace' );
 
@@ -240,6 +249,42 @@ function portfolio_post_type() {
 }
 add_action( 'init', 'portfolio_post_type' );
 
+function services_post_type() {
+	$labels = array(
+		'name'				 => 'Services',
+		'singular_name'		 => 'Service',
+		'add_new' 			 => 'Add Item',
+		'all_items' 		 => 'All Items',
+		'add_new_item' 		 => 'Add Item',
+		'edit_item' 		 => 'Edit Item',
+		'new_item' 			 => 'New Item',
+		'view_item' 		 => 'View Item',
+		'search_item' 		 => 'Search Service',
+		'not_found' 		 => 'No items found',
+		'not_found_in_trash' => 'No items found in trash',
+		'parent_item_colon'  => 'Parent Item'
+	);
+	$args = array(
+		'labels' 	  		  => $labels,
+		'public' 	  		  => true,
+		'has_archive' 		  => false,
+		'publicly_queryable'  => false,
+		'query_var' 		  => false,
+		'rewrite' 			  => true,
+		'capability_type'	  => 'post',
+		'hierarchichal'		  => false,
+		'support'			  => array(
+								'title',
+								'editor',
+								'thumbnail',
+								'revisions',
+		),
+		'menu_position'		  => 4,
+		'exclude_from_search' => true,
+	);
+	register_post_type( 'services', $args );
+}
+add_action( 'init', 'services_post_type' );
 
 
 function ajax_pagination () {

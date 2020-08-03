@@ -671,8 +671,137 @@ big {
   display: none;
 }
 
-body {
+html, body {
   overflow: hidden;
+}
+
+body .page-services .services {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
+}
+
+body .page-services .services .desc {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  background-color: #1181b2;
+  color: white;
+  padding: 80px 20px 20px 20px;
+  width: 100vw;
+  position: relative;
+}
+
+body .page-services .services .desc h3 {
+  color: #26ace2;
+  font-size: 1.2em;
+}
+
+body .page-services .services .name {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+
+body .page-services .services .name ul {
+  list-style: none;
+  padding: 0 40px 30px 40px;
+  margin: 0;
+  font-weight: bold;
+}
+
+body .page-services .services .name ul li {
+  padding-right: 15px;
+  display: inline-block;
+}
+
+body .page-services .services .name ul li.active, body .page-services .services .name ul li:hover {
+  color: #26ace2;
+}
+
+body .page-services .services .name ul li:hover {
+  cursor: pointer;
+}
+
+body .page-services .services .name ul li::before {
+  content: "| ";
+}
+
+@media only screen and (min-width: 768px) {
+  body .page-services .services {
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+  }
+  body .page-services .services .desc {
+    width: 66.66vw;
+    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
+    -webkit-box-align: baseline;
+        -ms-flex-align: baseline;
+            align-items: baseline;
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-line-pack: center;
+        align-content: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  body .page-services .services .desc p, body .page-services .services .desc h3 {
+    -ms-flex-preferred-size: 100%;
+        flex-basis: 100%;
+    margin: 0;
+    margin-top: 10px;
+  }
+  body .page-services .services .name {
+    width: 33.33vw;
+    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+  }
+  body .page-services .services .name ul {
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+    padding-bottom: 0;
+  }
+  body .page-services .services .name ul li {
+    display: block;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  body .page-services .services .desc {
+    width: 80vw;
+    padding: 0 100px;
+  }
+  body .page-services .services .desc p, body .page-services .services .desc h3 {
+    text-align: center;
+  }
+  body .page-services .services .desc h3 {
+    font-size: 56px;
+  }
+  body .page-services .services .desc p {
+    font-size: 26px;
+    font-weight: 400;
+    margin-top: 25px;
+  }
+  body .page-services .services .name {
+    width: 20vw;
+  }
+  body .page-services .services .name ul li {
+    font-size: 18px;
+  }
 }
 
 body .site-main p {
@@ -988,23 +1117,6 @@ body .page-portfolio .border {
 }
 
 @media only screen and (min-width: 768px) {
-  body .site-main #nav-overlay {
-    width: 0;
-    top: 0;
-    right: 100%;
-    left: 33.33vw;
-    bottom: 0;
-    overflow: hidden;
-  }
-  body .site-main #nav-overlay.open {
-    width: 66.66vw;
-    left: 33.33vw;
-  }
-  body .site-main #nav-overlay .nav-list {
-    text-align: left;
-    right: auto;
-    margin: 0;
-  }
   body .site-main .col1 {
     position: absolute;
     height: 100vh;
@@ -1059,6 +1171,43 @@ body .page-portfolio .border {
     left: auto;
     overflow: visible;
   }
+  body .site-main #nav-overlay {
+    width: 0;
+    top: 0;
+    right: 100%;
+    left: 50vw;
+    bottom: 0;
+    overflow: hidden;
+  }
+  body .site-main #nav-overlay.open {
+    width: 66.66vw;
+    left: 50vw;
+  }
+  body .site-main #nav-overlay .nav-list {
+    text-align: left;
+    right: auto;
+    margin: 0;
+  }
+  body .site-main.page-portfolio #nav-overlay {
+    width: 0;
+    top: 0;
+    right: 100%;
+    left: 33.33vw;
+    bottom: 0;
+    overflow: hidden;
+  }
+  body .site-main.page-portfolio #nav-overlay.open {
+    width: 66.66vw;
+    left: 33.33vw;
+  }
+  body .site-main.page-portfolio #nav-overlay .nav-list {
+    text-align: left;
+    right: auto;
+    margin: 0;
+  }
+  body .site-main.page-services #nav-overlay {
+    left: 66.66vw;
+  }
 }
 
 @media screen and (min-width: 1200px) {
@@ -1080,6 +1229,9 @@ body .page-portfolio .border {
     text-align: left;
     right: auto;
     margin: 0;
+  }
+  body .site-main.page-services #nav-overlay {
+    left: 80vw;
   }
   body .site-main .col2 {
     float: left;
