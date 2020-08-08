@@ -94,6 +94,11 @@ jQuery(document).ready(function ($) {
 			$('.blog').removeClass('hovered');
 		});
 
+	$('.blog-text').on('click', function(){
+		link = $('.blog-text').data('link');
+		ajaxLoading(link);
+	});
+
 	// Ajax loading
 	$('.col2').on('click', function (e) {
 		link = $('.col2').data('link');

@@ -22,7 +22,7 @@ get_header();
 				<h1>Hello World!</h1>
 				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde sequi corrupti error labore quisquam sunt distinctio ab, reiciendis nobis vero maiores beatae facere qui, quas, voluptas incidunt repudiandae voluptate quae. Animi, laudantium reprehenderit. Quibusdam illum doloribus non nihil, recusandae ipsam doloremque optio necessitatibus dolorem, nostrum, veritatis earum.</p>
 				<div class="blog">
-					<p class="blog-text">Blog</p>
+					<p data-link="<?php echo esc_attr(get_option( 'blog_link' )); ?>" class="blog-text"><?php echo esc_attr(get_option( 'blog_name' )); ?></p>
 				</div>
 			</div>
 		</div>

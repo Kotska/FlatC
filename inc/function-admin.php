@@ -30,7 +30,10 @@ function flatc_custom_settings() {
 
     register_setting( 'flatc-settings-group', 'col2_menu' );
     register_setting( 'flatc-settings-group', 'col2_menu_desc' );
-    register_setting( 'flatc-settings-group', 'col2_menu_link' );
+	register_setting( 'flatc-settings-group', 'col2_menu_link' );
+	
+	register_setting( 'flatc-settings-group', 'blog_name' );
+	register_setting( 'flatc-settings-group', 'blog_link' );
 
 
     add_settings_section( 'flatc-settings-options', 'Menu Settings', 'flatc_menu_settings', 'flatc_settings' );
@@ -39,7 +42,19 @@ function flatc_custom_settings() {
     add_settings_field( 'flatc-col1-link', 'First Column Link', 'flatc_col1_link', 'flatc_settings', 'flatc-settings-options' );
 
     add_settings_field( 'flatc-col2-text', 'Second Column Menu Name', 'flatc_col2_name', 'flatc_settings', 'flatc-settings-options' );
-    add_settings_field( 'flatc-col2-link', 'Second Column Link', 'flatc_col2_link', 'flatc_settings', 'flatc-settings-options' );
+	add_settings_field( 'flatc-col2-link', 'Second Column Link', 'flatc_col2_link', 'flatc_settings', 'flatc-settings-options' );
+	
+	add_settings_field( 'flatc-blog-name', 'Blog Menu Name', 'flatc_blog_name', 'flatc_settings', 'flatc-settings-options' );
+	add_settings_field( 'flatc-blog-link', 'Blog Menu Link', 'flatc_blog_link', 'flatc_settings', 'flatc-settings-options' );
+}
+
+function flatc_blog_link(){
+	$blogLink = esc_attr(get_option( 'blog_link' ));
+	echo '<input type="text" name="blog_link" value="'.$blogLink.'" placeholder="" />';
+}
+function flatc_blog_name(){
+	$blogName = esc_attr(get_option( 'blog_name' ));
+	echo '<input type="text" name="blog_name" value="'.$blogName.'" placeholder="Blog" />';
 }
 
 function flatc_col2_link(){
@@ -50,12 +65,12 @@ function flatc_col2_link(){
 function flatc_col2_name() {
     $col2Name = esc_attr(get_option( 'col2_menu' ));
     $col2Desc = esc_attr(get_option( 'col2_menu_desc' ));
-    echo '<input type="text" name="col2_menu" value="'.$col2Name.'" placeholder="Second Column H2" /> <input type="text" name="col2_menu_desc" value="'.$col2Desc.'" placeholder="Second Column H3" />';
+	echo '<input type="text" name="col2_menu" value="'.$col2Name.'" placeholder="Second Column H2" /> <input type="text" name="col2_menu_desc" value="'.$col2Desc.'" placeholder="Second Column H3" />';
 }
 
 function flatc_col1_link(){
     $col1Link = esc_attr(get_option( 'col1_menu_link' ));
-    echo '<input type="text" name="col1_menu_link" value="'.$col1Link.'" placeholder="First Column Link" />';
+	echo '<input type="text" name="col1_menu_link" value="'.$col1Link.'" placeholder="First Column Link" />';
 }
 
 function flatc_col1_name() {
