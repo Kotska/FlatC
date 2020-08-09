@@ -725,6 +725,19 @@ body .page-blog .post-cont {
   position: relative;
 }
 
+body .page-blog .post-cont p {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+body .page-blog .post-cont h3 {
+  font-size: 16px;
+}
+
+body .page-blog .post-cont button {
+  font-size: 12px;
+}
+
 body .page-blog .post-blue {
   background-color: #1181b2;
 }
@@ -770,6 +783,24 @@ body .page-blog .post-white p {
 body .page-blog .post-white .readmore {
   color: #212221;
   border-color: #212221;
+}
+
+@media only screen and (min-width: 768px) {
+  body .page-blog .post-cont {
+    padding: 50px 107px 20px 43px;
+  }
+  body .page-blog .post-cont p {
+    font-size: 16px;
+    margin-top: 25px;
+    line-height: 1.65em;
+    letter-spacing: 0.5px;
+  }
+  body .page-blog .post-cont h3 {
+    font-size: 24px;
+  }
+  body .page-blog .post-cont button {
+    font-size: 16px;
+  }
 }
 
 body .page-services .services {

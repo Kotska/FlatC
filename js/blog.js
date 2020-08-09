@@ -13,7 +13,6 @@ jQuery(document).ready(function ($) {
             var posts = $('.post-cont');
             var title = $(posts[i]).find('h3');
             var excerpt = $(posts[i]).find('p');
-            console.log(title);
             if(posts[i] != undefined) {
                 gsap.to(title, {text: 'Loading...'});
                 gsap.to(excerpt, {text: 'Loading...'});
@@ -49,13 +48,16 @@ jQuery(document).ready(function ($) {
                     if(response.data[i] != undefined){
                         var newTitle = response.data[i].title;
                         var newExcerpt = response.data[i].excerpt;
+                        var newLink = response.data[i].link;
                         if(posts[i]) {
                             var title = $(posts[i]).find('h3');
                             var excerpt = $(posts[i]).find('p');
+                            var link = $(posts[i]).find('button');
+                            $(link).data('link', newLink);
                             gsap.to(title, {text: newTitle});
                             gsap.to(excerpt, {text: newExcerpt});
                         } else {
-                            $(posts[i-1]).after('<div class="post-cont '+colors[i]+'"><h3>'+newTitle+'</h3><p>'+newExcerpt+'</p><button class="readmore">Tovább</button></div>');
+                            $(posts[i-1]).after('<div class="post-cont '+colors[i]+'"><h3>'+newTitle+'</h3><p>'+newExcerpt+'</p><button data-link="'+newLink+'" class="readmore">Tovább</button></div>');
                         }
                     } else {
                         posts = $('.post-cont');

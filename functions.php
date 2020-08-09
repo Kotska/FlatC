@@ -305,8 +305,14 @@ function ajax_pagination () {
 
 	while ($query->have_posts()) : $query->the_post();
 
+		$excerpt = get_the_excerpt();
+		$excerpt = substr($excerpt, 0, 160);
+		$excerpt = substr($excerpt, 0, strrpos($excerpt, ' '));
+		$excerpt = $excerpt . '...';
+
 		$response[$count]['title'] = get_the_title();
-		$response[$count]['excerpt'] = get_the_excerpt();
+		$response[$count]['excerpt'] = $excerpt;
+		$response[$count]['link'] = get_permalink();
 
 		$count += 1;
 	endwhile;
