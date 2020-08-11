@@ -35,7 +35,7 @@ jQuery(document).ready(function ($) {
 		tl2.to(mobileImage, {top: '-' + mobileHeight + 'px', duration: duration, ease: 'linear', onComplete: setImage})
 		tl2.to(container, {width: '0', duration: duration, ease: 'linear', onComplete: setText});
 		tl2.to(container, {width: '100vw', duration: 0, ease: 'linear'});
-		tl2.to(container, {right: '100vw', duration: 0, ease: 'linear'});
+		tl2.to(container, {right: '100vw', duration: 0, ease: 'linear', onComplete: setBackground});
 		tl2.to(container, {right: '0', duration: duration, ease: 'linear', onComplete: showDesk});
 		tl2.to(container, {width: '66.66vw', duration: duration, ease: 'linear'});
 		tl2.to(desktopImage, {x: '-=200%', duration: duration, ease: 'linear'});
@@ -44,13 +44,14 @@ jQuery(document).ready(function ($) {
 		tl2.to(mobileImage, {bottom: 'auto', duration: duration, ease: 'linear'});
 		tl2.to(mobileImage, {top: 'auto', duration: duration, ease: 'linear'})
 
-
-		if (backgroundColor != '#') {
-			colors.css({'background-color': backgroundColor});
-		} else {
-			colors.css({'background-color': '#1181b2'});
-		}
 		
+		function setBackground () {
+			if (backgroundColor != '#') {
+				colors.css({'background-color': backgroundColor});
+			} else {
+				colors.css({'background-color': '#1181b2'});
+			}
+		}
 		
 		function showDesk () {
 			gsap.to(desktopImage, {opacity: 1, duration: 0, ease: 'linear'});
