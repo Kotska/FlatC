@@ -85,6 +85,12 @@ get_header();
 				wp_reset_postdata();
 			?>
 			<span class="border"></span>
+			<div class="indicator">
+				<p>görgess</p>
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
 		</div>
 		<div id="nav-overlay">
 			<nav>
