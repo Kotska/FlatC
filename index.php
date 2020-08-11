@@ -28,12 +28,9 @@ get_header();
 		</div>
 		<div id="nav-overlay">
 			<nav>
-				<ul class="nav-list">
-					<li class="nav-list-li">Portfolio</li>
-					<li class="nav-list-li">Blog</li>
-					<li class="nav-list-li">Kapcsolat</li>
-					<li class="nav-list-li">Szolgáltatások</li>
-				</ul>
+				<?php if( has_nav_menu('main-menu') ){
+					wp_nav_menu(array( 'theme_location' => 'main-menu', 'menu_class' => 'nav-list', 'container' => false ));
+				}; ?>
 			</nav>
 		</div>
 		<div class="col-container">

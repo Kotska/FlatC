@@ -47,13 +47,6 @@ if ( ! function_exists( 'flatc_setup' ) ) :
 		 */
 		add_theme_support( 'post-thumbnails' );
 
-		// This theme uses wp_nav_menu() in one location.
-		register_nav_menus(
-			array(
-				'menu-1' => esc_html__( 'Primary', 'flatc' ),
-			)
-		);
-
 		/*
 		 * Switch default core markup for search form, comment form, and comments
 		 * to output valid HTML5.
@@ -206,6 +199,11 @@ require get_template_directory() . '/inc/customizer.php';
  * Admin functions.
  */
 require get_template_directory() . '/inc/function-admin.php';
+
+/**
+ * Navigation Menu
+ */
+require get_template_directory() . '/inc/nav-menu.php';
 
 /**
  * Load Jetpack compatibility file.

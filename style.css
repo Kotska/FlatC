@@ -1067,7 +1067,6 @@ body .site-main #nav-overlay .nav-list {
   top: 100px;
   list-style: none;
   text-transform: uppercase;
-  color: #ae2b24;
   font-size: 36px;
   font-weight: bold;
   text-align: right;
@@ -1079,11 +1078,15 @@ body .site-main #nav-overlay .nav-list.bottom100 {
   --Bottom: 100%;
 }
 
-body .site-main #nav-overlay .nav-list .nav-list-li {
+body .site-main #nav-overlay .nav-list li {
   position: relative;
 }
 
-body .site-main #nav-overlay .nav-list .nav-list-li:after {
+body .site-main #nav-overlay .nav-list li a {
+  color: #ae2b24;
+}
+
+body .site-main #nav-overlay .nav-list li:after {
   content: "";
   position: absolute;
   top: 0;
