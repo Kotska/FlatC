@@ -634,7 +634,7 @@ big {
   .burger {
     position: absolute;
     top: 25px;
-    left: 180px;
+    left: 170px;
   }
 }
 
@@ -1126,7 +1126,7 @@ body .page-portfolio #mobile-image {
 
 body .page-portfolio #portfolio-title, body .page-portfolio #portfolio-link {
   margin-bottom: 5px;
-  padding-left: 25px;
+  padding-left: 15px;
   color: black;
   opacity: .5;
   -webkit-transition: all 320ms;
@@ -1137,8 +1137,27 @@ body .page-portfolio #portfolio-title:hover, body .page-portfolio #portfolio-lin
   opacity: .7;
 }
 
+body .page-portfolio #portfolio-title {
+  font-size: 5vw;
+  margin-top: 50px;
+}
+
+@media only screen and (min-width: 767px) {
+  body .page-portfolio #portfolio-title {
+    margin-top: 15px;
+    font-size: 32px;
+  }
+}
+
 body .page-portfolio #portfolio-link {
   margin: 0;
+  font-size: 4vw;
+}
+
+@media only screen and (min-width: 767px) {
+  body .page-portfolio #portfolio-link {
+    font-size: 26px;
+  }
 }
 
 body .page-portfolio .col1 {
@@ -1218,7 +1237,7 @@ body .page-portfolio .portfolio-list li {
   transition: all 320ms;
   content: "";
   width: 25px;
-  height: 15px;
+  height: 17px;
   background-color: #696a69;
   margin-top: 7px;
   list-style: none;
@@ -1241,7 +1260,7 @@ body .page-portfolio .border {
   content: "";
   position: absolute;
   top: 0;
-  left: 28vw;
+  left: 29vw;
   height: 100px;
   width: 1px;
   background-color: #cf1744;
