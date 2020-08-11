@@ -1067,11 +1067,17 @@ body .site-main #nav-overlay .nav-list {
   top: 100px;
   list-style: none;
   text-transform: uppercase;
-  font-size: 36px;
+  font-size: 10vw;
   font-weight: bold;
   text-align: right;
   right: 25px;
   --Bottom: 0;
+}
+
+@media only screen and (min-width: 768px) {
+  body .site-main #nav-overlay .nav-list {
+    font-size: 48px;
+  }
 }
 
 body .site-main #nav-overlay .nav-list.bottom100 {
