@@ -724,6 +724,7 @@ body .page-blog .blog-col1 .blog-list .post-cat {
   display: inline-block;
   padding: 0;
   font-size: 12px;
+  text-transform: uppercase;
 }
 
 body .page-blog .blog-col1 .post-cont {
@@ -731,6 +732,19 @@ body .page-blog .blog-col1 .post-cont {
   margin-bottom: 20px;
   width: 100%;
   padding: 15px 20px 2px 20px;
+  position: relative;
+}
+
+body .page-blog .blog-col1 .post-cont::before {
+  content: "";
+  position: absolute;
+  left: -5px;
+  z-index: 3;
+  top: 0;
+  width: 10px;
+  height: 45%;
+  /* or 100px */
+  background: rgba(105, 106, 105, 0.5);
 }
 
 body .page-blog .blog-col1 .post-cont h3 {
@@ -776,10 +790,18 @@ body .page-blog .blog-col2 h3 {
 }
 
 body .page-blog .blog-col2 ul {
+  padding-right: 10px;
   padding-top: 30vh;
   list-style: none;
   text-align: right;
   font-size: 14px;
+  line-height: 1.1em;
+  font-style: italic;
+  font-weight: bold;
+}
+
+body .page-blog .blog-col2 ul li {
+  padding-bottom: 8px;
 }
 
 body .page-services .services {
