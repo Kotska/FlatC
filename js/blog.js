@@ -3,6 +3,8 @@ jQuery(document).ready(function ($) {
     var prev = $('.prev svg');
     var next = $('.next svg');
     var paged = $('main').data('page');
+    $('html body').css({'overflow': 'scroll'});
+    $('.site-header').css({'background-color': 'white', 'z-index': '5', 'width': '66.66vw'});
 
     if (paged == 1) {
         $(prev).hide();
