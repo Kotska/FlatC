@@ -72,10 +72,9 @@ jQuery(document).ready(function ($) {
                 $('.blog-list').append(parsed);
                 var posts = $('.post-cont');
                 gsap.to(posts, {left: 'auto'});
-                console.log(parsed);
 			},
 			error: function (response) {
-                console.log(response);
+                console.log('Error: ' + response);
 			}
 		});
     }
@@ -85,8 +84,6 @@ jQuery(document).ready(function ($) {
         var link = e.target.href;
         var cat = e.target.innerHTML;
         var posts = $('.post-cont');
-        gsap.to(posts, {left: '100vw', onComplete: function(){ $('.blog-list').empty(); }});
-        console.log(cat);
-        loadCat(cat);
+        gsap.to(posts, {left: '100vw', onComplete: function(){ $('.blog-list').empty(); loadCat(cat); }});
     });
 });
