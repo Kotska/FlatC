@@ -717,6 +717,12 @@ body .page-blog .blog-col1 .blog-list {
   width: 100%;
 }
 
+@media screen and (min-width: 768px) {
+  body .page-blog .blog-col1 .blog-list {
+    padding-left: 80px;
+  }
+}
+
 body .page-blog .blog-col1 .blog-list .flatc-categories {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -734,6 +740,12 @@ body .page-blog .blog-col1 .blog-list .flatc-categories .post-cat {
   font-size: 12px;
   text-transform: uppercase;
   line-height: 1.8em;
+}
+
+@media screen and (min-width: 768px) {
+  body .page-blog .blog-col1 .blog-list .flatc-categories .post-cat {
+    font-size: 14px;
+  }
 }
 
 body .page-blog .blog-col1 .post-cont {
@@ -764,6 +776,12 @@ body .page-blog .blog-col1 .post-cont h3 {
   line-height: 145%;
 }
 
+@media screen and (min-width: 768px) {
+  body .page-blog .blog-col1 .post-cont h3 {
+    font-size: 22px;
+  }
+}
+
 body .page-blog .blog-col1 .post-cont h3:hover {
   color: #26ace2;
 }
@@ -772,6 +790,12 @@ body .page-blog .blog-col1 .post-cont p {
   padding: 0;
   font-size: 12px;
   line-height: 145%;
+}
+
+@media screen and (min-width: 768px) {
+  body .page-blog .blog-col1 .post-cont p {
+    font-size: 16px;
+  }
 }
 
 body .page-blog .blog-col2 {
@@ -783,11 +807,11 @@ body .page-blog .blog-col2 {
 
 body .page-blog .blog-col2 h3 {
   bottom: 0;
-  right: 0.55em;
+  left: calc(66.66vw + 0.37em);
   position: fixed;
   padding-top: 150px;
   color: rgba(17, 129, 178, 0.5);
-  font-size: 30vw;
+  font-size: 17vh;
   text-align: center;
   -webkit-writing-mode: vertical-rl;
       -ms-writing-mode: tb-rl;
@@ -796,18 +820,27 @@ body .page-blog .blog-col2 h3 {
   text-transform: uppercase;
   line-height: 0;
   margin: 0;
-  mix-blend-mode: multiply;
+  mix-blend-mode: darken;
 }
 
 body .page-blog .blog-col2 ul {
-  padding-right: 10px;
+  padding-right: 5px;
   padding-top: 30vh;
   list-style: none;
   text-align: right;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 1.1em;
-  font-style: italic;
   font-weight: bold;
+  color: rgba(0, 0, 0, 0.6);
+  text-transform: uppercase;
+}
+
+@media screen and (min-width: 768px) {
+  body .page-blog .blog-col2 ul {
+    font-size: 20px;
+    text-align: center;
+    line-height: 150%;
+  }
 }
 
 body .page-blog .blog-col2 ul li {
