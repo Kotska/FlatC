@@ -717,17 +717,27 @@ body .page-blog .blog-col1 .blog-list {
   width: 100%;
 }
 
-body .page-blog .blog-col1 .blog-list .post-cat {
+body .page-blog .blog-col1 .blog-list .flatc-categories {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding-bottom: 5px;
+}
+
+body .page-blog .blog-col1 .blog-list .flatc-categories .post-cat {
   font-weight: bold;
   color: rgba(105, 106, 105, 0.5);
   margin: 0;
-  display: inline-block;
   padding: 0;
   font-size: 12px;
   text-transform: uppercase;
+  line-height: 1.8em;
 }
 
 body .page-blog .blog-col1 .post-cont {
+  left: 100vw;
   background-color: rgba(105, 106, 105, 0.1);
   margin-bottom: 20px;
   width: 100%;

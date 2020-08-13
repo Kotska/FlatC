@@ -328,3 +328,36 @@ function ajax_pagination () {
 
 add_action( 'wp_ajax_nopriv_ajax_pagination', 'ajax_pagination' );
 add_action( 'wp_ajax_ajax_pagination', 'ajax_pagination' );
+
+
+function ajax_categories () {
+
+	$cat = $_POST['postType'];
+
+	$query = new WP_Query(array(
+		'post_type'      => 'post',
+		'posts_per_page' => -1,
+		'category_name'		 => $cat,
+	));
+
+	?>
+
+	<?php
+	if ($query->have_posts()) :
+		while ($query->have_posts()) : $query->the_post();
+			$excerpt = get_the_excerpt();
+			$excerpt = substr($excerpt, 0, 160);
+			$excerpt = substr($excerpt, 0, strrpos($excerpt, ' '));
+			$excerpt = $excerpt . '...';
+
+			get_template_part('template-parts/blog', 'content');
+
+		endwhile;
+	endif;
+	wp_reset_postdata();
+
+	die();
+}
+
+add_action( 'wp_ajax_nopriv_ajax_categories', 'ajax_categories' );
+add_action( 'wp_ajax_ajax_categories', 'ajax_categories' );

@@ -20,9 +20,9 @@ $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
             <?php
 
             $query = new WP_Query(array(
-                'post_type' => 'post',
+                'post_type'      => 'post',
                 'posts_per_page' => -1,
-                'paged' => $paged
+                'paged'          => $paged
             ));
 
             ?>
@@ -35,28 +35,12 @@ $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
                     $excerpt = substr($excerpt, 0, strrpos($excerpt, ' '));
                     $excerpt = $excerpt . '...';
 
-                    $categories = get_the_category();
+                    get_template_part('template-parts/blog', 'content');
 
-            ?>
-                    <div class="post-cont">
-                        <?php 
-                            foreach ($categories as $cat) {
-                                echo '<a href="'. get_category_link($cat) .'" class="post-cat">'. $cat->name .'&nbsp;</a>';
-                            }
-                        ?>
-                        <h3><a href="<?php echo get_permalink(); ?>"><?php echo get_the_title(); ?></a></h3>
-                        <p><?php echo $excerpt; ?></p>
-                    </div>
-            <?php
                 endwhile;
             endif;
             wp_reset_postdata();
             ?>
-            <!-- <div id="pagination">
-                <div class="prev"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z"/></svg></div>
-                <div class="next"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z"/></svg></div>
-
-            </div> -->
         </div>
     </div>
     <div class="blog-col2">

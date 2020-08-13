@@ -1,26 +1,9 @@
 jQuery(document).ready(function ($) {
-    var posts = $('.post-cont');
-    var prev = $('.prev svg');
-    var next = $('.next svg');
-    var paged = $('main').data('page');
     $('html body').css({'overflow': 'scroll'});
     $('.site-header').css({'background-color': 'white', 'z-index': '5', 'width': '66.66vw'});
-
-    if (paged == 1) {
-        $(prev).hide();
-    }
+    $('.post-cont').css({'left': 'auto'});
 
     function loadPost(paged){
-        for (var i = 0; i < 3; i++) {
-            var posts = $('.post-cont');
-            var title = $(posts[i]).find('h3');
-            var excerpt = $(posts[i]).find('p');
-            if(posts[i] != undefined) {
-                gsap.to(title, {text: 'Loading...'});
-                gsap.to(excerpt, {text: 'Loading...'});
-            }
-        }
-
         $.ajax({
             type: 'POST',
 			url: ajaxpagination.ajax_url,
@@ -76,15 +59,34 @@ jQuery(document).ready(function ($) {
 		});
     };
 
-    $('.prev').on('click', function(e){
-        if (paged > 1){
-            paged -= 1;
-            loadPost(paged);
-        }
-        
-    });
-    $('.next').on('click', function(e){
-        paged += 1;
-        loadPost(paged);
+    function loadCat (cat){
+        $.ajax({
+            type: 'POST',
+			url: ajaxpagination.ajax_url,
+            data: {
+                action: 'ajax_categories',
+                postType: cat
+            },
+			success: function (response) {
+                var parsed = $.parseHTML(response);
+                $('.blog-list').append(parsed);
+                var posts = $('.post-cont');
+                gsap.to(posts, {left: 'auto'});
+                console.log(parsed);
+			},
+			error: function (response) {
+                console.log(response);
+			}
+		});
+    }
+
+    $('.cat-item').on('click', function(e){
+        e.preventDefault();
+        var link = e.target.href;
+        var cat = e.target.innerHTML;
+        var posts = $('.post-cont');
+        gsap.to(posts, {left: '100vw', onComplete: function(){ $('.blog-list').empty(); }});
+        console.log(cat);
+        loadCat(cat);
     });
 });
