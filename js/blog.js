@@ -1,6 +1,6 @@
 jQuery(document).ready(function ($) {
     $('html body').css({'overflow': 'scroll'});
-    $('.site-header').css({'background-color': 'white', 'z-index': '5', 'width': '66.66vw'});
+    $('.site-header').css({'background-color': 'white', 'z-index': '10', 'width': '66.66vw'});
     $('.post-cont').css({'left': 'auto'});
 
     function loadPost(paged){

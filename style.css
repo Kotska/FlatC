@@ -591,6 +591,10 @@ big {
   top: 1em;
 }
 
+html {
+  --navColor: #1181b2;
+}
+
 .burger.burger-rotate .burger-lines:after, .burger.burger-rotate .burger-lines:before {
   width: 2em;
 }
@@ -610,13 +614,13 @@ big {
           transform: rotate(90deg);
   width: 50%;
   top: 40%;
-  background-color: #ae2b24;
+  background-color: var(--navColor);
 }
 
 .burger.burger-rotate.open .burger-lines:before, .burger.burger-rotate.open .burger-lines:after {
   left: 0.5em;
   top: 0px;
-  background-color: #ae2b24;
+  background-color: var(--navColor);
 }
 
 .burger.burger-rotate.open .burger-lines:before {
@@ -1169,7 +1173,7 @@ body .site-main #nav-overlay {
   right: 0;
   bottom: 0;
   background-color: white;
-  z-index: 4;
+  z-index: 7;
   /* Specify a stack order in case you're using a different order for other elements */
 }
 
@@ -1204,7 +1208,7 @@ body .site-main #nav-overlay .nav-list li {
 }
 
 body .site-main #nav-overlay .nav-list li a {
-  color: #ae2b24;
+  color: #1181b2;
 }
 
 body .site-main #nav-overlay .nav-list li:after {

@@ -19,6 +19,12 @@ jQuery(document).ready(function ($) {
 		var mobileHeight = ($('#mobile-image').height()) + $(window).height();
 		var colors = $('.col-container, .border, li.active');
 		$('.portfolio-item').css({'background-color': '#696a69'})
+		if (backgroundColor == '#'){
+			backgroundColor = '#1181b2';
+		}
+		$('#nav-overlay li a').css({'color': backgroundColor});
+		$('html').get(0).style.setProperty('--navColor', backgroundColor);
+		console.log(backgroundColor);
 
 
 		tl.delay(duration);
@@ -46,11 +52,7 @@ jQuery(document).ready(function ($) {
 
 		
 		function setBackground () {
-			if (backgroundColor != '#') {
-				colors.css({'background-color': backgroundColor});
-			} else {
-				colors.css({'background-color': '#1181b2'});
-			}
+			colors.css({'background-color': backgroundColor});
 		}
 		
 		function showDesk () {
