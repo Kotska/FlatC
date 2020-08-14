@@ -46,6 +46,7 @@ $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
     <div class="blog-col2">
         <h3>Blog</h3>
         <ul>
+            <h4>Kategóriák</h4>
             <?php wp_list_categories(array('title_li' => '')); ?>
         </ul>
     </div>

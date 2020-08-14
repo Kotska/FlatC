@@ -88,7 +88,7 @@ jQuery(document).ready(function ($) {
             var link = e.target.href;
             var cat = e.target.innerHTML;
             var posts = $('.post-cont');
-            gsap.to(posts, {left: '100vw', onComplete: function(){ $('.blog-list').empty(); loadCat(cat); }});
+            gsap.to(posts, {left: '65vw', onComplete: function(){ $('.blog-list').empty(); loadCat(cat); }});
         }
     });
 });
