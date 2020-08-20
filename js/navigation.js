@@ -129,6 +129,7 @@ jQuery(document).ready(function ($) {
 
 	function ajaxLoading(link) {
 		showLoader();
+		var ajaxTime= new Date().getTime();
 		var link = link;
 		$.ajax({
 			async: true,
@@ -136,10 +137,13 @@ jQuery(document).ready(function ($) {
 			url: link,
 			contentType: "application/json",
 			success: function (response) {
-				var newDoc = document.open("text/html", "replace");
-				newDoc.write(response);
-				newDoc.close();
-				window.history.pushState({}, '', link);
+				var totalTime = new Date().getTime()-ajaxTime;
+				setTimeout(function () {
+					var newDoc = document.open("text/html", "replace");
+					newDoc.write(response);
+					newDoc.close();
+					window.history.pushState({}, '', link);
+				}, 1500 - totalTime);
 			},
 			error: function (response) {
 				console.log(nope);
