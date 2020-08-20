@@ -27,9 +27,20 @@
 	<div id="page" class="site">
 		<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e('Skip to content', 'flatc'); ?></a>
 		<div class="loader">
-			<div class="loader-gif"> <?php
-					the_custom_logo(); ?>
+			<div class="loader-gif">
+				<?php
+				the_custom_logo();
+				$logo = get_option('site-loading-svg');
+				$id = attachment_url_to_postid($logo);
+				$file = get_attached_file($id);
+				if ($logo) {
+					echo '<div class="loading-svg-front forwards">' . file_get_contents($file) . '</div>';
+				} else {
+				?>
 					<h1 class="site-title"><a href="<?php echo esc_url(home_url('/')); ?>" rel="home"><?php bloginfo('name'); ?></a></h1>
+				<?php
+				};
+				?>
 			</div>
 		</div>
 
@@ -37,15 +48,16 @@
 			<div class="site-branding">
 				<?php
 				the_custom_logo();
-				if (is_front_page() && is_home()) :
+				$logo = get_option('site-logo-svg');
+				$id = attachment_url_to_postid($logo);
+				$file = get_attached_file($id);
+				if ($logo) {
+					echo '<a href="' . esc_url(home_url('/')) . '">' . file_get_contents($file) . '</a>';
+				} else {
 				?>
 					<h1 class="site-title"><a href="<?php echo esc_url(home_url('/')); ?>" rel="home"><?php bloginfo('name'); ?></a></h1>
 				<?php
-				else :
-				?>
-					<p class="site-title"><a href="<?php echo esc_url(home_url('/')); ?>" rel="home"><?php bloginfo('name'); ?></a></p>
-				<?php
-				endif;
+				};
 				?>
 			</div><!-- .site-branding -->
 			<div id="nav-btn" class="burger burger-rotate">

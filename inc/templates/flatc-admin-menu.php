@@ -2,6 +2,6 @@
 <?php settings_errors(); ?>
 <form action="options.php" method="post">
     <?php settings_fields( 'flatc-settings-group' ); ?>
-    <?php do_settings_sections( 'flatc_settings' ); ?>
+    <?php do_settings_sections( 'flatc_settings_menu' ); ?>
     <?php submit_button(); ?>
 </form>

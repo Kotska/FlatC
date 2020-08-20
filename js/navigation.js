@@ -27,6 +27,14 @@ jQuery(document).ready(function ($) {
 		hideLoader();
 	}
 
+	const loadingSVG = $('.loading-svg-front path');
+
+	for(let i = 0; i<loadingSVG.length; i++){
+		console.log(`Letter ${i} is ${loadingSVG[i].getTotalLength()}`);
+	}
+
+	$('.site-branding svg').attr('preserveAspectRatio', 'xMinYMin meet');
+
 	// First we get the viewport height and we multiple it by 1% to get a value for a vh unit
 	let vh = window.innerHeight * 0.01;
 	// Then we set the value in the --vh custom property to the root of the document
@@ -43,6 +51,8 @@ jQuery(document).ready(function ($) {
 
 
 	function showLoader() {
+		$('.loading-svg-front').removeClass('forwards');
+		$('.loading-svg-front').addClass('backwards');
 		$('.loader').css({ 'display': 'flex' });
 		setTimeout(function () {
 			$('.loader').removeClass('hide');
@@ -72,14 +82,14 @@ jQuery(document).ready(function ($) {
 	});
 
 	// columns hover text change with gsap
-	$('.col2').on('hover', function (e) {
+	$('.col2').on('mouseenter', function (e) {
 		gsap.to($('.col2-title'), { duration: 1, text: 'What?', ease: 'none' });
 	});
 	$('.col2').on('mouseleave', function (e) {
 		gsap.to($('.col2-title'), { duration: 1, text: col2Title, ease: 'none' });
 	});
 
-	$('.col3').on('hover', function (e) {
+	$('.col3').on('mouseenter', function (e) {
 		gsap.to($('.col3-title'), { duration: 1, text: 'What?', ease: 'none' });
 	});
 	$('.col3').on('mouseleave', function (e) {

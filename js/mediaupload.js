@@ -1,5 +1,55 @@
 jQuery(document).ready(function($) {
 
+	var mediaUploader;
+
+	$('#upload-button-svg').on('click', function(e){
+		e.preventDefault();
+		if(mediaUploader){
+			mediaUploader.open();
+			return;
+		}
+
+		mediaUploader = wp.media.frames.file_frame = wp.media({
+			title: 'Choose a logo',
+			button: {
+				text: 'Choose Logo',
+			},
+			multiple: false
+		});
+
+		mediaUploader.on('select', function(){
+			attachment = mediaUploader.state().get('selection').first().toJSON();
+			$('#logo-svg').val(attachment.url);
+		});
+
+		mediaUploader.open();
+	});
+
+	var mediaUploader2;
+
+	$('#upload-button-loading').on('click', function(e){
+		e.preventDefault();
+		if(mediaUploader2){
+			mediaUploader2.open();
+			return;
+		}
+
+		mediaUploader2 = wp.media.frames.file_frame = wp.media({
+			title: 'Choose a logo',
+			button: {
+				text: 'Choose Logo',
+			},
+			multiple: false
+		});
+
+		mediaUploader2.on('select', function(){
+			attachment = mediaUploader2.state().get('selection').first().toJSON();
+			$('#loading-svg').val(attachment.url);
+		});
+
+		mediaUploader2.open();
+	});
+
 	// Uploading files
 	var file_frame;
 

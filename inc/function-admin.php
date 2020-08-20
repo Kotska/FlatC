@@ -24,6 +24,8 @@ add_action( 'admin_init', 'flatc_custom_settings' );
 add_action( 'admin_menu', 'flatc_add_admin_page' );
 
 function flatc_custom_settings() {
+	register_setting( 'flatc-settings-main', 'site-logo-svg');
+	register_setting( 'flatc-settings-main', 'site-loading-svg');
     register_setting( 'flatc-settings-group', 'col1_menu' );
     register_setting( 'flatc-settings-group', 'col1_menu_desc' );
     register_setting( 'flatc-settings-group', 'col1_menu_link' );
@@ -36,16 +38,44 @@ function flatc_custom_settings() {
 	register_setting( 'flatc-settings-group', 'blog_link' );
 
 
-    add_settings_section( 'flatc-settings-options', 'Menu Settings', 'flatc_menu_settings', 'flatc_settings' );
+	add_settings_section( 'flatc-settings-options', 'Menu Settings', 'flatc_menu_settings', 'flatc_settings_menu' );
+	add_settings_section('flatc-main-settings', 'Manage Options', 'flatc_main_section', 'flatc_settings');
 
-    add_settings_field( 'flatc-col1-text', 'First Column Menu Name', 'flatc_col1_name', 'flatc_settings', 'flatc-settings-options' );
-    add_settings_field( 'flatc-col1-link', 'First Column Link', 'flatc_col1_link', 'flatc_settings', 'flatc-settings-options' );
+	add_settings_field('flatc-logo-svg', 'Site SVG Logo', 'flatc_site_svg', 'flatc_settings', 'flatc-main-settings');
+	add_settings_field('flatc-loading-svg', 'Site Loading SVG', 'flatc_loading_svg', 'flatc_settings', 'flatc-main-settings');
 
-    add_settings_field( 'flatc-col2-text', 'Second Column Menu Name', 'flatc_col2_name', 'flatc_settings', 'flatc-settings-options' );
-	add_settings_field( 'flatc-col2-link', 'Second Column Link', 'flatc_col2_link', 'flatc_settings', 'flatc-settings-options' );
+    add_settings_field( 'flatc-col1-text', 'First Column Menu Name', 'flatc_col1_name', 'flatc_settings_menu', 'flatc-settings-options' );
+    add_settings_field( 'flatc-col1-link', 'First Column Link', 'flatc_col1_link', 'flatc_settings_menu', 'flatc-settings-options' );
+
+    add_settings_field( 'flatc-col2-text', 'Second Column Menu Name', 'flatc_col2_name', 'flatc_settings_menu', 'flatc-settings-options' );
+	add_settings_field( 'flatc-col2-link', 'Second Column Link', 'flatc_col2_link', 'flatc_settings_menu', 'flatc-settings-options' );
 	
-	add_settings_field( 'flatc-blog-name', 'Blog Menu Name', 'flatc_blog_name', 'flatc_settings', 'flatc-settings-options' );
-	add_settings_field( 'flatc-blog-link', 'Blog Menu Link', 'flatc_blog_link', 'flatc_settings', 'flatc-settings-options' );
+	add_settings_field( 'flatc-blog-name', 'Blog Menu Name', 'flatc_blog_name', 'flatc_settings_menu', 'flatc-settings-options' );
+	add_settings_field( 'flatc-blog-link', 'Blog Menu Link', 'flatc_blog_link', 'flatc_settings_menu', 'flatc-settings-options' );
+}
+
+function flatc_loading_svg() {
+	$svg = get_option('site-loading-svg');
+	$id = attachment_url_to_postid($svg);
+	$file = get_attached_file($id);
+	echo '<input type="button" class="button button-secondary" value="Upload SVG" id="upload-button-loading"/> <input type="hidden" id="loading-svg" name="site-loading-svg" value="'.$svg.'"/>';
+	if ($file) {
+		echo '<div class="logo-svg">'. file_get_contents($file) . '</div>';
+	}
+}
+
+function flatc_site_svg(){
+	$logo = get_option('site-logo-svg');
+	$id = attachment_url_to_postid($logo);
+	$file = get_attached_file($id);
+	echo '<input type="button" class="button button-secondary" value="Upload Logo" id="upload-button-svg"/> <input type="hidden" id="logo-svg" name="site-logo-svg" value="'.$logo.'"/>';
+	if ($file) {
+		echo '<div class="logo-svg">'. file_get_contents($file) . '</div>';
+	}
+}
+
+function flatc_main_section(){
+
 }
 
 function flatc_blog_link(){

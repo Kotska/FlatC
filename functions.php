@@ -137,8 +137,9 @@ add_action( 'widgets_init', 'flatc_widgets_init' );
  */
 function flatc_scripts() {
 
+	wp_enqueue_script( 'flatc-portfolio', get_template_directory_uri() . '/js/portfolio.js', array('jquery'), _S_VERSION, true );
 	if (is_page_template('template-parts/page-portfolio.php')){
-		wp_enqueue_script( 'flatc-portfolio', get_template_directory_uri() . '/js/portfolio.js', array('jquery'), _S_VERSION, true );
+
 	}
 
 	if (is_page_template('template-parts/page-services.php')){
@@ -361,3 +362,13 @@ function ajax_categories () {
 
 add_action( 'wp_ajax_nopriv_ajax_categories', 'ajax_categories' );
 add_action( 'wp_ajax_ajax_categories', 'ajax_categories' );
+
+function my_custom_mime_types( $mimes ) {
+ 
+	// New allowed mime types.
+	$mimes['svg'] = 'image/svg+xml';
+	$mimes['svgz'] = 'image/svg+xml';
+	 
+	return $mimes;
+	}
+add_filter( 'upload_mimes', 'my_custom_mime_types' );
