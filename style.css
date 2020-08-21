@@ -536,6 +536,12 @@ big {
   fill: white;
 }
 
+.loader {
+  background: -webkit-gradient(linear, left top, left bottom, from(#323232), color-stop(40%, #3F3F3F), color-stop(150%, #1C1C1C)), -webkit-gradient(linear, left bottom, left top, from(rgba(255, 255, 255, 0.4)), color-stop(200%, rgba(0, 0, 0, 0.25)));
+  background: linear-gradient(to bottom, #323232 0%, #3F3F3F 40%, #1C1C1C 150%), linear-gradient(to top, rgba(255, 255, 255, 0.4) 0%, rgba(0, 0, 0, 0.25) 200%);
+  background-blend-mode: multiply;
+}
+
 .loading-svg-front.backwards {
   position: absolute;
   top: 50%;
@@ -544,7 +550,7 @@ big {
           transform: translate(-50%, -50%);
   width: 50vw;
   height: 50vh;
-  stroke: black;
+  stroke: white;
   stroke-width: 2px;
   stroke-miterlimit: 10;
 }
@@ -610,7 +616,7 @@ big {
           transform: translate(-50%, -50%);
   width: 50vw;
   height: 50vh;
-  stroke: black;
+  stroke: white;
   stroke-width: 2px;
   stroke-miterlimit: 10;
 }
@@ -622,50 +628,50 @@ big {
 .loading-svg-front.forwards path:nth-child(1) {
   stroke-dasharray: 158px;
   stroke-dashoffset: 0;
-  -webkit-animation: line-anim1 1s ease forwards, fill-anim 0.9s ease forwards;
-          animation: line-anim1 1s ease forwards, fill-anim 0.9s ease forwards;
+  -webkit-animation: line-anim1 0.5s ease forwards 0.4s, fill-anim 0.5s ease forwards;
+          animation: line-anim1 0.5s ease forwards 0.4s, fill-anim 0.5s ease forwards;
 }
 
 .loading-svg-front.forwards path:nth-child(2) {
   stroke-dasharray: 160px;
   stroke-dashoffset: 0;
-  -webkit-animation: line-anim2 0.7s ease forwards 0.2s, fill-anim 0.9s ease forwards;
-          animation: line-anim2 0.7s ease forwards 0.2s, fill-anim 0.9s ease forwards;
+  -webkit-animation: line-anim2 0.5s ease forwards 0.5s, fill-anim 0.5s ease forwards;
+          animation: line-anim2 0.5s ease forwards 0.5s, fill-anim 0.5s ease forwards;
 }
 
 .loading-svg-front.forwards path:nth-child(3) {
   stroke-dasharray: 203px;
   stroke-dashoffset: 0;
-  -webkit-animation: line-anim3 0.7s ease forwards 0.3s, fill-anim 0.9s ease forwards;
-          animation: line-anim3 0.7s ease forwards 0.3s, fill-anim 0.9s ease forwards;
+  -webkit-animation: line-anim3 0.5s ease forwards 0.6s, fill-anim 0.5s ease forwards;
+          animation: line-anim3 0.5s ease forwards 0.6s, fill-anim 0.5s ease forwards;
 }
 
 .loading-svg-front.forwards path:nth-child(4) {
   stroke-dasharray: 158px;
   stroke-dashoffset: 0;
-  -webkit-animation: line-anim4 0.7s ease forwards 0.4s, fill-anim 0.9s ease forwards;
-          animation: line-anim4 0.7s ease forwards 0.4s, fill-anim 0.9s ease forwards;
+  -webkit-animation: line-anim4 0.5s ease forwards 0.7s, fill-anim 0.5s ease forwards;
+          animation: line-anim4 0.5s ease forwards 0.7s, fill-anim 0.5s ease forwards;
 }
 
 .loading-svg-front.forwards path:nth-child(5) {
   stroke-dasharray: 95px;
   stroke-dashoffset: 0;
-  -webkit-animation: line-anim5 0.7s ease forwards 0.5s, fill-anim 0.9s ease forwards;
-          animation: line-anim5 0.7s ease forwards 0.5s, fill-anim 0.9s ease forwards;
+  -webkit-animation: line-anim5 0.5s ease forwards 0.8s, fill-anim 0.5s ease forwards;
+          animation: line-anim5 0.5s ease forwards 0.8s, fill-anim 0.5s ease forwards;
 }
 
 .loading-svg-front.forwards path:nth-child(6) {
   stroke-dasharray: 187px;
   stroke-dashoffset: 0;
-  -webkit-animation: line-anim6 0.7s ease forwards 0.6s, fill-anim 0.9s ease forwards;
-          animation: line-anim6 0.7s ease forwards 0.6s, fill-anim 0.9s ease forwards;
+  -webkit-animation: line-anim6 0.5s ease forwards 0.9s, fill-anim 0.5s ease forwards;
+          animation: line-anim6 0.5s ease forwards 0.9s, fill-anim 0.5s ease forwards;
 }
 
 .loading-svg-front.forwards path:nth-child(7) {
   stroke-dasharray: 113px;
   stroke-dashoffset: 0;
-  -webkit-animation: line-anim7 0.7s ease forwards 0.7s, fill-anim 0.9s ease forwards;
-          animation: line-anim7 0.7s ease forwards 0.7s, fill-anim 0.9s ease forwards;
+  -webkit-animation: line-anim7 0.5s ease forwards 1s, fill-anim 0.5s ease forwards;
+          animation: line-anim7 0.5s ease forwards 1s, fill-anim 0.5s ease forwards;
 }
 
 @-webkit-keyframes line-anim1 {
@@ -766,7 +772,7 @@ big {
 
 @-webkit-keyframes fill-anim {
   from {
-    fill: black;
+    fill: white;
   }
   to {
     fill: transparent;
@@ -775,7 +781,7 @@ big {
 
 @keyframes fill-anim {
   from {
-    fill: black;
+    fill: white;
   }
   to {
     fill: transparent;
@@ -787,7 +793,7 @@ big {
     fill: transparent;
   }
   to {
-    fill: black;
+    fill: white;
   }
 }
 
@@ -796,7 +802,7 @@ big {
     fill: transparent;
   }
   to {
-    fill: black;
+    fill: white;
   }
 }
 
