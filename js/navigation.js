@@ -29,10 +29,6 @@ jQuery(document).ready(function ($) {
 
 	const loadingSVG = $('.loading-svg-front path');
 
-	for(let i = 0; i<loadingSVG.length; i++){
-		console.log(`Letter ${i} is ${loadingSVG[i].getTotalLength()}`);
-	}
-
 	$('.site-branding svg').attr('preserveAspectRatio', 'xMinYMin meet');
 
 	// First we get the viewport height and we multiple it by 1% to get a value for a vh unit

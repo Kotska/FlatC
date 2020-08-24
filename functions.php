@@ -137,9 +137,8 @@ add_action( 'widgets_init', 'flatc_widgets_init' );
  */
 function flatc_scripts() {
 
-	wp_enqueue_script( 'flatc-portfolio', get_template_directory_uri() . '/js/portfolio.js', array('jquery'), _S_VERSION, true );
 	if (is_page_template('template-parts/page-portfolio.php')){
-
+		wp_enqueue_script( 'flatc-portfolio', get_template_directory_uri() . '/js/portfolio.js', array('jquery'), _S_VERSION, true );
 	}
 
 	if (is_page_template('template-parts/page-services.php')){
