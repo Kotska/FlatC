@@ -75,6 +75,27 @@ jQuery(document).ready(function ($) {
 				$('.nav-list').addClass('bottom100');
 			}, 380);
 		}
+		setTimeout(function () {
+			let maxHeight = $('#nav-overlay').height();
+			let maxWidth = $('#nav-overlay').width();
+			let fontSize = 0;
+			let fontInt = 0;
+			do {
+				textHeight = $('#menu-main-menu').height();
+				textWidth = $('#menu-main-menu').width();
+				fontInt = fontInt + 1;
+				fontSize = fontInt + 'px';
+
+				$('#menu-main-menu').css('font-size', fontSize);
+			} while ((textHeight <= maxHeight && textWidth <= maxWidth));
+
+			fontSize = $('#menu-main-menu').css('font-size').split('px')[0];
+			fontInt = parseInt(fontSize) - 5;
+			if(fontInt > 76) fontInt = 76;
+			$('#menu-main-menu').css('font-size', fontInt + 'px');
+		}, 500);
+
+
 	});
 
 	// columns hover text change with gsap

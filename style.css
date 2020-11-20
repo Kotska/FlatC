@@ -1507,7 +1507,8 @@ body .site-main #nav-overlay .nav-list {
 
 @media only screen and (min-width: 768px) {
   body .site-main #nav-overlay .nav-list {
-    font-size: 48px;
+    font-size: 36px;
+    padding-left: 1vw;
   }
 }
 
@@ -1825,6 +1826,9 @@ body .page-portfolio .border {
     left: auto;
     overflow: visible;
   }
+  body .site-main.page-services #nav-overlay.open {
+    width: 33.33vw;
+  }
   body .site-main #nav-overlay {
     width: 0;
     top: 0;
@@ -1834,7 +1838,7 @@ body .page-portfolio .border {
     overflow: hidden;
   }
   body .site-main #nav-overlay.open {
-    width: 66.66vw;
+    width: 50vw;
     left: 50vw;
   }
   body .site-main #nav-overlay .nav-list {
@@ -1867,6 +1871,9 @@ body .page-portfolio .border {
 @media screen and (min-width: 1200px) {
   body .site-header {
     width: 33.33vw;
+  }
+  body .site-main.page-services #nav-overlay.open {
+    width: 20vw;
   }
   body .site-main #nav-overlay {
     width: 0;
