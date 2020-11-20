@@ -78,14 +78,14 @@ jQuery(document).ready(function ($) {
 		setTimeout(function () {
 			let maxHeight = $('#nav-overlay').height();
 			let maxWidth = $('#nav-overlay').width();
-			let fontSize = 0;
-			let fontInt = 0;
+			let fontSize = $('#menu-main-menu').css('font-size').split('px')[0];
+			let fontInt = parseInt(fontSize);
 			do {
 				textHeight = $('#menu-main-menu').height();
 				textWidth = $('#menu-main-menu').width();
 				fontInt = fontInt + 1;
 				fontSize = fontInt + 'px';
-
+				console.log(fontSize);
 				$('#menu-main-menu').css('font-size', fontSize);
 			} while ((textHeight <= maxHeight && textWidth <= maxWidth));
 
