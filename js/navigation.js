@@ -93,7 +93,7 @@ jQuery(document).ready(function ($) {
 			fontInt = parseInt(fontSize) - 5;
 			if(fontInt > 76) fontInt = 76;
 			$('#menu-main-menu').css('font-size', fontInt + 'px');
-		}, 500);
+		}, 300);
 
 
 	});
