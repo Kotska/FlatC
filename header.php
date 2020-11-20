@@ -52,6 +52,11 @@
 				$id = attachment_url_to_postid($logo);
 				$file = get_attached_file($id);
 				if ($logo) {
+					if (is_page_template('template-parts/page-blog.php')){
+						$logo = get_option('site-loading-svg');
+						$id = attachment_url_to_postid($logo);
+						$file = get_attached_file($id);
+					}
 					echo '<a href="' . esc_url(home_url('/')) . '">' . file_get_contents($file) . '</a>';
 				} else {
 				?>

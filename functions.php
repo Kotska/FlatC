@@ -7,6 +7,8 @@
  * @package FlatC
  */
 
+ini_set('html_errors', true);
+
 if ( ! defined( '_S_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
 	define( '_S_VERSION', '1.0.0' );
@@ -239,10 +241,9 @@ function portfolio_post_type() {
 		'rewrite' 			  => true,
 		'capability_type'	  => 'post',
 		'hierarchichal'		  => false,
-		'support'			  => array(
+		'supports'			  => array(
 								'title',
 								'editor',
-								'thumbnail',
 								'revisions',
 		),
 		'menu_position'		  => 4,
@@ -276,7 +277,7 @@ function services_post_type() {
 		'rewrite' 			  => true,
 		'capability_type'	  => 'post',
 		'hierarchichal'		  => false,
-		'support'			  => array(
+		'supports'			  => array(
 								'title',
 								'editor',
 								'thumbnail',

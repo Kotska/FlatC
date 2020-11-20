@@ -27,13 +27,14 @@ get_header();
         <div class="desc">
             <h3></h3>
             <p></p>
+            <div class="background"></div>
         </div>
         <div class="name">
 
             <ul>
                 <?php $active = 'active'; ?>
                 <?php while ($query->have_posts()) : $query->the_post();
-                    $content = 'data-srv-content="' . esc_html(get_the_content()) . '"';
+                    $content = 'data-srv-content="' . esc_html(get_the_content()) . '" data-srv-image="'.get_the_post_thumbnail_url().'"';
                     if ($active == 'active') {
                         echo '<li '.$content.' class="active srv-item" id="srv-' . get_the_id() . '">' . get_the_title() . '</li>';
                     } else {

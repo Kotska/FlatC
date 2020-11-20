@@ -968,6 +968,10 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
   /* Chrome Safari */
 }
 
+body.page-template-page-blog .site-branding svg path {
+  fill: black;
+}
+
 @media screen and (min-width: 768px) {
   body.page-template-page-blog .site-main #nav-overlay {
     left: 0;
@@ -1227,6 +1231,24 @@ body .page-services .services .desc h3 {
   font-size: 1.2em;
 }
 
+body .page-services .services .desc p, body .page-services .services .desc h3 {
+  z-index: 2;
+}
+
+body .page-services .services .desc .background {
+  position: absolute;
+  top: 20%;
+  bottom: 20%;
+  right: 20%;
+  left: 20%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  opacity: 0.2;
+  z-index: 1;
+  background-blend-mode: overlay;
+}
+
 body .page-services .services .name {
   -ms-flex-item-align: end;
       align-self: flex-end;
@@ -1254,6 +1276,16 @@ body .page-services .services .name ul li:hover {
 
 body .page-services .services .name ul li::before {
   content: "| ";
+}
+
+body .page-services .services img {
+  position: absolute;
+  top: 50%;
+  bottom: 50%;
+  z-index: 1;
+  max-width: 25vw;
+  max-height: 25vh;
+  margin: auto;
 }
 
 @media only screen and (min-width: 768px) {
