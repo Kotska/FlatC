@@ -875,6 +875,14 @@ html {
   --navColor: #1181b2;
 }
 
+html .page-template-page-services {
+  --navColor: white;
+}
+
+html .page-template-page-services .burger.burger-rotate.open {
+  --navColor: #1181b2;
+}
+
 .burger.burger-rotate .burger-lines:after, .burger.burger-rotate .burger-lines:before {
   width: 2em;
 }
@@ -921,6 +929,15 @@ html {
     top: 25px;
     left: 170px;
   }
+  html {
+    --navColor: #1181b2;
+  }
+  html .page-template-page-services {
+    --navColor: white;
+  }
+  html .page-template-page-services .burger.burger-rotate.open {
+    --navColor: white;
+  }
 }
 
 /*===================
@@ -954,6 +971,22 @@ html {
 
 .loader .loader-gif.hidden {
   display: none;
+}
+
+.site-branding a:focus {
+  outline: none;
+}
+
+.site-branding svg #aneil {
+  -webkit-transform: translateX(-170px);
+          transform: translateX(-170px);
+  -webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
+}
+
+.site-branding:hover svg #aneil, .site-branding:active svg #aneil, .site-branding:focus svg #aneil {
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
 }
 
 html, body {
@@ -1010,6 +1043,9 @@ body.page-template-page-blog .site-branding svg path {
   }
   body .site-branding svg path {
     fill: white !important;
+  }
+  body.page-template-page-services .site-branding, body.page-template-page-portfolio .site-branding, body.home .site-branding {
+    position: initial;
   }
 }
 
