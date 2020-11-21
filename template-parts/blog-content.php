@@ -13,6 +13,7 @@ $excerpt = substr($excerpt, 0, 160);
 $excerpt = substr($excerpt, 0, strrpos($excerpt, ' '));
 $excerpt = $excerpt . '...';
 $categories = get_the_category();
+$image = get_the_post_thumbnail_url();
 ?>
 
 <div class="post-cont">
@@ -23,6 +24,7 @@ $categories = get_the_category();
         }
         ?>
     </div>
+    <div class="img-container" style="background-image: url(<?php echo $image; ?>);"></div>
     <h3><a href="<?php echo get_permalink(); ?>"><?php echo get_the_title(); ?></a></h3>
     <p><?php echo $excerpt; ?></p>
 </div>

@@ -562,50 +562,50 @@ big {
 .loading-svg-front.backwards path:nth-child(1) {
   stroke-dasharray: 158px;
   stroke-dashoffset: 158px;
-  -webkit-animation: line-anim8 1s ease forwards, fill-anim2 0.9s ease forwards .7s;
-          animation: line-anim8 1s ease forwards, fill-anim2 0.9s ease forwards .7s;
+  -webkit-animation: line-anim8 0.4s ease forwards, fill-anim2 1.3s ease forwards 0.3s;
+          animation: line-anim8 0.4s ease forwards, fill-anim2 1.3s ease forwards 0.3s;
 }
 
 .loading-svg-front.backwards path:nth-child(2) {
   stroke-dasharray: 160px;
   stroke-dashoffset: 160px;
-  -webkit-animation: line-anim8 0.7s ease forwards 0.2s, fill-anim2 0.9s ease forwards .7s;
-          animation: line-anim8 0.7s ease forwards 0.2s, fill-anim2 0.9s ease forwards .7s;
+  -webkit-animation: line-anim8 0.4s ease forwards 0.2s, fill-anim2 1.3s ease forwards 0.3s;
+          animation: line-anim8 0.4s ease forwards 0.2s, fill-anim2 1.3s ease forwards 0.3s;
 }
 
 .loading-svg-front.backwards path:nth-child(3) {
   stroke-dasharray: 203px;
   stroke-dashoffset: 203px;
-  -webkit-animation: line-anim8 0.7s ease forwards 0.3s, fill-anim2 0.9s ease forwards .7s;
-          animation: line-anim8 0.7s ease forwards 0.3s, fill-anim2 0.9s ease forwards .7s;
+  -webkit-animation: line-anim8 0.4s ease forwards 0.3s, fill-anim2 1.3s ease forwards 0.3s;
+          animation: line-anim8 0.4s ease forwards 0.3s, fill-anim2 1.3s ease forwards 0.3s;
 }
 
 .loading-svg-front.backwards path:nth-child(4) {
   stroke-dasharray: 158px;
   stroke-dashoffset: 158px;
-  -webkit-animation: line-anim8 0.7s ease forwards 0.4s, fill-anim2 0.9s ease forwards .7s;
-          animation: line-anim8 0.7s ease forwards 0.4s, fill-anim2 0.9s ease forwards .7s;
+  -webkit-animation: line-anim8 0.4s ease forwards 0.4s, fill-anim2 1.3s ease forwards 0.3s;
+          animation: line-anim8 0.4s ease forwards 0.4s, fill-anim2 1.3s ease forwards 0.3s;
 }
 
 .loading-svg-front.backwards path:nth-child(5) {
   stroke-dasharray: 95px;
   stroke-dashoffset: 95px;
-  -webkit-animation: line-anim8 0.7s ease forwards 0.5s, fill-anim2 0.9s ease forwards .7s;
-          animation: line-anim8 0.7s ease forwards 0.5s, fill-anim2 0.9s ease forwards .7s;
+  -webkit-animation: line-anim8 0.4s ease forwards 0.5s, fill-anim2 1.3s ease forwards 0.3s;
+          animation: line-anim8 0.4s ease forwards 0.5s, fill-anim2 1.3s ease forwards 0.3s;
 }
 
 .loading-svg-front.backwards path:nth-child(6) {
   stroke-dasharray: 187px;
   stroke-dashoffset: 187px;
-  -webkit-animation: line-anim8 0.7s ease forwards 0.6s, fill-anim2 0.9s ease forwards .7s;
-          animation: line-anim8 0.7s ease forwards 0.6s, fill-anim2 0.9s ease forwards .7s;
+  -webkit-animation: line-anim8 0.4s ease forwards 0.6s, fill-anim2 1.3s ease forwards 0.3s;
+          animation: line-anim8 0.4s ease forwards 0.6s, fill-anim2 1.3s ease forwards 0.3s;
 }
 
 .loading-svg-front.backwards path:nth-child(7) {
   stroke-dasharray: 113px;
   stroke-dashoffset: 113px;
-  -webkit-animation: line-anim8 0.7s ease forwards 0.7s, fill-anim2 0.9s ease forwards .7s;
-          animation: line-anim8 0.7s ease forwards 0.7s, fill-anim2 0.9s ease forwards .7s;
+  -webkit-animation: line-anim8 0.4s ease forwards 0.7s, fill-anim2 1.3s ease forwards 0.3s;
+          animation: line-anim8 0.4s ease forwards 0.7s, fill-anim2 1.3s ease forwards 0.3s;
 }
 
 .loading-svg-front.forwards {
@@ -628,50 +628,50 @@ big {
 .loading-svg-front.forwards path:nth-child(1) {
   stroke-dasharray: 158px;
   stroke-dashoffset: 0;
-  -webkit-animation: line-anim1 0.5s ease forwards 0.4s, fill-anim 0.5s ease forwards;
-          animation: line-anim1 0.5s ease forwards 0.4s, fill-anim 0.5s ease forwards;
+  -webkit-animation: line-anim1 0.4s ease forwards, fill-anim 1s ease forwards;
+          animation: line-anim1 0.4s ease forwards, fill-anim 1s ease forwards;
 }
 
 .loading-svg-front.forwards path:nth-child(2) {
   stroke-dasharray: 160px;
   stroke-dashoffset: 0;
-  -webkit-animation: line-anim2 0.5s ease forwards 0.5s, fill-anim 0.5s ease forwards;
-          animation: line-anim2 0.5s ease forwards 0.5s, fill-anim 0.5s ease forwards;
+  -webkit-animation: line-anim2 0.4s ease forwards 0.2s, fill-anim 1s ease forwards;
+          animation: line-anim2 0.4s ease forwards 0.2s, fill-anim 1s ease forwards;
 }
 
 .loading-svg-front.forwards path:nth-child(3) {
   stroke-dasharray: 203px;
   stroke-dashoffset: 0;
-  -webkit-animation: line-anim3 0.5s ease forwards 0.6s, fill-anim 0.5s ease forwards;
-          animation: line-anim3 0.5s ease forwards 0.6s, fill-anim 0.5s ease forwards;
+  -webkit-animation: line-anim3 0.4s ease forwards 0.3s, fill-anim 1s ease forwards;
+          animation: line-anim3 0.4s ease forwards 0.3s, fill-anim 1s ease forwards;
 }
 
 .loading-svg-front.forwards path:nth-child(4) {
   stroke-dasharray: 158px;
   stroke-dashoffset: 0;
-  -webkit-animation: line-anim4 0.5s ease forwards 0.7s, fill-anim 0.5s ease forwards;
-          animation: line-anim4 0.5s ease forwards 0.7s, fill-anim 0.5s ease forwards;
+  -webkit-animation: line-anim4 0.4s ease forwards 0.4s, fill-anim 1s ease forwards;
+          animation: line-anim4 0.4s ease forwards 0.4s, fill-anim 1s ease forwards;
 }
 
 .loading-svg-front.forwards path:nth-child(5) {
   stroke-dasharray: 95px;
   stroke-dashoffset: 0;
-  -webkit-animation: line-anim5 0.5s ease forwards 0.8s, fill-anim 0.5s ease forwards;
-          animation: line-anim5 0.5s ease forwards 0.8s, fill-anim 0.5s ease forwards;
+  -webkit-animation: line-anim5 0.4s ease forwards 0.5s, fill-anim 1s ease forwards;
+          animation: line-anim5 0.4s ease forwards 0.5s, fill-anim 1s ease forwards;
 }
 
 .loading-svg-front.forwards path:nth-child(6) {
   stroke-dasharray: 187px;
   stroke-dashoffset: 0;
-  -webkit-animation: line-anim6 0.5s ease forwards 0.9s, fill-anim 0.5s ease forwards;
-          animation: line-anim6 0.5s ease forwards 0.9s, fill-anim 0.5s ease forwards;
+  -webkit-animation: line-anim6 0.4s ease forwards 0.6s, fill-anim 1s ease forwards;
+          animation: line-anim6 0.4s ease forwards 0.6s, fill-anim 1s ease forwards;
 }
 
 .loading-svg-front.forwards path:nth-child(7) {
   stroke-dasharray: 113px;
   stroke-dashoffset: 0;
-  -webkit-animation: line-anim7 0.5s ease forwards 1s, fill-anim 0.5s ease forwards;
-          animation: line-anim7 0.5s ease forwards 1s, fill-anim 0.5s ease forwards;
+  -webkit-animation: line-anim7 0.4s ease forwards 0.7s, fill-anim 1s ease forwards;
+          animation: line-anim7 0.4s ease forwards 0.7s, fill-anim 1s ease forwards;
 }
 
 @-webkit-keyframes line-anim1 {
@@ -1003,6 +1003,20 @@ body.page-template-page-blog .site-branding svg path {
   }
 }
 
+@media screen and (max-width: 1200px) {
+  body .site-branding {
+    left: 68vw;
+    position: absolute;
+  }
+  body .site-branding svg path {
+    fill: white !important;
+  }
+}
+
+body .page-blog .site-header {
+  background-color: transparent;
+}
+
 body .page-blog a:link, body .page-blog a:visited {
   color: inherit;
 }
@@ -1029,7 +1043,7 @@ body .page-blog .blog-col1::-webkit-scrollbar {
 }
 
 body .page-blog .blog-col1 .blog-list {
-  margin: 20vh 0 0 0;
+  margin: 10vh 0 0 0;
   padding-left: 30px;
   line-height: 2em;
   color: black;
@@ -1091,7 +1105,19 @@ body .page-blog .blog-col1 .post-cont::before {
   width: 10px;
   height: 45%;
   /* or 100px */
-  background: rgba(105, 106, 105, 0.5);
+  background: #B4B4B4;
+}
+
+body .page-blog .blog-col1 .post-cont .img-container {
+  height: 400px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 15px;
+  margin-top: 10px;
 }
 
 body .page-blog .blog-col1 .post-cont h3 {

@@ -17,7 +17,7 @@ setTimeout(function () {
 	if (pageLoaded) {
 		hideLoader();
 	}
-}, 1000);
+}, 350);
 
 
 jQuery(document).ready(function ($) {
