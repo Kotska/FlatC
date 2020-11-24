@@ -148,6 +148,8 @@ function flatc_scripts() {
 	}
 
 	if (is_page_template('template-parts/page-blog.php')){
+		wp_enqueue_script('splide', get_template_directory_uri() . '/js/splide.min.js');
+		wp_enqueue_style('splide-style', get_template_directory_uri() . '/splide-core.min.css');
 		wp_enqueue_script( 'flatc-portfolio', get_template_directory_uri() . '/js/blog.js', array('jquery'), _S_VERSION, true );
 		wp_localize_script( 'flatc-portfolio', 'ajaxpagination', array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
 	}
@@ -372,3 +374,60 @@ function my_custom_mime_types( $mimes ) {
 	return $mimes;
 	}
 add_filter( 'upload_mimes', 'my_custom_mime_types' );
+
+// Add custom meta fields
+function add_meta_boxes() {
+	global $post;
+    if ( 'template-parts/page-blog.php' == get_post_meta( $post->ID, '_wp_page_template', true ) ) {
+        add_meta_box('slider_categories', 'Slider Categories', 'slider_categories_callback', null, 'side');
+    }
+}
+add_action( 'add_meta_boxes_page', 'add_meta_boxes' );
+
+function slider_categories_callback(){
+	global $post;
+	wp_nonce_field('flatc_slider_meta_box', 'flatc_slider_meta_box_nonce');
+
+	$value = get_post_meta($post->ID, 'slider_categories', false);
+
+	?>
+	<label for="flatc_slider"><?php _e("Choose value:", 'choose_value'); ?></label>
+	<br>
+	<?php
+	foreach(get_categories() as $category) {
+		// $checked = checked($value, $category->name, false);
+		if(in_array($category->name, $value[0])){
+			$checked = 'checked="checked"';
+		} else {
+		$checked = '';
+		}
+		echo '<input type="checkbox" name="flatc_slider_input[]" '.$checked.' value="'.$category->name.'">'.$category->name.'<br>';
+	}
+}
+
+function flatc_save_meta_box($post_id) {
+	        // Check if our nonce is set.
+			if ( !isset( $_POST['flatc_slider_meta_box_nonce'] ) ) {
+                return;
+        }
+
+        // Verify that the nonce is valid.
+        if ( !wp_verify_nonce( $_POST['flatc_slider_meta_box_nonce'], 'flatc_slider_meta_box' ) ) {
+                return;
+        }
+
+        // If this is an autosave, our form has not been submitted, so we don't want to do anything.
+        if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+                return;
+        }
+
+        // Check the user's permissions.
+        if ( !current_user_can( 'edit_post', $post_id ) ) {
+                return;
+        }
+
+		$new_meta_value = (isset($_POST['flatc_slider_input']) ? sanitize_html_class($_POST['flatc_slider_input']) : '');
+
+		update_post_meta($post_id, 'slider_categories', $new_meta_value);
+}
+add_action('save_post', 'flatc_save_meta_box');
