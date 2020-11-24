@@ -2210,8 +2210,8 @@ body.page-template-page-blog .latest-post .latest__text_underline {
   top: 59px;
   left: 83px;
   height: 2px;
-  -webkit-box-shadow: 4px 1px 0px #8FE226;
-          box-shadow: 4px 1px 0px #8FE226;
+  -webkit-box-shadow: 4px 1px 0px var(--mainColor);
+          box-shadow: 4px 1px 0px var(--mainColor);
   background-color: black;
   width: 75%;
 }
