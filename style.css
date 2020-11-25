@@ -2330,16 +2330,66 @@ body.page-template-page-blog .latest-post-list .excerpt p {
   font-size: 16px;
 }
 
+body.page-template-page-blog .no-results {
+  background-image: url("data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9JzMwMHB4JyB3aWR0aD0nMzAwcHgnICBmaWxsPSIjRTVFNUU1IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMTAwIDEwMCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBhdGggZD0iTTY4Ljk2MSw2My40MjFjNS4xMy02LjM1OCw3LjkxOC0xNC4yMTgsNy45MTgtMjIuNDgxQzc2Ljg3OSwyMS4xMjMsNjAuNzU3LDUsNDAuOTQsNUMyMS4xMjIsNSw1LDIxLjEyMyw1LDQwLjk0ICBjMCwxOS44MSwxNi4xMjIsMzUuOTMxLDM1Ljk0LDM1LjkzMWM4LjM4OSwwLDE2LjMzNS0yLjg1OSwyMi43NDYtOC4xMjJMODkuNCw5NC42OTlsNS4zMjQtNS4yN0w2OC45NjEsNjMuNDIxeiBNNDAuOTQsNzMuMTI2ICBjLTE3Ljc1NCwwLTMyLjE5My0xNC40MzgtMzIuMTkzLTMyLjE4NmMwLTE3Ljc1NCwxNC40MzktMzIuMTkyLDMyLjE5My0zMi4xOTJjMTcuNzQ2LDAsMzIuMTkzLDE0LjQzOCwzMi4xOTMsMzIuMTkyICBDNzMuMTMzLDU4LjY4OCw1OC42ODYsNzMuMTI2LDQwLjk0LDczLjEyNnoiPjwvcGF0aD48cG9seWdvbiBwb2ludHM9IjUyLjM3NSw1MC4yOSA0My4wMDIsNDAuODU5IDUyLjM2OCwzMS41MjQgNTAuMzMsMjkuNDc5IDQwLjk2MywzOC44MTIgMzEuNTg3LDI5LjM4NSAyOS41NCwzMS40MjEgMzguOTEzLDQwLjg1MyAgIDI5LjU0Niw1MC4xODYgMzEuNTgzLDUyLjIzMSA0MC45NTIsNDIuODk3IDUwLjMyOCw1Mi4zMjUgIj48L3BvbHlnb24+PC9zdmc+");
+  height: 500px;
+  content: "";
+  background-repeat: no-repeat;
+  margin: auto;
+  background-position: center;
+  fill: white;
+  display: none;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+body.page-template-page-blog .no-results h1 {
+  text-align: center;
+  color: #E5E5E5;
+}
+
+body.page-template-page-blog .searching-results {
+  background-image: url("data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9JzMwMHB4JyB3aWR0aD0nMzAwcHgnICBmaWxsPSIjRTVFNUU1IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMTAwIDEwMCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PGc+PHBhdGggZD0iTTM0LjA0NiwyNy45NTRjMS43MzMtMS44NDUsNC4xMTEtMi43NjgsNy4xMzctMi43NjhjMi43OTcsMCw1LjAzOCwwLjc5LDYuNzIsMi4zNjhjMS42ODIsMS41NzgsMi41MjUsMy41OTUsMi41MjUsNi4wNDkgICBjMCwxLjQ4OC0wLjMwNSwyLjY5NC0wLjkxNiwzLjYyYy0wLjYxLDAuOTI2LTEuODYsMi4yODctMy43NTEsNC4wODNjLTEuMzc1LDEuMzA1LTIuMjcxLDIuNDA5LTIuNjg2LDMuMzE0ICAgYy0wLjQxNSwwLjkwNS0wLjYyMywyLjI0MS0wLjYyMyw0LjAwOWgtMy43NDZjMC0yLjAwNiwwLjIzOC0zLjYyMywwLjcxNi00Ljg1YzAuNDc2LTEuMjI4LDEuNTM3LTIuNjM0LDMuMTg0LTQuMjE5bDEuNzE2LTEuNjYyICAgYzAuNTE1LTAuNDc4LDAuOTM0LTAuOTc1LDEuMjU0LTEuNDk1YzAuNTgyLTAuOTEyLDAuODc0LTEuODU5LDAuODc0LTIuODRjMC0xLjM3NS0wLjQxOS0yLjU2Ny0xLjI1Ny0zLjU3NyAgIGMtMC44MzctMS4wMS0yLjIyNC0xLjUxNi00LjE1Ny0xLjUxNmMtMi4zOTIsMC00LjA0NiwwLjg3LTQuOTYzLDIuNjA5Yy0wLjUxNiwwLjk2OC0wLjgxLDIuMzY0LTAuODgxLDQuMTg4aC0zLjc0NiAgIEMzMS40NDcsMzIuMjM2LDMyLjMxMiwyOS43OTksMzQuMDQ2LDI3Ljk1NHogTTM4LjYyMyw1Mi4xMjJoNC4xODd2NC4zNzZoLTQuMTg3VjUyLjEyMnoiPjwvcGF0aD48L2c+PHBhdGggZD0iTTY4Ljk2MSw2My40MjFjNS4xMy02LjM1OCw3LjkxOC0xNC4yMTgsNy45MTgtMjIuNDgxQzc2Ljg3OSwyMS4xMjMsNjAuNzU3LDUsNDAuOTQsNUMyMS4xMjIsNSw1LDIxLjEyMyw1LDQwLjk0ICBjMCwxOS44MSwxNi4xMjIsMzUuOTMxLDM1Ljk0LDM1LjkzMWM4LjM4OSwwLDE2LjMzNS0yLjg1OSwyMi43NDYtOC4xMjJMODkuNCw5NC42OTlsNS4zMjQtNS4yN0w2OC45NjEsNjMuNDIxeiBNNDAuOTQsNzMuMTI2ICBjLTE3Ljc1NCwwLTMyLjE5My0xNC40MzgtMzIuMTkzLTMyLjE4NmMwLTE3Ljc1NCwxNC40MzktMzIuMTkyLDMyLjE5My0zMi4xOTJjMTcuNzQ2LDAsMzIuMTkzLDE0LjQzOCwzMi4xOTMsMzIuMTkyICBDNzMuMTMzLDU4LjY4OCw1OC42ODYsNzMuMTI2LDQwLjk0LDczLjEyNnoiPjwvcGF0aD48L3N2Zz4=");
+  height: 500px;
+  content: "";
+  background-repeat: no-repeat;
+  margin: auto;
+  background-position: center;
+  fill: white;
+  display: none;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+body.page-template-page-blog .searching-results h1 {
+  text-align: center;
+  color: #E5E5E5;
+}
+
+body.page-template-page-blog #page {
+  position: relative;
+  min-height: calc((var(--vh, 1vh) * 100) - 136px);
+}
+
 body.page-template-page-blog footer {
   height: 128px;
   background-color: #404040;
-  position: relative;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
 body.page-template-page-blog footer h1 {
   color: white;
   text-align: center;
-  line-height: 128px;
 }
 
 @media screen and (max-width: 1200px) {
@@ -2382,6 +2432,7 @@ body.page-template-page-blog footer h1 {
 
 body.page-template-page-blog main {
   margin: 136px 165px 0 165px;
+  padding-bottom: 128px;
 }
 
 hr {

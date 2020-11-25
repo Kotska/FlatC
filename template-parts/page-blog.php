@@ -120,6 +120,12 @@ $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
         }
         ?>
     </div>
+    <div class="no-results">
+        <h1>Nincs találat :(</h1>
+    </div>
+    <div class="searching-results">
+        <h1>Keresés...</h1>
+    </div>
     <?php
     ?>
     <div id="nav-overlay">
