@@ -85,6 +85,41 @@ $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
         }
         ?>
     </div>
+    <div class="latest-post-list">
+        <?php
+        $args = [
+            'posts_per_page' => 4,
+            'order'          => 'DESC',
+            'orderby'        => 'date'
+        ];
+        $query = new WP_Query($args);
+        if ($query->have_posts()) {
+            while ($query->have_posts()) {
+                $query->the_post();
+                $title = get_the_title();
+                $link = get_permalink();
+                $category = get_the_category();
+                $thumbnail = get_the_post_thumbnail_url();
+                ?>
+                <div class="post-cont">
+                <img src="<?php echo $thumbnail; ?>">
+                <div class="title-cont">
+                <?php
+                if ( ! empty( $categories ) ) {
+                    foreach ($categories as $category) {
+                        echo '<div class="categories"><a class="post-category">' . $category[0] . '</a></div>';
+                    }
+                }
+                ?>
+                <a href="<?php echo $link; ?>"><h3><?php echo $title ?></h3></a>
+                </div>
+                <div class="excerpt"><p><?php echo get_the_excerpt(); ?></p></div>
+                </div>
+                <?php
+            }
+        }
+        ?>
+    </div>
     <?php
     ?>
     <div id="nav-overlay">
