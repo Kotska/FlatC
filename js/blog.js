@@ -54,15 +54,15 @@ jQuery(document).ready(function ($) {
 
     var inputTimeOut;
     $('.search-input').on('input', function(){
+        $('.searching-results').css('display', 'flex');
+        $('.slider-list').hide();
+        $('.latest-post').hide();
+        $('.latest-post-list').hide();
+        $('.no-results').css('display', 'none');
         clearTimeout(inputTimeOut);
         inputTimeOut = setTimeout(function(){
             var searchTerm = $('.search-input').val();
-            $('.no-results').css('display', 'none');
             if (searchTerm != '' && searchTerm != undefined && searchTerm != null) {
-                $('.searching-results').css('display', 'flex');
-                $('.slider-list').hide();
-                $('.latest-post').hide();
-                $('.latest-post-list').hide();
                 $.ajax({
                     url: ajax.url,
                     data: {
@@ -89,6 +89,7 @@ jQuery(document).ready(function ($) {
                 $('.latest-post-list').show();
                 $('.search-results').remove();
                 $('.no-results').css('display', 'none');
+                $('.searching-results').css('display', 'none');
             }
         }, 1000);
     });
