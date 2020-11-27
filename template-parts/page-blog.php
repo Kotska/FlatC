@@ -79,7 +79,7 @@ $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
                 }
                 ?>
                 <a href="<?php echo $link; ?>"><h3><?php echo $title ?></h3></a>
-                <div class="excerpt"><p><?php echo get_the_excerpt(); ?></p></div>
+                <div class="excerpt"><p><?php echo excerpt(30); ?></p></div>
                 <?php
             }
         }
@@ -87,6 +87,17 @@ $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
     </div>
     <div class="latest-post-list">
         <?php
+        function excerpt($limit) {
+            $excerpt = explode(' ', get_the_excerpt(), $limit);
+            if (count($excerpt)>=$limit) {
+            array_pop($excerpt);
+            $excerpt = implode(" ",$excerpt).'...';
+            } else {
+            $excerpt = implode(" ",$excerpt);
+            }	
+            $excerpt = preg_replace('`[[^]]*]`','',$excerpt);
+            return $excerpt;
+        }
         $args = [
             'posts_per_page' => 4,
             'order'          => 'DESC',
@@ -114,7 +125,7 @@ $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
                 ?>
                 <a href="<?php echo $link; ?>"><h3><?php echo $title ?></h3></a>
                 </div>
-                <div class="excerpt"><p><?php echo get_the_excerpt(); ?></p></div>
+                <div class="excerpt"><p><?php echo excerpt(25); ?></p></div>
                 </div>
                 <?php
             }
