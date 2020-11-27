@@ -24,8 +24,8 @@ $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
             ];
             $query = new WP_Query($args);
             ?>
-            <h2 class="slider-title"><?php echo $category ?></h2>
             <div class="splide">
+            <h2 class="slider-title"><?php echo $category ?></h2>
                 <div class="splide__track">
                     <ul class="splide__list">
                         <?php

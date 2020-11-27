@@ -20,6 +20,21 @@ jQuery(document).ready(function ($) {
         pagination: false,
         gap: 30,
         lazyLoad: true,
+        fixedWidth: 255,
+        breakpoints: {
+            1024: {
+                perPage: 3,
+                fixedWidth: 289
+            },
+            768: {
+                perPage: 2,
+                fixedWidth: false,
+            },
+            480: {
+                perPage: 1,
+                fixedWidth: false
+            }
+        }
     }).mount();
 
     var didScroll;

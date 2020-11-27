@@ -2165,7 +2165,7 @@ body.page-template-page-blog .slider-title {
   font-style: italic;
   font-size: 56px;
   text-shadow: 3px 2px var(--mainColor);
-  line-height: 41px;
+  line-height: 42px;
   margin: 0 0 0 -20px;
   z-index: 4;
 }
@@ -2173,6 +2173,7 @@ body.page-template-page-blog .slider-title {
 body.page-template-page-blog .splide {
   font-style: italic;
   font-size: 18px;
+  margin: auto;
 }
 
 body.page-template-page-blog .splide .splide__arrows {
@@ -2207,8 +2208,10 @@ body.page-template-page-blog .splide .splide__arrows button.splide__arrow--next 
 
 body.page-template-page-blog .latest-post {
   position: relative;
+  margin: auto;
   margin-top: 48px;
   margin-bottom: 48px;
+  max-width: 1109px;
 }
 
 body.page-template-page-blog .latest-post .latest {
@@ -2269,8 +2272,8 @@ body.page-template-page-blog .latest-post .excerpt p {
 }
 
 body.page-template-page-blog .latest-post-list {
-  max-width: 640px;
-  margin-left: 95px;
+  margin: auto;
+  max-width: 1109px;
 }
 
 body.page-template-page-blog .latest-post-list img {
@@ -2305,12 +2308,14 @@ body.page-template-page-blog .latest-post-list .title-cont h3 {
 }
 
 body.page-template-page-blog .latest-post-list .post-cont {
+  max-width: 640px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   margin: 16px 0;
+  margin-left: 95px;
 }
 
 body.page-template-page-blog .latest-post-list .post-cont:nth-child(2n) {
@@ -2392,6 +2397,16 @@ body.page-template-page-blog footer h1 {
   text-align: center;
 }
 
+body.page-template-page-blog main {
+  margin: 136px 165px 0 165px;
+  padding-bottom: 128px;
+}
+
+body.page-template-page-blog .slider-list {
+  max-width: 1109px;
+  margin: auto;
+}
+
 @media screen and (max-width: 1200px) {
   body.page-template-page-blog .site-branding {
     left: auto;
@@ -2402,7 +2417,7 @@ body.page-template-page-blog footer h1 {
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
   body.page-template-page-blog #masthead .site-branding {
     margin-left: 46px;
   }
@@ -2412,9 +2427,46 @@ body.page-template-page-blog footer h1 {
   body.page-template-page-blog #masthead .search-container {
     right: 128px;
   }
+  body.page-template-page-blog main {
+    margin: 136px 48px 0 48px;
+  }
+  body.page-template-page-blog .latest-post img {
+    max-width: 610px;
+  }
+  body.page-template-page-blog .latest-post img, body.page-template-page-blog .latest-post .categories, body.page-template-page-blog .latest-post .excerpt, body.page-template-page-blog .latest-post h3 {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  body.page-template-page-blog .latest-post-list .post-cont {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  body.page-template-page-blog main {
+    margin: 136px 45px 0 45px;
+  }
+  body.page-template-page-blog .slider-title {
+    font-size: 48px;
+    line-height: 36px;
+  }
+  body.page-template-page-blog .slider-list a {
+    font-size: 18px;
+  }
+  body.page-template-page-blog .latest-post img {
+    width: 100%;
+  }
+  body.page-template-page-blog .latest-post img, body.page-template-page-blog .latest-post .categories, body.page-template-page-blog .latest-post .excerpt, body.page-template-page-blog .latest-post h3 {
+    margin-left: 0;
+    margin-right: 0;
+  }
 }
 
 @media screen and (max-width: 480px) {
+  body.page-template-page-blog main {
+    margin: 136px 16px 0 16px;
+  }
   body.page-template-page-blog #masthead .site-branding {
     margin-left: 16px;
   }
@@ -2428,11 +2480,19 @@ body.page-template-page-blog footer h1 {
   body.page-template-page-blog #masthead .search-container input {
     max-width: 83px;
   }
-}
-
-body.page-template-page-blog main {
-  margin: 136px 165px 0 165px;
-  padding-bottom: 128px;
+  body.page-template-page-blog .splide .splide__arrows button.splide__arrow--prev {
+    left: -25px;
+  }
+  body.page-template-page-blog .splide .splide__arrows button.splide__arrow--next {
+    right: -25px;
+  }
+  body.page-template-page-blog .latest-post .excerpt p,
+  body.page-template-page-blog .latest-post-list .excerpt p {
+    font-size: 14px;
+  }
+  body.page-template-page-blog .latest-post-list .title-cont h3 {
+    font-size: 18px;
+  }
 }
 
 hr {
