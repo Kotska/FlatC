@@ -59,6 +59,7 @@ jQuery(document).ready(function ($) {
 	// define constants
 	const col2Title = $('.col2-title').text();
 	const col3Title = $('.col3-title').text();
+	var sizeTime;
 
 	// toggle nav menu class
 	$('#nav-btn').on('click', function (e) {
@@ -75,17 +76,22 @@ jQuery(document).ready(function ($) {
 				$('.nav-list').addClass('bottom100');
 			}, 380);
 		}
-		setTimeout(function () {
+		
+		clearTimeout(sizeTime);
+		if ($('#nav-btn').hasClass('open')) return;
+		sizeTime = setTimeout(function () {
+			
 			let maxHeight = $('#nav-overlay').height();
 			let maxWidth = $('#nav-overlay').width();
-			let fontSize = $('#menu-main-menu').css('font-size').split('px')[0];
-			let fontInt = parseInt(fontSize);
+			// let fontSize = $('#menu-main-menu').css('font-size').split('px')[0];
+			// let fontInt = parseInt(fontSize);
+			console.log(maxWidth);
+			let fontInt = 14;
 			do {
 				textHeight = $('#menu-main-menu').height();
 				textWidth = $('#menu-main-menu').width();
 				fontInt = fontInt + 1;
 				fontSize = fontInt + 'px';
-				console.log(fontSize);
 				$('#menu-main-menu').css('font-size', fontSize);
 			} while ((textHeight <= maxHeight && textWidth <= maxWidth));
 

@@ -98,7 +98,6 @@ jQuery(document).ready(function ($) {
                     }
                 });
             } else {
-                console.log('asdf');
                 $('.slider-list').show();
                 $('.latest-post').show();
                 $('.latest-post-list').show();
