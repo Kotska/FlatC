@@ -2463,6 +2463,13 @@ body.page-template-page-blog .slider-list {
   }
 }
 
+@media screen and (max-width: 600px) {
+  body.page-template-page-blog .latest-post-list .post-cont img {
+    margin: 0;
+    max-width: 100%;
+  }
+}
+
 @media screen and (max-width: 480px) {
   body.page-template-page-blog main {
     margin: 136px 16px 0 16px;

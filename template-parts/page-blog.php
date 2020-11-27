@@ -90,7 +90,8 @@ $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
         $args = [
             'posts_per_page' => 4,
             'order'          => 'DESC',
-            'orderby'        => 'date'
+            'orderby'        => 'date',
+            'offset'         => 1
         ];
         $query = new WP_Query($args);
         if ($query->have_posts()) {
