@@ -14,28 +14,30 @@ jQuery(document).ready(function ($) {
     let themeColorName = "theme_"+Math.floor((Math.random() * 4) + 1);
     $('body').addClass(themeColorName);
 
-    new Splide( '.splide', {
-        type: 'slide',
-        perPage: 4,
-        pagination: false,
-        gap: 30,
-        lazyLoad: true,
-        fixedWidth: 255,
-        breakpoints: {
-            1024: {
-                perPage: 3,
-                fixedWidth: 289
-            },
-            768: {
-                perPage: 2,
-                fixedWidth: false,
-            },
-            480: {
-                perPage: 1,
-                fixedWidth: false
+    if ($( ".splide" ).length) {
+        new Splide( '.splide', {
+            type: 'slide',
+            perPage: 4,
+            pagination: false,
+            gap: 30,
+            lazyLoad: true,
+            fixedWidth: 255,
+            breakpoints: {
+                1024: {
+                    perPage: 3,
+                    fixedWidth: 289
+                },
+                768: {
+                    perPage: 2,
+                    fixedWidth: false,
+                },
+                480: {
+                    perPage: 1,
+                    fixedWidth: false
+                }
             }
-        }
-    }).mount();
+        }).mount();
+    }
 
     var didScroll;
     var lastScrollTop = 0;

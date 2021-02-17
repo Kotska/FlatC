@@ -25,32 +25,32 @@ $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
             $query = new WP_Query($args);
             ?>
             <div class="splide">
-            <h2 class="slider-title"><?php echo $category ?></h2>
+                <h2 class="slider-title"><?php echo $category ?></h2>
                 <div class="splide__track">
                     <ul class="splide__list">
                         <?php
-                        if ($query->have_posts()) {
-                            while ($query->have_posts()) {
-                                $query->the_post();
-                                $title = get_the_title();
-                                $link = get_permalink();
-                                $thumbnail = get_the_post_thumbnail_url();
-                                ?>
-                                <li class="splide__slide">
-                                    <div class="splide__slide__container">
-                                        <img src="<?php echo $thumbnail; ?>">
-                                    </div>
-                                    <a href="<?php echo $link; ?>"><?php echo $title; ?></a>
-                                </li>
-                                <?php
+                            if ($query->have_posts()) {
+                                while ($query->have_posts()) {
+                                    $query->the_post();
+                                    $title = get_the_title();
+                                    $link = get_permalink();
+                                    $thumbnail = get_the_post_thumbnail_url();
+                                    ?>
+                                    <li class="splide__slide">
+                                        <div class="splide__slide__container">
+                                            <img src="<?php echo $thumbnail; ?>">
+                                        </div>
+                                        <a href="<?php echo $link; ?>"><?php echo $title; ?></a>
+                                    </li>
+                                    <?php
+                                }
                             }
-                        }
-                        wp_reset_postdata();
-                    }
-                    ?>
+                            wp_reset_postdata();
+                        ?>
                     </ul>
                 </div>
             </div>
+        <?php } ?>
     </div>
     <div class="latest-post">
         <h2 class="latest">Legfrissebb</h2>
