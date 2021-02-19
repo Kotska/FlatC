@@ -1,18 +1,35 @@
-jQuery(document).ready(function ($) {
-    	// First we get the viewport height and we multiple it by 1% to get a value for a vh unit
-	let vh = window.innerHeight * 0.01;
-	// Then we set the value in the --vh custom property to the root of the document
-	document.documentElement.style.setProperty('--vh', `${vh}px`);
+var blogPage;
+var blogSingle;
+(function ($) {
 
-	// We listen to the resize event
-	window.addEventListener('resize', () => {
-		// We execute the same script as before
-		let vh = window.innerHeight * 0.01;
-		document.documentElement.style.setProperty('--vh', `${vh}px`);
-    });
-    
-    let themeColorName = "theme_"+Math.floor((Math.random() * 4) + 1);
-    $('body').addClass(themeColorName);
+    function init(){
+        // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
+        let vh = window.innerHeight * 0.01;
+        // Then we set the value in the --vh custom property to the root of the document
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+        // We listen to the resize event
+        window.addEventListener('resize', () => {
+            // We execute the same script as before
+            let vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
+        });
+        
+        let themeColorName = "theme_"+Math.floor((Math.random() * 4) + 1);
+        $('body').addClass(themeColorName);
+    };
+
+    blogPage = {
+
+    };
+
+    blogSingle = {
+
+    };
+
+    $(document).ready(function () {
+
+    init();
 
     if ($( ".splide" ).length) {
         new Splide( '.splide', {
@@ -110,3 +127,4 @@ jQuery(document).ready(function ($) {
         }, 1000);
     });
 });
+})(jQuery);

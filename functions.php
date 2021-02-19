@@ -152,7 +152,8 @@ function flatc_scripts()
 		wp_enqueue_script('flatc-services', get_template_directory_uri() . '/js/services.js', array('jquery'), _S_VERSION, true);
 	}
 
-	if (is_page_template('template-parts/page-blog.php')) {
+	if (is_page_template('template-parts/page-blog.php') || is_singular('post')) {
+
 		wp_enqueue_script('splide', get_template_directory_uri() . '/js/splide.min.js');
 		wp_enqueue_style('splide-style', get_template_directory_uri() . '/splide-core.min.css');
 		wp_enqueue_script('flatc-blog', get_template_directory_uri() . '/js/blog.js', array('jquery'), _S_VERSION, true);

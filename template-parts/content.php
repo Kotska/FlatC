@@ -6,7 +6,7 @@
  *
  * @package FlatC
  */
-
+get_header();
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -61,3 +61,5 @@
 		<?php flatc_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-<?php the_ID(); ?> -->
+<?php
+
