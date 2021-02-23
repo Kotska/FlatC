@@ -117,9 +117,18 @@
         }, 1000);
     });
 
+    function closePost(){
+        $('.post-container').remove();
+        $('.post-overlay').remove();
+    }
+
     $('main a').on('click', function(e){
         e.preventDefault();
         let url = $(e.target).parents('a').attr('href');
+        $('main').append('<div class="post-container" style="display: none;"><div class="post-modal"><div class="post-content-container"></div></div></div>');
+        $('main').append('<div class="post-overlay" style="display: none;"></div>');
+        $('.post-overlay').fadeIn();
+        $('.post-container').fadeIn();
         $.ajax({
             url: url,
             dataType : "html",
@@ -131,8 +140,13 @@
                 },
             errorr: function(res){console.log(res);}
         });
-        $('main').append('<div class="post-container"><div class="post-modal"><div class="post-content-container"></div></div></div>');
-        $('main').append('<div class="post-overlay"></div>');
+        $('.post-modal').append('<button class="post-close">✕</button>');
+        $('.post-close').on('click', function(e){
+            closePost();
+        });
+        $('.post-container').on('click', function(e){
+            if($(e.target).hasClass('post-container')) closePost();
+        });
     });
 });
 })(jQuery);
