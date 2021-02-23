@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Template part for displaying posts
  *
@@ -6,20 +7,37 @@
  *
  * @package FlatC
  */
-get_header();
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
+	<div class="post-box-header">
+		<div class="header-bg-image">
+			<div class="header-rl-bg-image" style="background-image: url('<?php echo get_the_post_thumbnail_url(); ?>');"></div>
+		</div>
+		<div class="header-body">
+			<div class="header-body__tags">
+				<?php
+					$category = get_the_category();
+					foreach ($category as $cat) {
+						echo '<p class="post-cat">'.$cat->name.'</p>';
+					}
+				?>
+			</div>
+			<div class="header-body__title">
+				<?php
+				if (is_singular()) :
+					the_title('<h2 class="entry-title">', '</h2>');
+				else :
+					the_title('<h2 class="entry-title"><a href="' . esc_url(get_permalink()) . '" rel="bookmark">', '</a></h2>');
+				endif;
+				?>
+			</div>
+		</div>
 		<?php
-		if ( is_singular() ) :
-			the_title( '<h1 class="entry-title">', '</h1>' );
-		else :
-			the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
-		endif;
 
-		if ( 'post' === get_post_type() ) :
-			?>
+
+		if ('post' === get_post_type()) :
+		?>
 			<div class="entry-meta">
 				<?php
 				flatc_posted_on();
@@ -27,39 +45,31 @@ get_header();
 				?>
 			</div><!-- .entry-meta -->
 		<?php endif; ?>
-	</header><!-- .entry-header -->
-
-	<?php flatc_post_thumbnail(); ?>
-
+	</div>
 	<div class="entry-content">
 		<?php
 		the_content(
 			sprintf(
 				wp_kses(
 					/* translators: %s: Name of current post. Only visible to screen readers */
-					__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'flatc' ),
+					__('Continue reading<span class="screen-reader-text"> "%s"</span>', 'flatc'),
 					array(
 						'span' => array(
 							'class' => array(),
 						),
 					)
 				),
-				wp_kses_post( get_the_title() )
+				wp_kses_post(get_the_title())
 			)
 		);
 
 		wp_link_pages(
 			array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'flatc' ),
+				'before' => '<div class="page-links">' . esc_html__('Pages:', 'flatc'),
 				'after'  => '</div>',
 			)
 		);
 		?>
 	</div><!-- .entry-content -->
-
-	<footer class="entry-footer">
-		<?php flatc_entry_footer(); ?>
-	</footer><!-- .entry-footer -->
 </article><!-- #post-<?php the_ID(); ?> -->
 <?php
-

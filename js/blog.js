@@ -1,5 +1,3 @@
-var blogPage;
-var blogSingle;
 (function ($) {
 
     function init(){
@@ -17,14 +15,6 @@ var blogSingle;
         
         let themeColorName = "theme_"+Math.floor((Math.random() * 4) + 1);
         $('body').addClass(themeColorName);
-    };
-
-    blogPage = {
-
-    };
-
-    blogSingle = {
-
     };
 
     $(document).ready(function () {
@@ -125,6 +115,24 @@ var blogSingle;
                 $('.searching-results').css('display', 'none');
             }
         }, 1000);
+    });
+
+    $('main a').on('click', function(e){
+        e.preventDefault();
+        let url = $(e.target).parents('a').attr('href');
+        $.ajax({
+            url: url,
+            dataType : "html",
+            success: function(res){
+                var matches = res.match(/<article\b[^>]*[^>]*>([\s\S]*?)<\/article>/);
+                let htmlObj = $(matches[0]);
+                $('.post-content-container').html(htmlObj);
+                console.log(htmlObj);
+                },
+            errorr: function(res){console.log(res);}
+        });
+        $('main').append('<div class="post-container"><div class="post-modal"><div class="post-content-container"></div></div></div>');
+        $('main').append('<div class="post-overlay"></div>');
     });
 });
 })(jQuery);
