@@ -2608,7 +2608,8 @@ body.single-post main article .header-body .entry-title {
 
 body.page-template-page-blog main article .entry-content,
 body.single-post main article .entry-content {
-  padding-top: 56px;
+  font-size: 1.2em;
+  padding-top: 15px;
   padding-bottom: 28px;
   padding-left: 56px;
   padding-right: 56px;
