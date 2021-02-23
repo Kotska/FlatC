@@ -120,6 +120,7 @@
     function closePost(){
         $('.post-container').remove();
         $('.post-overlay').remove();
+        window.history.pushState({}, '', window.location.origin + '/blog');
     }
 
     $('main a').on('click', function(e){
@@ -136,7 +137,7 @@
                 var matches = res.match(/<article\b[^>]*[^>]*>([\s\S]*?)<\/article>/);
                 let htmlObj = $(matches[0]);
                 $('.post-content-container').html(htmlObj);
-                console.log(htmlObj);
+                window.history.pushState({}, '', url);
                 },
             errorr: function(res){console.log(res);}
         });
