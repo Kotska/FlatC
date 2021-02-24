@@ -1347,8 +1347,6 @@ body .page-services .services img {
   body .page-services .services {
     -ms-flex-wrap: nowrap;
         flex-wrap: nowrap;
-  }
-  body .page-services .services .services {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
