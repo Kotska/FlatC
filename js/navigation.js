@@ -162,10 +162,12 @@ jQuery(document).ready(function ($) {
 			success: function (response) {
 				var totalTime = new Date().getTime()-ajaxTime;
 				setTimeout(function () {
+					$("body").css("display", "none");
 					var newDoc = document.open("text/html", "replace");
 					newDoc.write(response);
 					newDoc.close();
 					window.history.pushState({}, '', link);
+					$("body").fadeIn(2000);
 				}, 1500 - totalTime);
 			},
 			error: function (response) {

@@ -592,24 +592,10 @@ big {
 }
 
 .loading-svg-front.backwards path:nth-child(5) {
-  stroke-dasharray: 95px;
-  stroke-dashoffset: 95px;
+  stroke-dasharray: 117px;
+  stroke-dashoffset: 117px;
   -webkit-animation: line-anim8 0.4s ease forwards 0.5s, fill-anim2 1.3s ease forwards 0.3s;
           animation: line-anim8 0.4s ease forwards 0.5s, fill-anim2 1.3s ease forwards 0.3s;
-}
-
-.loading-svg-front.backwards path:nth-child(6) {
-  stroke-dasharray: 187px;
-  stroke-dashoffset: 187px;
-  -webkit-animation: line-anim8 0.4s ease forwards 0.6s, fill-anim2 1.3s ease forwards 0.3s;
-          animation: line-anim8 0.4s ease forwards 0.6s, fill-anim2 1.3s ease forwards 0.3s;
-}
-
-.loading-svg-front.backwards path:nth-child(7) {
-  stroke-dasharray: 113px;
-  stroke-dashoffset: 113px;
-  -webkit-animation: line-anim8 0.4s ease forwards 0.7s, fill-anim2 1.3s ease forwards 0.3s;
-          animation: line-anim8 0.4s ease forwards 0.7s, fill-anim2 1.3s ease forwards 0.3s;
 }
 
 .loading-svg-front.forwards {
@@ -658,24 +644,10 @@ big {
 }
 
 .loading-svg-front.forwards path:nth-child(5) {
-  stroke-dasharray: 95px;
+  stroke-dasharray: 117px;
   stroke-dashoffset: 0;
   -webkit-animation: line-anim5 0.4s ease forwards 0.5s, fill-anim 1s ease forwards;
           animation: line-anim5 0.4s ease forwards 0.5s, fill-anim 1s ease forwards;
-}
-
-.loading-svg-front.forwards path:nth-child(6) {
-  stroke-dasharray: 187px;
-  stroke-dashoffset: 0;
-  -webkit-animation: line-anim6 0.4s ease forwards 0.6s, fill-anim 1s ease forwards;
-          animation: line-anim6 0.4s ease forwards 0.6s, fill-anim 1s ease forwards;
-}
-
-.loading-svg-front.forwards path:nth-child(7) {
-  stroke-dasharray: 113px;
-  stroke-dashoffset: 0;
-  -webkit-animation: line-anim7 0.4s ease forwards 0.7s, fill-anim 1s ease forwards;
-          animation: line-anim7 0.4s ease forwards 0.7s, fill-anim 1s ease forwards;
 }
 
 @-webkit-keyframes line-anim1 {
@@ -728,13 +700,13 @@ big {
 
 @-webkit-keyframes line-anim5 {
   to {
-    stroke-dashoffset: 95px;
+    stroke-dashoffset: 117px;
   }
 }
 
 @keyframes line-anim5 {
   to {
-    stroke-dashoffset: 95px;
+    stroke-dashoffset: 117px;
   }
 }
 
