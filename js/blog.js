@@ -124,6 +124,7 @@
     }
 
     $('main a').on('click', function(e){
+        if($(e.target).parents().hasClass('menu-item')) return;
         e.preventDefault();
         let url = $(e.target).parents('a').attr('href');
         $('main').append('<div class="post-container" style="display: none;"><div class="post-modal"><div class="post-content-container"></div></div></div>');

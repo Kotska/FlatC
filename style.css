@@ -1009,23 +1009,23 @@ body .search-container {
   display: none;
 }
 
-body.page-template-page-blog .site-branding svg path {
+body.page-template-page-blog .site-branding svg path, body.single-post .site-branding svg path {
   fill: black;
 }
 
 @media screen and (min-width: 768px) {
-  body.page-template-page-blog .site-main #nav-overlay {
+  body.page-template-page-blog .site-main #nav-overlay, body.single-post .site-main #nav-overlay {
     left: 100vw;
     width: 0;
   }
-  body.page-template-page-blog .site-main #nav-overlay.open {
+  body.page-template-page-blog .site-main #nav-overlay.open, body.single-post .site-main #nav-overlay.open {
     left: 66.66vw;
     width: 33.33vw;
   }
 }
 
 @media screen and (min-width: 768px) {
-  body.page-template-page-blog #nav-btn {
+  body.page-template-page-blog #nav-btn, body.single-post #nav-btn {
     left: auto;
     right: -30vw;
   }
@@ -1284,12 +1284,17 @@ body .page-services .services .desc {
 }
 
 body .page-services .services .desc h3 {
-  color: #26ace2;
+  color: #dcdcdc;
+  text-shadow: 2px 2px black;
   font-size: 1.2em;
 }
 
 body .page-services .services .desc p, body .page-services .services .desc h3 {
   z-index: 2;
+}
+
+body .page-services .services .desc p {
+  text-shadow: 1px 2px black;
 }
 
 body .page-services .services .desc .background {
@@ -2645,6 +2650,11 @@ body.page-template-page-blog .slider-list,
 body.single-post .slider-list {
   max-width: 1109px;
   margin: auto;
+}
+
+body.page-template-page-blog footer,
+body.single-post footer {
+  display: none;
 }
 
 @media screen and (max-width: 1200px) {

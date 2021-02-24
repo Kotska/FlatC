@@ -106,14 +106,14 @@ jQuery(document).ready(function ($) {
 
 	// columns hover text change with gsap
 	$('.col2').on('mouseenter', function (e) {
-		gsap.to($('.col2-title'), { duration: 1, text: 'What?', ease: 'none' });
+		gsap.to($('.col2-title'), { duration: 1, text: 'Mutasd!', ease: 'none' });
 	});
 	$('.col2').on('mouseleave', function (e) {
 		gsap.to($('.col2-title'), { duration: 1, text: col2Title, ease: 'none' });
 	});
 
 	$('.col3').on('mouseenter', function (e) {
-		gsap.to($('.col3-title'), { duration: 1, text: 'What?', ease: 'none' });
+		gsap.to($('.col3-title'), { duration: 1, text: 'Mivel?', ease: 'none' });
 	});
 	$('.col3').on('mouseleave', function (e) {
 		gsap.to($('.col3-title'), { duration: 1, text: col3Title, ease: 'none' });

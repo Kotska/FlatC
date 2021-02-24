@@ -72,4 +72,11 @@
 		?>
 	</div><!-- .entry-content -->
 </article><!-- #post-<?php the_ID(); ?> -->
+<div id="nav-overlay">
+        <nav>
+            <?php if (has_nav_menu('main-menu')) {
+                wp_nav_menu(array('theme_location' => 'main-menu', 'menu_class' => 'nav-list', 'container' => false));
+            }; ?>
+        </nav>
+    </div>
 <?php
