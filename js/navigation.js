@@ -20,7 +20,49 @@ setTimeout(function () {
 }, 350);
 
 
+
 jQuery(document).ready(function ($) {
+
+	function htmlDoc(html){
+		var parent,
+		elems       = $(),
+		matchTag    = /<(\/?)(html|head|body|title|base|meta)(\s+[^>]*)?>/ig,
+		prefix      = "ss" + Math.round(Math.random() * 100000),
+		htmlParsed  = html.replace(matchTag, function(tag, slash, name, attrs) {
+			var obj = {};
+			if (!slash) {
+				$.merge(elems, $("<" + name + "/>"));
+				if (attrs) {
+					$.each($("<div" + attrs + "/>")[0].attributes, function(i, attr) {
+					obj[attr.name] = attr.value;
+					});
+				}
+				elems.eq(-1).attr(obj);
+			}
+			return "<" + slash + "div" + (slash ? "" : " id='" + prefix + (elems.length - 1) + "'") + ">";
+		});
+	
+	// If no placeholder elements were necessary, just return normal
+	// jQuery-parsed HTML.
+	if (!elems.length) {
+		return $(html);
+	}
+	// Create parent node if it hasn"t been created yet.
+	if (!parent) {
+		parent = $("<div/>");
+	}
+	// Create the parent node and append the parsed, place-held HTML.
+	parent.html(htmlParsed);
+	
+	// Replace each placeholder element with its intended element.
+	$.each(elems, function(i) {
+		var elem = parent.find("#" + prefix + i).before(elems[i]);
+		elems.eq(i).html(elem.contents());
+		elem.remove();
+	});
+	
+	return parent.children().unwrap();
+	}
 
 	pageLoaded = true;
 	if (timeoutElapsed) {
@@ -152,26 +194,22 @@ jQuery(document).ready(function ($) {
 
 	function ajaxLoading(link) {
 		showLoader();
-		var ajaxTime= new Date().getTime();
-		var link = link;
+		let ajaxTime= new Date().getTime();
 		$.ajax({
 			async: true,
 			type: "POST",
 			url: link,
 			contentType: "application/json",
 			success: function (response) {
-				var totalTime = new Date().getTime()-ajaxTime;
+				let totalTime = new Date().getTime()-ajaxTime;
 				setTimeout(function () {
-					$("body").css("display", "none");
-					var newDoc = document.open("text/html", "replace");
+					let newDoc = document.open("text/html");
 					newDoc.write(response);
 					newDoc.close();
 					window.history.pushState({}, '', link);
-					$("body").fadeIn(2000);
-				}, 1500 - totalTime);
+				}, 1500 - totalTime);	
 			},
 			error: function (response) {
-				console.log(nope);
 				console.log(response);
 			}
 		});
