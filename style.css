@@ -2499,6 +2499,34 @@ body.single-post main .post-container .post-modal {
   transition: all .2s ease-in-out;
 }
 
+@media screen and (max-width: 1365px) {
+  body.page-template-page-blog main .post-container .post-modal,
+  body.single-post main .post-container .post-modal {
+    max-width: 66vw;
+  }
+  body.page-template-page-blog main .post-container .post-modal article,
+  body.single-post main .post-container .post-modal article {
+    max-width: 66vw;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  body.page-template-page-blog main .post-container .post-modal,
+  body.single-post main .post-container .post-modal {
+    max-width: 100vw;
+  }
+  body.page-template-page-blog main .post-container .post-modal article,
+  body.single-post main .post-container .post-modal article {
+    max-width: 100vw;
+  }
+  body.page-template-page-blog main .post-container .post-modal .post-close,
+  body.single-post main .post-container .post-modal .post-close {
+    right: 0;
+    left: auto;
+    background: rgba(0, 0, 0, 0.5);
+  }
+}
+
 body.page-template-page-blog main .post-overlay,
 body.single-post main .post-overlay {
   position: fixed;
