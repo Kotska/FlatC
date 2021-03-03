@@ -186,9 +186,10 @@ jQuery(document).ready(function ($) {
 		ajaxLoading(link);
 	});
 
-	$('.site-title').on('click', function (e) {
+	$('.site-branding').on('click', function (e) {
 		e.preventDefault();
-		link = $(e.target).attr('href');
+		link = $(e.target).parents('.site-branding').find('a').attr('href');
+		console.log(link);
 		ajaxLoading(link);
 	});
 
