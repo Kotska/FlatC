@@ -540,12 +540,6 @@ big {
   fill: black;
 }
 
-.loader {
-  background: -webkit-gradient(linear, left top, left bottom, from(#323232), color-stop(40%, #3F3F3F), color-stop(150%, #1C1C1C)), -webkit-gradient(linear, left bottom, left top, from(rgba(255, 255, 255, 0.4)), color-stop(200%, rgba(0, 0, 0, 0.25)));
-  background: linear-gradient(to bottom, #323232 0%, #3F3F3F 40%, #1C1C1C 150%), linear-gradient(to top, rgba(255, 255, 255, 0.4) 0%, rgba(0, 0, 0, 0.25) 200%);
-  background-blend-mode: multiply;
-}
-
 .loading-svg-front.backwards {
   position: absolute;
   top: 50%;
@@ -920,7 +914,7 @@ html .page-template-page-services .burger.burger-rotate.open {
     LOADER
 ===================== */
 .loader {
-  background-color: white;
+  background: #323232;
   position: fixed;
   top: 0;
   right: 0;
@@ -938,6 +932,8 @@ html .page-template-page-services .burger.burger-rotate.open {
           align-items: center;
   -webkit-transition: all 320ms;
   transition: all 320ms;
+  -webkit-animation: fadeIn 1000ms forwards;
+          animation: fadeIn 1000ms forwards;
 }
 
 .loader.hide {

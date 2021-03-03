@@ -7,7 +7,8 @@ function hideLoader() {
 		jQuery('.loader').addClass('hide');
 		jQuery('.loader-gif').addClass('hidden');
 		setTimeout(function () {
-			jQuery('.loader').css({ 'display': 'none' });
+			jQuery('.loader').css({ 'display': 'none',});
+			// jQuery('.loader').css({ 'display': 'none', 'animation': 'fadeOut forwards', 'animation-delay': '500ms', 'animation-duration': '320ms' });
 		}, 500);
 	}, 500);
 }
@@ -193,26 +194,28 @@ jQuery(document).ready(function ($) {
 
 
 	function ajaxLoading(link) {
-		showLoader();
 		let ajaxTime= new Date().getTime();
-		$.ajax({
-			async: true,
-			type: "POST",
-			url: link,
-			contentType: "application/json",
-			success: function (response) {
-				let totalTime = new Date().getTime()-ajaxTime;
-				setTimeout(function () {
-					let newDoc = document.open("text/html");
-					newDoc.write(response);
-					newDoc.close();
-					window.history.pushState({}, '', link);
-				}, 1500 - totalTime);	
-			},
-			error: function (response) {
-				console.log(response);
-			}
-		});
+		showLoader();
+		setTimeout(function(){window.location = link;}, 200)
+		
+		// $.ajax({
+		// 	async: true,
+		// 	type: "POST",
+		// 	url: link,
+		// 	contentType: "application/json",
+		// 	success: function (response) {
+		// 		let totalTime = new Date().getTime()-ajaxTime;
+		// 		setTimeout(function () {
+		// 			let newDoc = document.open("text/html");
+		// 			newDoc.write(response);
+		// 			newDoc.close();
+		// 			window.history.pushState({}, '', link);
+		// 		}, 1500 - totalTime);	
+		// 	},
+		// 	error: function (response) {
+		// 		console.log(response);
+		// 	}
+		// });
 	}
 
 	window.addEventListener("popstate", function (e) {
