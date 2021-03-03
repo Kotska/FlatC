@@ -2005,6 +2005,141 @@ body.stop-transitions * {
   transition: none !important;
 }
 
+.page-template-page-contact {
+  background: transparent;
+  text-align: center;
+}
+
+.page-template-page-contact .site-header {
+  text-align: left;
+}
+
+.page-template-page-contact .site-header .site-branding svg path {
+  fill: black;
+}
+
+.page-template-page-contact .site-header .burger .burger-lines {
+  background-color: black;
+}
+
+.page-template-page-contact .site-header .burger .burger-lines::before, .page-template-page-contact .site-header .burger .burger-lines::after {
+  background-color: black;
+}
+
+.page-template-page-contact h1 {
+  font-size: 46px;
+  margin-top: 20vh;
+}
+
+.page-template-page-contact h1, .page-template-page-contact h2 {
+  text-transform: uppercase;
+  -webkit-transition: all 1100ms ease-in-out;
+  transition: all 1100ms ease-in-out;
+}
+
+.page-template-page-contact .btn-contact {
+  display: block;
+  margin: auto;
+  border: 1px solid black;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: white;
+  background: #26ACE2;
+  position: relative;
+  -webkit-transition: all 1100ms ease-in-out;
+  transition: all 1100ms ease-in-out;
+  margin-top: 10vh;
+  margin-bottom: 10vh;
+}
+
+.page-template-page-contact .background-overlay {
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background-color: #26ACE2;
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  z-index: -1;
+  -webkit-transition: all 1100ms ease-in-out;
+  transition: all 1100ms ease-in-out;
+}
+
+.page-template-page-contact .contact-row .email-row {
+  margin-bottom: 10px;
+}
+
+.page-template-page-contact .contact-row .phone-row,
+.page-template-page-contact .contact-row .email-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.page-template-page-contact .contact-row .phone-row .phone-image,
+.page-template-page-contact .contact-row .phone-row .email-image,
+.page-template-page-contact .contact-row .email-row .phone-image,
+.page-template-page-contact .contact-row .email-row .email-image {
+  width: 20px;
+  margin-right: 10px;
+  -webkit-transition: all 1100ms ease-in-out;
+  transition: all 1100ms ease-in-out;
+}
+
+.page-template-page-contact .contact-row .phone-row .phone-number,
+.page-template-page-contact .contact-row .phone-row .email,
+.page-template-page-contact .contact-row .email-row .phone-number,
+.page-template-page-contact .contact-row .email-row .email {
+  -webkit-transition: all 1100ms ease-in-out;
+  transition: all 1100ms ease-in-out;
+  margin: 0;
+}
+
+@media screen and (min-width: 1200px) {
+  .page-template-page-contact #primary #nav-overlay.open {
+    left: 0;
+    width: 33.33vw;
+  }
+}
+
+.page-template-page-contact .contact-form {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  display: none;
+  width: 60vw;
+  height: 80vh;
+  background-color: white;
+  border-top: 5px solid #26ACE2;
+  border-bottom: 5px solid #26ACE2;
+}
+
+.page-template-page-contact .contact-form h1 {
+  margin-top: 100px;
+}
+
+.page-template-page-contact .contact-form .close {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  color: black;
+  font-size: 36px;
+}
+
 body.page-template-page-blog,
 body.single-post {
   overflow-y: scroll;
@@ -2673,11 +2808,6 @@ body.single-post .slider-list {
   margin: auto;
 }
 
-body.page-template-page-blog footer,
-body.single-post footer {
-  display: none;
-}
-
 @media screen and (max-width: 1200px) {
   body.page-template-page-blog .site-branding,
   body.single-post .site-branding {
@@ -2807,6 +2937,10 @@ body.single-post footer {
 body.page-template-page-blog .burger,
 body.single-post .burger {
   position: absolute;
+}
+
+footer {
+  display: none;
 }
 
 hr {

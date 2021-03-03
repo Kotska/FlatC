@@ -371,3 +371,49 @@ function save_color_meta_box( $post_id ){
 	update_post_meta($post_id, "_background_color", $background_color);
 }
 add_action( 'save_post', 'save_color_meta_box' );
+
+// ===============
+//  Contact
+// ===============
+
+function phone_number_metabox () {
+	global $post;
+	$pageTemplate = get_post_meta($post->ID, '_wp_page_template', true);
+	if($pageTemplate == 'template-parts/page-contact.php' ) {
+		add_meta_box( 'phone_number', 'Contact', 'phone_meta_box', 'page', 'side', 'low');
+	}
+}
+add_action( 'add_meta_boxes', 'phone_number_metabox' );
+
+function phone_meta_box($post)
+{
+	$number = get_post_meta( $post->ID, '_flatc_phone_number', true );
+	$email = get_post_meta( $post->ID, '_flatc_email', true );
+	wp_nonce_field( 'save_phone_meta_box', 'phone_meta_box_nonce' );
+	?>
+	<div class="pagebox">
+		<h4>Phone Number: </h4>
+		<input type="text" name="phone_number" value="<?php esc_attr_e($number); ?>"/>
+		<h4>Email: </h4>
+		<input type="email" name="flatc_email" value="<?php esc_attr_e($email); ?>"/>
+	</div>
+	<?php
+}
+
+function save_phone_meta_box( $post_id ){
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+		return;
+	}
+	if( !current_user_can( 'edit_pages' ) ) {
+		return;
+	}
+	if ( !isset( $_POST['phone_meta_box_nonce'] ) || !wp_verify_nonce( $_POST['phone_meta_box_nonce'], 'save_phone_meta_box' ) ) {
+		return;
+	}
+	$number = (isset($_POST["phone_number"]) && $_POST["phone_number"]!='') ? $_POST["phone_number"] : '';
+	update_post_meta($post_id, "_flatc_phone_number", $number);
+	$email = (isset($_POST["flatc_email"]) && $_POST["flatc_email"]!='') ? $_POST["flatc_email"] : '';
+	update_post_meta($post_id, "_flatc_email", $email);
+}
+add_action( 'save_post', 'save_phone_meta_box' );
+

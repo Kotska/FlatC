@@ -160,6 +160,10 @@ function flatc_scripts()
 		wp_localize_script('flatc-blog', 'ajax', ['url' => admin_url('admin-ajax.php')]);
 	}
 
+	if (is_page_template('template-parts/page-contact.php')) {
+		wp_enqueue_script('contactJs', get_template_directory_uri() . '/js/contact.js', array('jquery'));
+	}
+
 	wp_enqueue_style('flatc-style', get_stylesheet_uri(), array(), _S_VERSION);
 	wp_style_add_data('flatc-style', 'rtl', 'replace');
 
