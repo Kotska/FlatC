@@ -2428,7 +2428,9 @@ body.single-post .latest-post .post-category {
   font-size: 14px;
   border-radius: 0px;
   background-color: var(--mainColor);
-  padding: 5px 15px;
+  padding: 4px 15px;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 body.page-template-page-blog .latest-post h3,
@@ -2460,7 +2462,7 @@ body.single-post .latest-post-list {
 body.page-template-page-blog .latest-post-list img,
 body.single-post .latest-post-list img {
   max-width: 240px;
-  margin: 8px;
+  margin: 3px 8px 8px 18px;
 }
 
 body.page-template-page-blog .latest-post-list .title-cont,
@@ -2476,10 +2478,12 @@ body.single-post .latest-post-list .title-cont .categories {
   width: -webkit-min-content;
   width: -moz-min-content;
   width: min-content;
-  padding: 5px 15px;
+  padding: 4px 15px;
   font-size: 14px;
   border-radius: 0px;
   background-color: var(--mainColor);
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 body.page-template-page-blog .latest-post-list .title-cont .categories a,
@@ -2526,7 +2530,7 @@ body.single-post .latest-post-list .excerpt {
 
 body.page-template-page-blog .latest-post-list .excerpt p,
 body.single-post .latest-post-list .excerpt p {
-  margin: 0;
+  margin: 0 15px 0 10px;
   font-size: 16px;
 }
 
