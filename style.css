@@ -2008,7 +2008,7 @@ body.stop-transitions * {
 }
 
 .page-template-page-contact {
-  background: transparent;
+  background: #26ace2;
   text-align: center;
 }
 
@@ -2035,53 +2035,61 @@ body.stop-transitions * {
 
 .page-template-page-contact h1, .page-template-page-contact h2 {
   text-transform: uppercase;
-  -webkit-transition: all 1100ms ease-in-out;
-  transition: all 1100ms ease-in-out;
+  color: #fff;
 }
 
 .page-template-page-contact .btn-contact {
   display: block;
   margin: auto;
-  border: 1px solid black;
-  border-radius: 50%;
-  width: 100px;
-  height: 100px;
-  line-height: 100px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 0 10px;
+  height: 2em;
+  line-height: 2em;
   text-transform: uppercase;
   font-weight: bold;
   color: white;
-  background: #26ACE2;
   position: relative;
-  -webkit-transition: all 1100ms ease-in-out;
-  transition: all 1100ms ease-in-out;
+  -webkit-transition: all 320ms ease-in-out;
+  transition: all 320ms ease-in-out;
   margin-top: 10vh;
   margin-bottom: 10vh;
+  overflow: hidden;
 }
 
-.page-template-page-contact .background-overlay {
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  background-color: #26ACE2;
+.page-template-page-contact .btn-contact::after {
+  content: "";
   position: absolute;
-  width: 0;
-  height: 0;
-  border-radius: 50%;
   z-index: -1;
-  -webkit-transition: all 1100ms ease-in-out;
-  transition: all 1100ms ease-in-out;
+  left: 0;
+  top: calc(100% - 2px);
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  -webkit-transition: top .3s ease;
+  transition: top .3s ease;
+  background: #212221;
+}
+
+.page-template-page-contact .btn-contact:hover::after {
+  top: 0;
+}
+
+.page-template-page-contact .contact-row {
+  color: #fff;
 }
 
 .page-template-page-contact .contact-row .email-row {
   margin-bottom: 10px;
+  margin-right: 30px;
 }
 
 .page-template-page-contact .contact-row .phone-row,
 .page-template-page-contact .contact-row .email-row {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -2090,11 +2098,16 @@ body.stop-transitions * {
           align-items: center;
 }
 
+.page-template-page-contact .contact-row .phone-row p,
+.page-template-page-contact .contact-row .email-row p {
+  font-size: 26px;
+}
+
 .page-template-page-contact .contact-row .phone-row .phone-image,
 .page-template-page-contact .contact-row .phone-row .email-image,
 .page-template-page-contact .contact-row .email-row .phone-image,
 .page-template-page-contact .contact-row .email-row .email-image {
-  width: 20px;
+  width: 30px;
   margin-right: 10px;
   -webkit-transition: all 1100ms ease-in-out;
   transition: all 1100ms ease-in-out;
