@@ -1274,7 +1274,7 @@ body .page-services .services .desc {
 
 body .page-services .services .desc h3 {
   color: #dcdcdc;
-  text-shadow: 2px 2px black;
+  text-shadow: 2px 2px #000000bf;
   font-size: 1.2em;
 }
 
@@ -1399,18 +1399,20 @@ body .page-services .services img {
 @media only screen and (min-width: 1200px) {
   body .page-services .services .desc {
     width: 80vw;
-    padding: 0 100px;
+    padding: 0 14vw;
   }
   body .page-services .services .desc p, body .page-services .services .desc h3 {
     text-align: center;
   }
   body .page-services .services .desc h3 {
     font-size: 56px;
+    margin-bottom: 40px;
   }
   body .page-services .services .desc p {
     font-size: 26px;
     font-weight: 400;
     margin-top: 25px;
+    letter-spacing: 0.006em;
   }
   body .page-services .services .name {
     width: 20vw;
@@ -2008,7 +2010,7 @@ body.stop-transitions * {
 }
 
 .page-template-page-contact {
-  background-color: #26ace2;
+  background-color: #1181b2;
   text-align: center;
 }
 
