@@ -2514,8 +2514,9 @@ body.single-post .latest-post-list .post-cont:nth-child(2n) {
   padding: 15px 0 2px 0;
   border: 2px solid var(--mainColor);
   border-left: none;
+  margin-bottom: 25px;
   border-right: none;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.06);
 }
 
 body.page-template-page-blog .latest-post-list .post-cont:nth-child(2n) .categories,
