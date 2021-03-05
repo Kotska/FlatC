@@ -13,8 +13,9 @@
             document.documentElement.style.setProperty('--vh', `${vh}px`);
         });
         
-        let themeColorName = "theme_"+Math.floor((Math.random() * 4) + 1);
-        $('body').addClass(themeColorName);
+        // let themeColorName = "theme_"+Math.floor((Math.random() * 4) + 1);
+        // $('body').addClass(themeColorName);
+        $('body').addClass('theme_2');
     };
 
     $(document).ready(function () {

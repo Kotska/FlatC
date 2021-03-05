@@ -1314,14 +1314,16 @@ body .page-services .services .name ul {
 
 body .page-services .services .name ul li {
   padding-right: 15px;
+  padding-top: 5px;
   display: inline-block;
 }
 
-body .page-services .services .name ul li.active, body .page-services .services .name ul li:hover {
-  color: #26ace2;
+body .page-services .services .name ul li.active {
+  color: #07A0DA;
 }
 
 body .page-services .services .name ul li:hover {
+  color: #07A0DA;
   cursor: pointer;
 }
 
@@ -2175,7 +2177,6 @@ body.page-template-page-blog::-webkit-scrollbar-track,
 body.single-post::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
   background-color: #F5F5F5;
-  border-radius: 10px;
   background-clip: content-box;
 }
 
@@ -2189,7 +2190,6 @@ body.single-post::-webkit-scrollbar {
 body.page-template-page-blog::-webkit-scrollbar-thumb,
 body.single-post::-webkit-scrollbar-thumb {
   margin: 40vh 0;
-  border-radius: 10px;
   background-color: #FFF;
   background-color: var(--mainColor);
 }
@@ -2251,7 +2251,6 @@ body.single-post #masthead .search-container {
   right: 260px;
   background-color: black;
   display: block;
-  border-radius: 7px;
 }
 
 body.page-template-page-blog #masthead .search-container input,
@@ -2326,7 +2325,7 @@ body.single-post .slider-title {
   font-weight: 500;
   font-style: italic;
   font-size: 56px;
-  text-shadow: 3px 2px var(--mainColor);
+  text-shadow: 2px 2px var(--mainColor);
   line-height: 42px;
   margin: 0 0 0 -20px;
   z-index: 4;
@@ -2355,6 +2354,7 @@ body.single-post .splide .splide__arrows button {
   border: none;
   -webkit-transform: scale(0.7);
           transform: scale(0.7);
+  border-radius: 0;
 }
 
 body.page-template-page-blog .splide .splide__arrows button svg,
@@ -2385,12 +2385,15 @@ body.single-post .latest-post {
 
 body.page-template-page-blog .latest-post .latest,
 body.single-post .latest-post .latest {
+  font-style: italic;
   font-size: 46px;
   position: relative;
   color: black;
   font-weight: 500;
   margin: 0;
   z-index: 4;
+  left: -16px;
+  text-shadow: 1px 1px var(--mainColor);
 }
 
 body.page-template-page-blog .latest-post .latest__text_underline,
@@ -2398,24 +2401,24 @@ body.single-post .latest-post .latest__text_underline {
   content: "";
   position: absolute;
   top: 55px;
-  left: 83px;
+  left: 69px;
   height: 2px;
-  -webkit-box-shadow: 4px 1px 0px var(--mainColor);
-          box-shadow: 4px 1px 0px var(--mainColor);
+  -webkit-box-shadow: 1px 1px 0px var(--mainColor);
+          box-shadow: 1px 1px 0px var(--mainColor);
   background-color: black;
   width: 75%;
 }
 
 body.page-template-page-blog .latest-post img,
 body.single-post .latest-post img {
-  margin: 10px 0 0 95px;
+  margin: 10px 0 0 0;
   max-width: 640px;
   max-height: 424px;
 }
 
 body.page-template-page-blog .latest-post .categories,
 body.single-post .latest-post .categories {
-  margin: 16px 0 0 95px;
+  margin: 16px 0 0 0;
 }
 
 body.page-template-page-blog .latest-post .post-category,
@@ -2423,14 +2426,14 @@ body.single-post .latest-post .post-category {
   margin: 16px 0 0 0;
   color: black;
   font-size: 14px;
-  border-radius: 10px;
-  background-color: #E2E5DE;
+  border-radius: 0px;
+  background-color: var(--mainColor);
   padding: 5px 15px;
 }
 
 body.page-template-page-blog .latest-post h3,
 body.single-post .latest-post h3 {
-  margin: 16px 0 0 95px;
+  margin: 16px 0 0 0;
   color: black;
   text-decoration: underline;
   font-size: 26px;
@@ -2438,7 +2441,7 @@ body.single-post .latest-post h3 {
 
 body.page-template-page-blog .latest-post .excerpt,
 body.single-post .latest-post .excerpt {
-  margin: 16px 0 0 95px;
+  margin: 16px 0 0 0;
   max-width: 445px;
 }
 
@@ -2475,8 +2478,8 @@ body.single-post .latest-post-list .title-cont .categories {
   width: min-content;
   padding: 5px 15px;
   font-size: 14px;
-  border-radius: 10px;
-  background-color: #E5E5E5;
+  border-radius: 0px;
+  background-color: var(--mainColor);
 }
 
 body.page-template-page-blog .latest-post-list .title-cont .categories a,
@@ -2499,11 +2502,15 @@ body.single-post .latest-post-list .post-cont {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   margin: 16px 0;
-  margin-left: 95px;
+  margin-left: 0px;
 }
 
 body.page-template-page-blog .latest-post-list .post-cont:nth-child(2n),
 body.single-post .latest-post-list .post-cont:nth-child(2n) {
+  padding: 15px 0 2px 0;
+  border: 2px solid var(--mainColor);
+  border-left: none;
+  border-right: none;
   background-color: rgba(0, 0, 0, 0.1);
 }
 
