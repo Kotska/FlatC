@@ -26,6 +26,9 @@ global $post;
         </div>
     </div>
     <a href="#" class="btn-contact">Beszéljünk róla!</a>
+    <div class="contact-image">
+        <img src="<?php echo get_template_directory_uri() . '/inc/svg/contact_us.svg' ?>" alt="">
+    </div>
     <div class="contact-form">
         <span class="close">✖</span>
         <h1>Ez egy contact form</h1>
