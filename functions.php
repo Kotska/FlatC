@@ -370,8 +370,8 @@ add_action('manage_contact_posts_custom_column', 'contact_custom_column', 10, 2)
 
 function contact_add_meta_box()
 {
-	add_meta_box('contact_email', 'User Email', 'flatc_contact_email_callback', 'contact', 'side',);
-	add_meta_box('contact_phone', 'User Phone', 'flatc_contact_phone_callback', 'contact', 'side',);
+	add_meta_box('contact_email', 'User Email', 'flatc_contact_email_callback', 'contact', 'side');
+	add_meta_box('contact_phone', 'User Phone', 'flatc_contact_phone_callback', 'contact', 'side');
 }
 
 function flatc_contact_email_callback($post)
