@@ -305,6 +305,113 @@ function services_post_type()
 }
 add_action('init', 'services_post_type');
 
+function flatc_contact_post_type()
+{
+	$labels = array(
+		'name'				 => 'Contact',
+		'singular_name'		 => 'Contact',
+		'add_new' 			 => 'New Message',
+		'all_items' 		 => 'Messages',
+		'add_new_item' 		 => 'Add Message',
+		'edit_item' 		 => 'Edit Message',
+		'new_item' 			 => 'New Message',
+		'view_item' 		 => 'View Message',
+		'search_item' 		 => 'Search Message',
+		'not_found' 		 => 'No messages found',
+		'not_found_in_trash' => 'No messages found in trash',
+		'parent_item_colon'  => 'Parent Item'
+	);
+	$args = array(
+		'labels' 	  		  => $labels,
+		'public' 	  		  => true,
+		'has_archive' 		  => false,
+		'publicly_queryable'  => false,
+		'query_var' 		  => false,
+		'rewrite' 			  => true,
+		'capability_type'	  => 'post',
+		'hierarchichal'		  => false,
+		'supports'			  => array(
+			'title',
+			'editor',
+			'author'
+		),
+		'menu_position'		  => 5,
+		'exclude_from_search' => true,
+		'menu_icon'			  => 'dashicons-email-alt',
+	);
+	register_post_type('contact', $args);
+}
+add_action('init', 'flatc_contact_post_type');
+
+function set_contact_columns($columns)
+{
+	$newColumns = [];
+	$newColumns['title'] = 'Full Name';
+	$newColumns['message'] = 'Message';
+	$newColumns['email'] = 'Email';
+	$newColumns['date'] = 'Date';
+	return $newColumns;
+}
+add_filter('manage_contact_posts_columns', 'set_contact_columns');
+
+function contact_custom_column($column, $post_id)
+{
+	switch($column) {
+		case 'message':
+			echo get_the_excerpt();
+			break;
+		case 'email':
+			$email = get_post_meta($post_id, '_contact_email_value_key', true);
+			echo '<a href="mailto:"'.$email.'">'.$email.'</a>';
+			break;
+	}
+}
+add_action('manage_contact_posts_custom_column', 'contact_custom_column', 10, 2);
+
+function contact_add_meta_box()
+{
+	add_meta_box('contact_email', 'User Email', 'flatc_contact_email_callback', 'contact', 'side',);
+	add_meta_box('contact_phone', 'User Phone', 'flatc_contact_phone_callback', 'contact', 'side',);
+}
+
+function flatc_contact_email_callback($post)
+{
+	wp_nonce_field('flatc_save_contact_data', 'contact_email_meta_box_nonce');
+
+	$value = get_post_meta($post->ID, '_contact_email_value_key', true);
+
+	echo '<label for="contact_email_field" >User Email Address: </label>';
+	echo '<input type="email" id="contact_email_field" name="contact_email_field" value="'.esc_attr($value).'" size="25" />';
+}
+add_action('add_meta_boxes', 'contact_add_meta_box');
+
+function flatc_contact_phone_callback($post)
+{
+
+	$value = get_post_meta($post->ID, '_contact_phone_value_key', true);
+
+	echo '<label for="contact_phone_field" >User Phone Number: </label>';
+	echo '<input type="text" id="contact_phone_field" name="contact_phone_field" value="'.esc_attr($value).'" size="25" />';
+}
+add_action('add_meta_boxes', 'contact_add_meta_box');
+
+function flatc_save_contact_data($post_id) {
+	if( !isset($_POST['contact_email_meta_box_nonce']) ) return;
+
+	if(!wp_verify_nonce($_POST['contact_email_meta_box_nonce'], 'flatc_save_contact_data')) return;
+
+	if(defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
+
+	if(!current_user_can('edit_post', $post_id)) return;
+
+	if(!isset($_POST['contact_email_field'])) return;
+
+	$email = sanitize_text_field($_POST['contact_email_field']);
+	$phone = sanitize_text_field($_POST['contact_phone_field']);
+	update_post_meta($post_id, '_contact_email_value_key', $email);
+	update_post_meta($post_id, '_contact_phone_value_key', $phone);
+}
+add_action('save_post', 'flatc_save_contact_data' );
 
 function flatc_ajax_search()
 {
@@ -428,3 +535,33 @@ function flatc_save_meta_box($post_id)
 	update_post_meta($post_id, 'slider_categories', $new_meta_value);
 }
 add_action('save_post', 'flatc_save_meta_box');
+
+add_action('wp_ajax_nopriv_flatc_save_user_contact_form', 'save_contact');
+add_action('wp_ajax_flatc_save_user_contact_form', 'save_contact');
+
+function save_contact()
+{
+	$name = wp_strip_all_tags($_POST['name']);
+	$phone = wp_strip_all_tags($_POST['phone']);
+	$email = wp_strip_all_tags($_POST['email']);
+	$message = wp_strip_all_tags($_POST['message']);
+
+	$args = [
+		'post_title'        => $name,
+		'post_content'      => $message,
+		'post_author'       => 1,
+		'post_status'		=> 'publish',
+		'post_type'         => 'contact',
+		'meta_input'        => [
+			'_contact_email_value_key' => $email,
+			'_contact_phone_value_key' => $phone
+		]
+	];
+
+	$postID = wp_insert_post($args);
+
+	echo $postID;
+
+	die();
+
+}

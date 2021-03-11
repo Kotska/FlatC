@@ -2019,15 +2019,15 @@ body.stop-transitions * {
 }
 
 .page-template-page-contact .site-header .site-branding svg path {
-  fill: black;
+  fill: white;
 }
 
 .page-template-page-contact .site-header .burger .burger-lines {
-  background-color: black;
+  background-color: white;
 }
 
 .page-template-page-contact .site-header .burger .burger-lines::before, .page-template-page-contact .site-header .burger .burger-lines::after {
-  background-color: black;
+  background-color: white;
 }
 
 .page-template-page-contact h1 {
@@ -2074,6 +2074,130 @@ body.stop-transitions * {
 }
 
 .page-template-page-contact .btn-contact:hover::after {
+  top: 0;
+}
+
+.page-template-page-contact .contact-form {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: none;
+  background-color: #212221;
+}
+
+.page-template-page-contact .contact-form h1 {
+  margin-top: 100px;
+}
+
+.page-template-page-contact .contact-form .close {
+  position: absolute;
+  right: 32px;
+  top: 32px;
+  width: 32px;
+  height: 32px;
+}
+
+.page-template-page-contact .contact-form .close:hover::before, .page-template-page-contact .contact-form .close:hover::after {
+  background-color: #1181b2;
+}
+
+.page-template-page-contact .contact-form .close:before, .page-template-page-contact .contact-form .close:after {
+  position: absolute;
+  left: 15px;
+  content: ' ';
+  height: 33px;
+  width: 2px;
+  -webkit-transition: all 150ms;
+  transition: all 150ms;
+  background-color: #fff;
+}
+
+.page-template-page-contact .contact-form .close:before {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.page-template-page-contact .contact-form .close:after {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+.page-template-page-contact .contact-form form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: auto;
+  max-width: 50vw;
+}
+
+.page-template-page-contact .contact-form form textarea, .page-template-page-contact .contact-form form input {
+  color: #fff;
+  background: transparent;
+  border: 3px solid #fff;
+}
+
+.page-template-page-contact .contact-form form textarea:focus, .page-template-page-contact .contact-form form textarea:active, .page-template-page-contact .contact-form form input:focus, .page-template-page-contact .contact-form form input:active {
+  border: 3px solid #26ace2;
+  outline: none;
+}
+
+.page-template-page-contact .contact-form form #form-message {
+  height: 30vh;
+  padding: 20px 20px;
+}
+
+.page-template-page-contact .contact-form form input {
+  padding: 9px 10px;
+  margin-bottom: 30px;
+  width: 48%;
+}
+
+.page-template-page-contact .contact-form form .error {
+  border-color: red;
+}
+
+.page-template-page-contact .contact-form .btn-submit {
+  display: block;
+  margin: auto;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 0 15px;
+  height: 2em;
+  line-height: 2em;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: white;
+  position: relative;
+  -webkit-transition: all 320ms ease-in-out;
+  transition: all 320ms ease-in-out;
+  margin-top: 50px;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.page-template-page-contact .contact-form .btn-submit::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  top: calc(100% - 2px);
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  -webkit-transition: top .3s ease;
+  transition: top .3s ease;
+  background: #1181b2;
+}
+
+.page-template-page-contact .contact-form .btn-submit:hover::after {
   top: 0;
 }
 
@@ -2137,32 +2261,6 @@ body.stop-transitions * {
     left: 0;
     width: 33.33vw;
   }
-}
-
-.page-template-page-contact .contact-form {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  display: none;
-  width: 60vw;
-  height: 80vh;
-  background-color: white;
-  border-top: 5px solid #26ACE2;
-  border-bottom: 5px solid #26ACE2;
-}
-
-.page-template-page-contact .contact-form h1 {
-  margin-top: 100px;
-}
-
-.page-template-page-contact .contact-form .close {
-  position: absolute;
-  right: 20px;
-  top: 20px;
-  color: black;
-  font-size: 36px;
 }
 
 body.page-template-page-blog,

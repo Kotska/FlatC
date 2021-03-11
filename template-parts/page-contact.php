@@ -29,10 +29,16 @@ global $post;
     <div class="contact-image">
         <img src="<?php echo get_template_directory_uri() . '/inc/svg/contact_us.svg' ?>" alt="">
     </div>
-    <div class="contact-form">
-        <span class="close">✖</span>
+    <div class="contact-form" >
+        <a href="#" class="close"></a>
         <h1>Ez egy contact form</h1>
-        <form action=""></form>
+        <form action="#" method="post" id="flatc-contact-form" data-url="<?php echo admin_url('admin-ajax.php'); ?>">
+            <input id="form-name" type="text" placeholder="Név">
+            <input id="form-email" type="email" placeholder="Email">
+            <input id="form-phone" type="text" placeholder="Telefonszám">
+            <textarea id="form-message" type="text" placeholder="Üzenet..."></textarea>
+        </form>
+        <a href="#" class="btn-submit">Küldés</a>
     </div>
 
     <div id="nav-overlay">
