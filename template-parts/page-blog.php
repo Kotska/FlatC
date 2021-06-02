@@ -9,48 +9,26 @@
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
  * @package FlatC
+ *
  */
 get_header();
 $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 ?>
 <main data-link="<?php echo get_page_link(); ?>" data-page="<?php echo $paged ?>" id="primary" class="site-main page-blog">
-    <div class="slider-list">
-        <?php
-        $categories = get_post_meta($post->ID, 'slider_categories', false);
-        foreach ($categories[0] as $category) {
-            $args = [
-
-                'category_name' => $category,
-            ];
-            $query = new WP_Query($args);
-        ?>
-            <div class="splide">
-                <h2 class="slider-title"><?php echo $category ?></h2>
-                <div class="splide__track">
-                    <ul class="splide__list">
-                        <?php
-                        if ($query->have_posts()) {
-                            while ($query->have_posts()) {
-                                $query->the_post();
-                                $title = get_the_title();
-                                $link = get_permalink();
-                                $thumbnail = get_the_post_thumbnail_url();
-                        ?>
-                                <li class="splide__slide">
-                                    <div class="splide__slide__container">
-                                        <img src="<?php echo $thumbnail; ?>">
-                                    </div>
-                                    <a href="<?php echo $link; ?>"><?php echo $title; ?></a>
-                                </li>
-                        <?php
-                            }
-                        }
-                        wp_reset_postdata();
-                        ?>
-                    </ul>
+    <div class="category-section">
+        <div class="cat-container">
+            <div class="category-text"><h3>Kategóriák szerint</h3></div>
+            <div class="cat-asd">
+                <div class="category-list">
+                <?php
+                    $categories_list = get_categories();
+                    foreach($categories_list as $cat) {
+                        echo '<div class="cat-item"><p>'.$cat->name.'</p></div>';
+                    }
+                ?>
                 </div>
             </div>
-        <?php } ?>
+        </div>
     </div>
     <div class="latest-post-list">
         <h3 class="latest-text">Legújabb</h3>

@@ -25,7 +25,7 @@
           $(this)
             .find(".post-cont-bg")
             .finish()
-            .animate({ right: "0%" }, { duration: 200, easing: "easeOutCubic" });
+            .animate({ right: "0%" }, { duration: 400, easing: "easeOutCubic" });
         });
         $(".post-cont").on("mouseleave", function (e) {
           $(this)
@@ -60,6 +60,40 @@
   $(document).ready(function () {
     init();
     initPost();
+
+    // Scroll category
+    // Variable to store current X scrolled position.
+    var toScroll = 0;
+    // Pixel increment you wish on each wheel spin.
+    var ScrollX_pixelPer = 40;
+
+    $('.cat-asd').on('mouseenter', function(e){
+      let current = $('body').scrollTop();
+
+      $('body').on('scroll', function(e) {
+        $('body').scrollTop(current);
+      });
+
+      var $target = $(this);
+
+      $('body').on('wheel', function(e){
+        var delta = ScrollX_pixelPer*(parseInt(e.originalEvent.deltaY)/100);
+        toScroll += delta;
+        if(toScroll < 0){
+          toScroll = 0
+        }
+        if(toScroll > ($($target)[0].scrollWidth - $($target).width())){
+          toScroll = $($target)[0].scrollWidth - $($target).width()
+        }
+        $($target).scrollLeft(toScroll);
+      });
+
+    }).on('mouseleave', function(e){
+      $('body').off('scroll').off('wheel');
+      $("body").scroll(function () {
+        didScroll = true;
+      });
+    });
 
     if ($(".splide").length) {
       new Splide(".splide", {
