@@ -72,5 +72,5 @@
 			<div id="nav-btn" class="burger burger-rotate">
 				<div class="burger-lines"></div>
 			</div>
-			<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap" rel="stylesheet">
+			<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500&display=swap" rel="stylesheet">
 		</header><!-- #masthead -->

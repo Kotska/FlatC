@@ -153,7 +153,7 @@ function flatc_scripts()
 	}
 
 	if (is_page_template('template-parts/page-blog.php') || is_singular('post')) {
-
+		wp_enqueue_script("jquery-effects-core");
 		wp_enqueue_script('splide', get_template_directory_uri() . '/js/splide.min.js');
 		wp_enqueue_style('splide-style', get_template_directory_uri() . '/splide-core.min.css');
 		wp_enqueue_script('flatc-blog', get_template_directory_uri() . '/js/blog.js', array('jquery'), _S_VERSION, true);
@@ -413,6 +413,19 @@ function flatc_save_contact_data($post_id) {
 }
 add_action('save_post', 'flatc_save_contact_data' );
 
+function excerpt($limit)
+{
+		$excerpt = explode(' ', get_the_excerpt(), $limit);
+		if (count($excerpt) >= $limit) {
+				array_pop($excerpt);
+				$excerpt = implode(" ", $excerpt) . '...';
+		} else {
+				$excerpt = implode(" ", $excerpt);
+		}
+		$excerpt = preg_replace('`[[^]]*]`', '', $excerpt);
+		return $excerpt;
+}
+
 function flatc_ajax_search()
 {
 	ob_start();
@@ -431,25 +444,34 @@ function flatc_ajax_search()
 				$link = get_permalink();
 				$category = get_the_category();
 				$thumbnail = get_the_post_thumbnail_url();
+				$image_alt = get_the_post_thumbnail_caption();
 				?>
-				<div class="post-cont">
-					<img src="<?php echo $thumbnail; ?>">
-					<div class="title-cont">
-						<?php
-						if (!empty($categories)) {
-							foreach ($categories as $category) {
-								echo '<div class="categories"><a class="post-category">' . $category[0] . '</a></div>';
-							}
-						}
-						?>
-						<a href="<?php echo $link; ?>">
-							<h3><?php echo $title ?></h3>
-						</a>
-					</div>
-					<div class="excerpt">
-						<p><?php echo get_the_excerpt(); ?></p>
-					</div>
-				</div>
+                        <div class="post-cont">
+                            <a class="post-thumbnail" href="<?php echo $link ?>">
+                                <div class="post-thumbnail">
+                                    <div class="bg-image" style="background-image: url('<?php echo $thumbnail ?>');"></div>
+                                </div>
+                            </a>
+                            <div class="post-text">
+                                <div class="title-cont">
+                                    <?php
+                                    if (!empty($categories)) {
+                                        foreach ($categories as $category) {
+                                            echo '<div class="categories"><a class="post-category">' . $category[0] . '</a></div>';
+                                        }
+                                    }
+                                    ?>
+                                    <a href="<?php echo $link ?>">
+                                        <h3><?php echo $title ?></h3>
+                                    </a>
+                                </div>
+                                <div class="excerpt">
+                                    <p><?php echo excerpt(25); ?></p>
+                                </div>
+                            </div>
+                            <div class="post-cont-bg"></div>
+                            
+                        </div>
 				<?php
 			}
 			echo '</div>';
