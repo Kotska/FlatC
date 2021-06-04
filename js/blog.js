@@ -68,7 +68,7 @@
     var ScrollX_pixelPer = 40;
 
     var totalScrollLeft = $('.category-list').width() - $('.cat-asd').width();
-    var scrollSpeed = (1000/$('.category-list').width()) * 1000;
+    var scrollSpeed = $('.category-list').width()/1;
     //Hide arrow if list doesn't overflow
     if($('.cat-asd')[0].scrollWidth > $('.category-list').width()){
       $('.arrow-right').hide();
