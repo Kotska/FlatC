@@ -67,6 +67,33 @@
     // Pixel increment you wish on each wheel spin.
     var ScrollX_pixelPer = 40;
 
+    var totalScrollLeft = $('.category-list').width() - $('.cat-asd').width();
+    var scrollSpeed = (1000/$('.category-list').width()) * 1000;
+    //Hide arrow if list doesn't overflow
+    if($('.cat-asd')[0].scrollWidth > $('.category-list').width()){
+      $('.arrow-right').hide();
+      $('.arrow-left').hide();
+    }
+
+    // Clicking nav
+    $('.arrow-left').on({'mousedown touchstart': function(){
+      $('.arrow-right').css({visibility: 'visible'});
+      $('.cat-asd').animate({scrollLeft: 0}, scrollSpeed, function(){$('.arrow-left').css({visibility: 'hidden'});});
+    },
+    'mouseup touchend': function () {
+      $('.cat-asd').stop(true);
+    }
+    });
+    $('.arrow-right').on({'mousedown touchstart': function(){
+      $('.arrow-left').css({visibility: 'visible'});
+      $('.cat-asd').animate({scrollLeft: totalScrollLeft}, scrollSpeed, function(){$('.arrow-right').css({visibility: 'hidden'});});
+    },
+    'mouseup touchend': function () {
+      $('.cat-asd').stop(true);
+    }
+    });
+
+    // Scrolling nav
     $('.cat-asd').on('mouseenter', function(e){
       let current = $('body').scrollTop();
 
@@ -81,9 +108,15 @@
         toScroll += delta;
         if(toScroll < 0){
           toScroll = 0
+          $('.arrow-left').css({visibility: 'hidden'});
+        } else {
+          $('.arrow-left').css({visibility: 'visible'});
         }
         if(toScroll > ($($target)[0].scrollWidth - $($target).width())){
           toScroll = $($target)[0].scrollWidth - $($target).width()
+          $('.arrow-right').css({visibility: 'hidden'});
+        } else {
+          $('.arrow-right').css({visibility: 'visible'});
         }
         $($target).scrollLeft(toScroll);
       });
