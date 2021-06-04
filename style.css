@@ -2676,6 +2676,7 @@ body.single-post .arrow:active {
 
 body.page-template-page-blog .arrow-left,
 body.single-post .arrow-left {
+  visibility: hidden;
   margin-right: 30px;
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
