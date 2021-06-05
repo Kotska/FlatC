@@ -32,7 +32,7 @@ $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
                     <?php
                     $categories_list = get_categories();
                     foreach ($categories_list as $cat) {
-                        echo '<div class="cat-item"><p>' . $cat->name . '</p><div class="cat-item-bg"></div></div>';
+                        echo '<div data-cat-id="'.$cat->term_id.'" class="cat-item"><p>' . $cat->name . '</p><div class="cat-item-bg"></div></div>';
                     }
                     ?>
                 </div>
@@ -46,6 +46,8 @@ $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
         </div>
     </div>
+    <h3 class="category-search-text">Kategória:</h3>
+    <h3 class="category-search-text-2"></h3>
     <div class="latest-post-list">
         <h3 class="latest-text">Legújabb</h3>
         <h3 class="latest-text-2">Legfrissebb blogbejegyzések</h3>
@@ -62,28 +64,26 @@ $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
                 $query->the_post();
                 $title = get_the_title();
                 $link = get_permalink();
-                $category = get_the_category();
+                $categories = get_the_category();
                 $thumbnail = get_the_post_thumbnail_url();
                 $image_alt = get_the_post_thumbnail_caption();
         ?>
 
                 <div class="post-cont">
-                    <a class="post-thumbnail" href="<?php echo $link ?>">
                         <div class="post-thumbnail">
                             <div class="bg-image" style="background-image: url('<?php echo $thumbnail ?>');"></div>
                         </div>
-                    </a>
                     <div class="post-text">
                         <div class="title-cont">
                             <?php
                             if (!empty($categories)) {
                                 foreach ($categories as $category) {
-                                    echo '<div class="categories"><a class="post-category">' . $category[0] . '</a></div>';
+                                    echo '<div class="categories"><a class="post-category">' . $category->name . '</a></div>';
                                 }
                             }
                             ?>
-                            <a href="<?php echo $link ?>">
-                                <h3><?php echo $title ?></h3>
+                            <a class="post-link" href="<?php echo $link ?>">
+                                <h3 class="post-link-h3"><?php echo $title ?></h3>
                             </a>
                         </div>
                         <div class="excerpt">

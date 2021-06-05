@@ -431,11 +431,23 @@ function flatc_ajax_search()
 	ob_start();
 	?>
 		<?php
-		$query = new WP_Query([
-			'posts_per_page' => -1,
-			'post_type'      => 'post',
-			's'              => $_GET['search_term'],
-		]);
+
+		if(isset($_GET['search_term'])){
+			$query = new WP_Query([
+				'posts_per_page' => -1,
+				'post_type'      => 'post',
+				's'              => $_GET['search_term'],
+			]);
+		}
+
+		if(isset($_GET['search_category'])){
+			$query = new WP_Query([
+				'posts_per_page' => -1,
+				'post_type'      => 'post',
+				'cat'  => $_GET['search_category']
+			]);
+		}
+
 		if ($query->have_posts()) {
 			echo '<div class="latest-post-list search-results">';
 			while ($query->have_posts()) {
@@ -486,6 +498,7 @@ function flatc_ajax_search()
 
 add_action('wp_ajax_nopriv_flatc_ajax_search', 'flatc_ajax_search');
 add_action('wp_ajax_flatc_ajax_search', 'flatc_ajax_search');
+
 
 function my_custom_mime_types($mimes)
 {
