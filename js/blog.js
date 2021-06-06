@@ -19,9 +19,10 @@
 
       // Post list background hover
       function initPost() {
+        let leftBg = ($(".post-cont").css('flex-wrap') == 'wrap') ? '0' : '40%';
         $(".post-cont").on("mouseenter", function (e) {
           $(this).addClass("hovered");
-          $(this).find(".post-cont-bg").css({ left: "40%" });
+          $(this).find(".post-cont-bg").css({ left: leftBg });
           $(this)
             .find(".post-cont-bg")
             .finish()
@@ -37,7 +38,7 @@
                 duration: 400,
                 easing: "easeOutCubic",
                 complete: function () {
-                  $(this).css({ left: "40%", right: "100%" });
+                  $(this).css({ left: leftBg, right: "100%" });
                 },
               }
             );
@@ -238,7 +239,6 @@
         $(".search-results").remove();
         $(".category-search-text").hide();
         $(".category-search-text-2").hide();
-        setTimeout(function(){initPost(); console.log('asdf'); }, 500);
         return;
       }
 
