@@ -124,7 +124,7 @@
         $($target).scrollLeft(toScroll);
       });
 
-    }).on('mouseleave', function(e){
+    }).on('mouseleave touchstart', function(e){
       $('body').off('scroll').off('wheel');
       $("body").scroll(function () {
         didScroll = true;
